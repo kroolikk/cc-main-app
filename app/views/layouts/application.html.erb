@@ -32,7 +32,7 @@
 
 </script>
 </head>
-<body>
+<body class="<%= params[:controller] %>-<%= params[:action] %>">
   <div id="fb-root"></div>
   <script>(function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
@@ -46,8 +46,18 @@
   <header>
     <div class="navigation-area">
       <%= link_to "", root_url, :class => "logo-cc" %>
-    </div>
-    <div class="clear"></div>
+   
+    
+		<nav>
+          <a href="" class="orange-bar">Rozrywka</a><span class="seperator"></span>
+          <a href="" class="green-bar">Kultura</a><span class="seperator"></span>
+          <a href="" class="blue-bar">Studia</a><span class="seperator"></span>
+          <a href="" class="pink-bar">Lifestyle</a><span class="seperator"></span>
+          <a href="" class="yellow-bar">Miejsca</a><span class="seperator"></span>
+          <%= link_to "Kalendarz", calendar_path, :class => "white-bar" %>
+		</nav>
+   </div>
+  <div class="clear"></div>
   </header>
   
   <div class="behind-bg">
@@ -60,5 +70,7 @@
     </div>
   </div>
   <div class="clearspace"></div>
-    
+    <% if params[:controller] == 'home' && !params[:action] == 'index' %>
+    hi dasjhf afg uasfh uagf gaiu fgusagf usaigf usaf igausi fgu
+    <% end %>
 </body>

@@ -109,7 +109,9 @@ nav a {
 .yellow{ background: #ffde00;}
 .white { background: #fff;}
 .orange-bar { border-bottom: 3px solid #e86800;}
+.orange-bar:hover {color: #e86800;}
 .green-bar { border-bottom: 3px solid #a2c306;}
+.green-bar:hover { color: #a2c306;}
 .blue-bar { border-bottom: 3px solid #0093ba;}
 .pink-bar { border-bottom: 3px solid #810a42;}
 .yellow-bar { border-bottom: 3px solid #ffde00;}
@@ -320,4 +322,18 @@ footer li:hover {
 #mce-success-response {
 	background-color: #E1FBBC;
 	border: 1px solid #60A607;
+}
+.cal-header {
+	margin: 0 20px;
+	border-bottom: 3px solid #286868;
+	padding: 20px 0 15px;
+}
+.cal-archives {
+	float: right;
+}
+.cal-title {
+	text-transform: uppercase;
+	font-size: 25px;
+	font-weight: bold;
+	color: #286868;
 }
