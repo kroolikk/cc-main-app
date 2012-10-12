@@ -3,8 +3,27 @@
   <head>
     <title>Panel administracyjny CollegeCity</title>
     <%= stylesheet_link_tag "admin", :media => "all" %>
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|PT+Sans+Caption:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <%= javascript_include_tag 'jquery.js', 'jquery_ujs.js', 'jquery-ui.js' %>
+    <%= csrf_meta_tags %>
   </head>
   <body>
+      <% if alert.present? %>
+        <div class="flash-error message" id="error"><%= alert %></div>
+           <script type="text/javascript">
+             $(document).ready(function() {
+             $("div.flash-error").delay(5000).slideUp('medium');
+              });
+      </script>
+    <% end %>
+    <% if notice.present?  %>
+      <div class="flash-notice message" id="notice"><%= notice %></div>
+      <script type="text/javascript">
+  $(document).ready(function() {
+    $("div.flash-notice").delay(5000).slideUp('medium');
+  });
+      </script>
+    <% end %>
     <div class="front-login-box">
       <%= yield %>
     </div>

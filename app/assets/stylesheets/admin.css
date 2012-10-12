@@ -2,18 +2,20 @@ body {
 	background: #131313;
 	padding: 0px 20px;
 	margin: 0;
-	font-family: 'Questrial', Arial, sans-serif;
+	font-family: 'PT sans', Arial, sans-serif;
 }
 ul, li {padding: 0; list-style: none;}
-a {	color: #96b000;
+a {	color: #3CA9D8;
 	text-decoration:none;
 }
+p { margin: 4px 0px;}
 .page-content h1 {
 	margin-bottom: 20px;
 }
 h1 {
 	margin-top:35px;
 	margin-bottom: 0px;
+	color: #555;
 }
 table th {
 	text-align: left;
@@ -59,7 +61,7 @@ header {
 	display:block;
 	font-size: 15px;
 	color: #fff;
-	font-family: 'Questrial', arial, sans-serif;
+	font-family: 'PT sans', arial, sans-serif;
 }
 aside {	height: 100%;
 	position: absolute;
@@ -91,7 +93,7 @@ aside {	height: 100%;
 	padding-left: 15px;
 	text-decoration: none;
 	text-shadow: 1px 1px 0px #239BCE;
-	color:#222;
+	color:#FFF;
 }
 .next-sep {
 	margin-left: 70px;
@@ -243,12 +245,51 @@ aside {	height: 100%;
 	font-weight: bold;
 }
 .front-login-box {
+	color: #555;
 	width: 250px;
 	padding: 30px;
 	background: #fff;
 	box-shadow: rgba(0, 0, 0, 0.5);
 	margin: 200px auto 0 auto;
 	border-radius: 10px;
+}
+.front-login-box h1 {
+	color: #555;
+	margin: 0px auto 15px auto;
+	font-size: 22px;
+	text-align: center;
+}
+.front-login-box label {
+	display: block;
+	margin-bottom: 5px;
+}
+.front-login-box input[type="submit"] {
+	background: #63b6db;
+	background: -moz-linear-gradient(top,  #63b6db 0%, #309dcf 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#63b6db), color-stop(100%,#309dcf));
+	background: -webkit-linear-gradient(top,  #63b6db 0%,#309dcf 100%);
+	background: -o-linear-gradient(top,  #63b6db 0%,#309dcf 100%);
+	background: -ms-linear-gradient(top,  #63b6db 0%,#309dcf 100%);
+	background: linear-gradient(to bottom,  #63b6db 0%,#309dcf 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#63b6db', endColorstr='#309dcf',GradientType=0 );
+	border-radius: 3px;
+	border: 1px solid #1E99CE;
+	padding: 6px 18px;
+	color: #fff;
+	margin-left: 70px;
+	cursor: pointer;
+	font-weight: bold;
+}
+.front-login-box input[type="submit"]:hover {
+	background: #3ca9d8;
+background: -moz-linear-gradient(top,  #3ca9d8 0%, #0e94ce 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3ca9d8), color-stop(100%,#0e94ce));
+background: -webkit-linear-gradient(top,  #3ca9d8 0%,#0e94ce 100%);
+background: -o-linear-gradient(top,  #3ca9d8 0%,#0e94ce 100%);
+background: -ms-linear-gradient(top,  #3ca9d8 0%,#0e94ce 100%);
+background: linear-gradient(to bottom,  #3ca9d8 0%,#0e94ce 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3ca9d8', endColorstr='#0e94ce',GradientType=0 );
+
 }
 .front-login-box input[type="text"], .front-login-box input[type="password"] {
 	width: 230px;
@@ -258,4 +299,8 @@ aside {	height: 100%;
 	padding: 0px 5px;
 	border-radius: 5px;
 	line-height: 28px;
+	margin-bottom: 15px;
+}
+.front-login-box input[type="text"]:focus, .front-login-box input[type="password"]:focus {
+	border: 1px solid #3ca9d8;
 }
