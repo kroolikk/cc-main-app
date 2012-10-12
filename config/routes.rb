@@ -1,5 +1,10 @@
 CcDev1::Application.routes.draw do
 
+  match "/admin" => "admin#index", :as => :admin
+  match "admin/login" => "admin#login", :as => :admin_login
+  match "admin/enter" => "admin#enter", :as => :admin_enter
+  match "admin/logout" => "admin#logout", :as => :admin_logout
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
