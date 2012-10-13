@@ -41,27 +41,33 @@
     <% end %>
     
     <div class="main-wrapper">
-      <header><h1>Panel Administracyjny</h1>
+      <header><%= image_tag('panel-logo.png') %>
+        <h1>Panel Administracyjny</h1>
       </header>
       
       
       <nav class="breadcrumbs">
-	<div style="min-width: 290px; float: left;">
+	<div class="user-area" >
     
-    <strong><%= link_to "Wróć do serwisu", root_url, :target => "_blank" %></strong>
-      <strong><%= link_to "wyloguj", admin_logout_url %></strong>
+    <strong>Witaj!</strong> Admin
+      
     
 	</div>
+      <span class="unstyled-nav">Na skróty:</span> 
+      <%= link_to "Nowy artykuł", "" %> 
+      <%= link_to "Nowe wydarzenie", "" %> 
+      <%= link_to "Dodaj miejsce", "" %> 
 	      </nav>
       <div class="admin-content">
 	<aside class="main-nav">
 	  
 	  <ul>
-      <li><%= link_to "Artykuły", "" %> </li>
+      <li><%= link_to "Artykuły", "" %><span class="left-selected"></span></li>
       <li><%= link_to "Kalendarz", "" %> </li>
       <li><%= link_to "Miejsca", "" %> </li>
       <li><%= link_to "Użytkownicy", "" %> </li>
-	    <li><%= link_to "Wygląd", "" %> </li>
+      <li><%= link_to "Wygląd", "" %> </li>
+	    <li><%= link_to "Wyloguj", admin_logout_url %> </li>
 	  </ul>
 	  
 	</aside>	

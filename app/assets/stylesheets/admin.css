@@ -33,9 +33,27 @@ table th {
 }
 header {
 	background: #fff;
-	height: 110px;
 	display:block;
-	padding: 30px;
+	position: relative;
+	padding: 30px 17px;
+}
+header h1 {
+	font-size: 17px;
+	padding-left: 24px;
+	border-left: 1px solid #CCC;
+	position: absolute;
+	margin-top: 35px;
+	top: 35px;
+	color: #239BCE;
+	top: 23px;
+	left: 281px;
+}
+.user-area {
+	padding-left: 15px;
+	color: #fff;
+	width: 273px;
+	float: left;
+	background: url(/assets/admin-sep.png) no-repeat right;
 }
 .main-nav {
 	background: #121212;
@@ -47,6 +65,7 @@ header {
 	border-top: 1px solid #1d1d1d;
 	padding: 0px 20px;
 	list-style: none;
+	position: relative;
 }
 .main-nav li:hover {
 	background: #161616;}
@@ -68,12 +87,25 @@ aside {	height: 100%;
 	width: 280px;
 
 }
-	
+.unstyled-nav {
+	text-shadow: none !important;
+	color: #ADE6F7;
+	padding-left: 10px;
+}
+.left-selected {
+	background: url(/assets/admin-select.png) no-repeat;
+	width: 16px;
+	height: 16px;
+	display: block;
+	top: 18px;
+	right: -15px;
+	position: absolute;
+}
 .breadcrumbs {
-	padding-top: 11px;
+	line-height: 34px;
 	font-size: 13px;
 	font-family: 'Istok Web', Arial, sans-serif;
-	min-height: 29px;
+	min-height: 34px;
 	border-color: #239BCE;
 	border-width: 1px 0px;
 	border-style: solid;
@@ -85,7 +117,8 @@ aside {	height: 100%;
 	background: -ms-linear-gradient(top,  #63b6db 0%,#309dcf 100%);
 	background: linear-gradient(to bottom,  #63b6db 0%,#309dcf 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#63b6db', endColorstr='#309dcf',GradientType=0 );
-
+/*
+	background: url(/assets/admin-nav-bg.png) repeat-x; */
 	text-shadow: 1px 1px 0px #239BCE;
 	color:#222;
 }
@@ -118,7 +151,7 @@ aside {	height: 100%;
 	background-image:      -o-linear-gradient(top, #bacb00, #86a400);
 }
 .admin-content {
-
+	background: url(/assets/admin-bg.png);
 	position: relative;
 	min-height: 300px;
 }
@@ -183,7 +216,7 @@ aside {	height: 100%;
 	border: 1px solid #c43d3d;
 }
 .message
-{
+{z-index: 3;
 		-webkit-background-size: 40px 40px;
 		-moz-background-size: 40px 40px;
 		background-size: 40px 40px;			
