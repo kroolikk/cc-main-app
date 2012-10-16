@@ -18,6 +18,11 @@ h1 {
 	margin-bottom: 0px;
 	color: #555;
 }
+h3 {
+	font-size: 19px;
+	color: #555;
+	margin: 8px 0px;
+}
 table {
 	border: 1px solid #ddd;
 	margin: 0;
@@ -256,6 +261,8 @@ aside {	height: 100%;
 	margin: 12px 3px;
 	padding: 6px 20px;
 	font-weight: bold;
+	font-family: 'PT sans', Arial, sans-serif;
+font-size: 14px;
 }
 .main-btn:hover {
 background: #4adaf7;
@@ -268,6 +275,13 @@ background: linear-gradient(to bottom,  #4adaf7 0%,#00acea 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4adaf7', endColorstr='#00acea',GradientType=0 );
 
 
+}
+.mini {
+	display: inline-block !important;
+	margin-top: 1px !important;
+	vertical-align: top !important;
+	padding: 2px 10px !important;
+	font-size: 12px !important;
 }
 .cancel-btn {
 	color: #555;
@@ -283,6 +297,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4adaf7', end
 	border: 1px solid #ccc;
 	cursor: pointer;
 	margin: 12px 3px;
+	font-family: 'PT sans', Arial, sans-serif;
+font-size: 14px;
 	padding: 6px 20px;
 }
 .cancel-btn:hover {
@@ -301,6 +317,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4adaf7', end
 	border: 1px solid #58AA00;
 	cursor: pointer;
 	margin: 12px 3px;
+	font-family: 'PT sans', Arial, sans-serif;
+font-size: 14px;
 	padding: 6px 20px;
 	color: #fff;
 	border-radius: 3px;
@@ -496,6 +514,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3ca9d8', end
 }
 .flag {
 	background: url(/assets/flag.png);
+}
+.show {
+	background: url(/assets/show.png);
 }
 .pagination {
 	padding: 10px 0px;
