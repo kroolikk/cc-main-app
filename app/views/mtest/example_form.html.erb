@@ -1,0 +1,57 @@
+Próba tabelki
+<table>
+	<thead>
+		<th>Name header</th>
+		<th>Number header</th>
+		<th>Tools header</th>
+	</thead>
+
+	<tr>
+		<td>row 1 name</td>
+		<td>row 1 number</td>
+		<td>Przykładowe ikony</td>
+	</tr>
+	<tr>
+		<td>row 2 name</td>
+		<td>row 2 number</td>
+		<td>
+			<%= link_to "", "", :class => "flag ico", :title => "Przypnij do strony głównej" %>
+			<%= link_to "", "", :class => "left ico", :title => "Przesuń w lewo" %>
+			<%= link_to "", "", :class => "tag ico", :title => "Dodaj tagi" %>
+			<%= link_to "", "", :class => "edit ico", :title => "Edytuj" %>
+			<%= link_to "", "", :class => "remove ico", :title => "Usuń" %>
+			<%= link_to "", "", :class => "right ico", :title => "Przesuń w prawo" %>
+			<%= link_to "", "", :class => "up ico", :title => "Przesuń w górę" %>
+			<%= link_to "", "", :class => "down ico", :title => "Przesuń w dół" %>
+		</td>
+	</tr>
+</table>
+<div class="clearspace"></div>
+<div class="clearspace"></div>
+
+przykład paginacji:
+(ostylowane defaultowe divy i classy "will paginate")
+<div class="pagination">
+	<span class="previous_page disabled">&laquo;</span>
+	<em class="current">1</em>
+	<a rel="next" href="">2</a>
+	<a href="">3</a>
+	<a href="">4</a>
+	<span class="disabled">...</span>
+	<a href="">96</a>
+	<a href="">97</a>
+	<a href="">98</a>
+	<a class="next_page" rel="next" href="">&raquo;</a>
+</div>
+
+<div class="clearspace"></div>
+<div class="clearspace"></div>
+Przykładowe formy<br><br>
+<label>Przykładowy label</label>
+<input type="text">
+<label>Przykładowy text-area</label>
+<textarea></textarea>
+<label>Przykładowy button</label>
+<input type="submit" value="Wyślij" class="main-btn">
+<input type="submit" value="Anuluj" class="cancel-btn">
+<input type="submit" value="Auxilary button" class="aux-btn">

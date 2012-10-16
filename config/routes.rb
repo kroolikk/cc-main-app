@@ -5,6 +5,8 @@ CcDev1::Application.routes.draw do
   match "admin/enter" => "admin#enter", :as => :admin_enter
   match "admin/logout" => "admin#logout", :as => :admin_logout
 
+  match "admin/example_form" => "mtest#example_form", :as => :example_form
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
