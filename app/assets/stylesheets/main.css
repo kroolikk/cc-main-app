@@ -337,3 +337,55 @@ footer li:hover {
 	font-weight: bold;
 	color: #286868;
 }
+.cal-head-date {
+	font-size: 20px;
+	padding: 5px 19px;
+}
+.calendar-holder table {
+	padding: 0px 17px;
+	width: 100%;
+}
+.calendar-holder table td {
+	border-bottom: 1px solid #ddd;
+	padding: 10px 0px;
+}
+.ch-more {
+	width: 100px;
+	text-align: right;
+	vertical-align: middle;
+}
+.ch-time {
+	width: 62px;
+	vertical-align: middle;
+}
+.ch-title {}
+.ch-street {
+	vertical-align: middle;
+	width: 260px;
+}
+.cal-news {
+	font-weight: bold;
+	padding-left: 12px;
+	text-transform: uppercase;
+	font-size: 16px;
+}
+a.ch-green {
+	display: block;
+	color: #A2C306;
+	border-left: 3px solid #A2C306;
+}
+a.ch-blue {
+	display: block;
+	color: #0093BA;
+	border-left: 3px solid #0093BA;
+}
+a.ch-pink {
+	display: block;
+	color: #810A42;
+	border-left: 3px solid #810A42;
+}
+a.ch-orange {
+	display: block;
+	color: #E86800;
+	border-left: 3px solid #E86800;
+}

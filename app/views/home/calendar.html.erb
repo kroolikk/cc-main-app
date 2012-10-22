@@ -7,5 +7,38 @@
 		<input type="submit" value="Ustaw" />
 	</div>
 	<h1 class="cal-title">Kalendarz Wydarzeń</h1>
-	
+</div>
+<div class="calendar-holder">	
+	<!-- begin date loop -->
+	<div class="cal-head-date">28.10</div>
+		<table>
+			<tr>
+				<td class="ch-time">15:45</td>
+				<td class="ch-title"><%= link_to "Koncert familyjny w filharmonii krakowskiej", "", :class => "cal-news ch-green" %></td>
+				<td class="ch-street">ul Barona 13 pok. 134</td>
+				<td class="ch-more"><%= link_to "Zobacz więcej", "" %></td>
+			</tr>
+			<tr>
+				<td class="ch-time">15:45</td>
+				<td class="ch-title"><%= link_to "Coś tam magicznego się dzieje w teatrze słowackiego w krakowie, oooh yeah!", "", :class => "cal-news ch-orange" %></td>
+				<td class="ch-street">ul Barona 13 pok. 134</td>
+				<td class="ch-more"><%= link_to "Zobacz więcej", "" %></td>
+			</tr>
+		</table>
+	<!-- end loop -->
+	<div class="cal-head-date">29.10</div>
+		<table>
+			<tr>
+				<td class="ch-time">15:45</td>
+				<td class="ch-title"><%= link_to "CollegeCity Party Number 6", "", :class => "cal-news ch-blue" %></td>
+				<td class="ch-street">ul Barona 13 pok. 134</td>
+				<td class="ch-more"><%= link_to "Zobacz więcej", "" %></td>
+			</tr>
+			<tr>
+				<td class="ch-time">15:45</td>
+				<td class="ch-title"><%= link_to "Koncert familyjny w filharmonii krakowskiej", "", :class => "cal-news ch-pink" %></td>
+				<td class="ch-street">ul Barona 13 pok. 134</td>
+				<td class="ch-more"><%= link_to "Zobacz więcej", "" %></td>
+			</tr>
+		</table>
 </div>
