@@ -106,6 +106,11 @@ header h1 {
 	top: 23px;
 	left: 281px;
 }
+.return-to-site {
+	font-size: 14px;
+	margin-left: 50px;
+	font-weight: normal;
+}
 .user-area {
 	padding-left: 15px;
 	color: #fff;

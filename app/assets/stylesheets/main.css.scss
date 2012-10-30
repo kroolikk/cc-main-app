@@ -1,3 +1,10 @@
+$orange: #e86800;
+$blue: #0093ba;
+$green: #a2c306;
+$yellow: #ffde00;
+$pink: #810a42;
+$white: #fff;
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -102,26 +109,37 @@ nav a {
   height: 77px;
   display: block;
 }
-.orange{ background: #e86800;}
-.green{ background: #a2c306;}
-.blue { background: #0093ba;}
-.pink { background: #810a42;}
-.yellow{ background: #ffde00;}
+.orange{ background: $orange;}
+.green{ background: $green;}
+.blue { background: $blue;}
+.pink { background: $pink;}
+.yellow{ background: $yellow;}
 .white { background: #fff;}
-.orange-bar { border-bottom: 3px solid #e86800;}
-.orange-bar:hover {color: #e86800;}
-.green-bar { border-bottom: 3px solid #a2c306;}
-.green-bar:hover { color: #a2c306;}
-.blue-bar { border-bottom: 3px solid #0093ba;}
-.pink-bar { border-bottom: 3px solid #810a42;}
-.yellow-bar { border-bottom: 3px solid #ffde00;}
+
+.orange-bar { border-bottom: 3px solid $orange;
+		&:hover {color: $orange;}
+}
+.green-bar { border-bottom: 3px solid $green;
+		&:hover { color: $green;}
+}
+.blue-bar { border-bottom: 3px solid $blue;
+		&:hover { color: $blue;}
+}
+.pink-bar { border-bottom: 3px solid $pink;
+		&:hover {color: $pink;}
+}
+.yellow-bar { border-bottom: 3px solid $yellow;
+		&:hover {color: $yellow;}
+}
 .white-bar { border-bottom: 3px solid #fff;}
-.orange-f { border-left: 2px solid #e86800;}
-.green-f { border-left: 2px solid #a2c306;}
-.blue-f { border-left: 2px solid #0093ba;}
-.pink-f { border-left: 2px solid #810a42;}
-.yellow-f { border-left: 2px solid #ffde00;}
+
+.orange-f { border-left: 2px solid $orange;}
+.green-f { border-left: 2px solid $green;}
+.blue-f { border-left: 2px solid $blue;}
+.pink-f { border-left: 2px solid $pink;}
+.yellow-f { border-left: 2px solid $yellow;}
 .white-f { border-left: 2px solid #fff;}
+
 .orange-ico {background: url(/assets/cat-sprites.png) -25px 0px no-repeat;}
 .green-ico {background: url(/assets/cat-sprites.png) 0px 0px no-repeat;}
 .blue-ico {background: url(/assets/cat-sprites.png) -75px 0px no-repeat;}
@@ -371,21 +389,21 @@ footer li:hover {
 }
 a.ch-green {
 	display: block;
-	color: #A2C306;
-	border-left: 3px solid #A2C306;
+	color: $green;
+	border-left: 3px solid $green;
 }
 a.ch-blue {
 	display: block;
-	color: #0093BA;
-	border-left: 3px solid #0093BA;
+	color: $blue;
+	border-left: 3px solid $blue;
 }
 a.ch-pink {
 	display: block;
-	color: #810A42;
-	border-left: 3px solid #810A42;
+	color: $pink;
+	border-left: 3px solid $pink;
 }
 a.ch-orange {
 	display: block;
-	color: #E86800;
-	border-left: 3px solid #E86800;
+	color: $orange;
+	border-left: 3px solid $orange;
 }

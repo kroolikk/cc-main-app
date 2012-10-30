@@ -42,7 +42,7 @@
     
     <div class="main-wrapper">
       <header><%= link_to image_tag('panel-logo.png'), admin_path %>
-        <h1>Panel Administracyjny</h1>
+        <h1>Panel Administracyjny <%= link_to "Wróc do serwisu", root_url, :class => "return-to-site", :target => "_blank" %></h1>
       </header>
       
       
@@ -50,7 +50,7 @@
 	<div class="user-area" >
     
     <strong>Witaj!</strong> Admin
-      
+       
     
 	</div>
       <span class="unstyled-nav">Na skróty:</span> 
