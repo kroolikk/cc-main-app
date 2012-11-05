@@ -57,7 +57,10 @@ CcDev1::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   root :to => 'home#index'
+  # moje dziadowskie routy 
   match "/kalendarz" => "home#calendar", :as => :calendar
+  match "/user_reg" => "home#user_reg", :as => :user_reg
+  match "/user_prof" => "home#user_prof", :as => :user_prof
 
   # See how all your routes lay out with "rake routes"
 
