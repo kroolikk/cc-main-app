@@ -1,3 +1,28 @@
 <div class="user-profile">
-	user profile here
+	<div class="user-avatar">
+		<a href="#" class="edit-avatar">Edytuj zdjęcie</a>
+		<img src="http://25.media.tumblr.com/tumblr_m8fufgWFxN1rp2ebfo1_400.jpg" />
+	</div>
+
+	<div class="user-info">
+		<a href="#" class="edit-box">Edytuj dane</a>
+		<h1 class="your-name">Halina Goliatowska</h1>
+		<p class="your-username">a.k.a GoHa</p><br>
+		<p class="your-arrival">Dołączyła: 16 Lipiec 2012</p>
+		Been there: <div class="been-there-bg">7889</div><div class="done-that-bg">12</div> :Done that
+	</div>
+
+	<div class="clear"></div>
 </div>
+<script>
+	$('.user-avatar').hover(function(){
+		$('.edit-avatar').delay(200).fadeIn('fast');
+	},function(){
+		$('.edit-avatar').delay(200).fadeOut('fast');
+	});
+	$('.user-info').hover(function(){
+		$('.edit-box').delay(200).fadeIn('fast');
+	},function(){
+		$('.edit-box').delay(200).fadeOut('fast');
+	});
+</script>
