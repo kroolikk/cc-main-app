@@ -33,7 +33,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       ## Token authenticatable
       # t.string :authentication_token
 
-      t.string  :role
+      t.string  :role,   :default => 'user'
+      t.string  :slug
       t.string  :name
       t.string  :avatar
 
@@ -46,5 +47,6 @@ class DeviseCreateUsers < ActiveRecord::Migration
     # add_index :users, :unlock_token,         :unique => true
     # add_index :users, :authentication_token, :unique => true
     add_index :users, :role
+    add_index :users, :slug, unique: true
   end
 end

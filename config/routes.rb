@@ -1,6 +1,5 @@
 CcDev1::Application.routes.draw do
 
-  devise_for :users
 
   # chwilowe routingi wrzucajmy na początku
   # moje dziadowskie routy 
@@ -11,10 +10,15 @@ CcDev1::Application.routes.draw do
 
 
 
+  devise_for :users
+
   match "/admin" => "admin#index", :as => :admin
   match "admin/login" => "admin#login", :as => :admin_login
   match "admin/enter" => "admin#enter", :as => :admin_enter
   match "admin/logout" => "admin#logout", :as => :admin_logout
+
+  resources :posts
+  resources :users, :path => 'uzytkownicy'
 
 
 

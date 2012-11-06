@@ -1,3 +1,5 @@
+# -*- encoding: utf-8 -*-
+
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
@@ -8,6 +10,8 @@ if defined?(Bundler)
   # If you want your assets lazily compiled in production, use this line
   # Bundler.require(:default, :assets, Rails.env)
 end
+
+ROLES = [['Użytkownik', 'user'], ['Moderator', 'mod'], ['Admin', 'admin']]
 
 module CcDev1
   class Application < Rails::Application
