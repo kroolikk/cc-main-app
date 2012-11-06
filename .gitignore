@@ -21,5 +21,6 @@ pickle-email-*.html
 *#
 
 /config/database.yml
-.htaccess
-.htpasswd
+/config/initializers/dev_constants.rb
+/config/environments/development.rb
+/config/environments/production.rb
