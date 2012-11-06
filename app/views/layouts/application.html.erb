@@ -11,11 +11,13 @@
     <meta property="og:image" content="http://collegecity.pl/assets/apple-favi.png"/>
     <meta property="og:description" content="CollegeCity - studencka platforma informacyjna. College lifestyle, fajni ludzie, życie nocne, student power, ciekawe miejsca. Pozytywna energia!"/>
   <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|PT+Sans+Caption:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-  <%= stylesheet_link_tag "main.css.scss" %>
-  <%= javascript_include_tag "jquery.js" %>
-  <%= javascript_include_tag "blur.js" %>
-  <%= javascript_include_tag "init.js" %>
-  <%= javascript_include_tag "masonry.js" %> 
+  <%= stylesheet_link_tag    'main.css.scss' %>
+  <%= javascript_include_tag 'jquery.js'     %>
+  <%= javascript_include_tag 'jquery_ujs.js' %>
+  <%= javascript_include_tag 'jquery-ui.js'  %>
+  <%= javascript_include_tag 'blur.js'       %>
+  <%= javascript_include_tag 'init.js'       %>
+  <%= javascript_include_tag 'masonry.js'    %> 
   
   <script type="text/javascript">
 
@@ -32,6 +34,15 @@
 </script>
 </head>
 <body class="<%= params[:controller] %>-<%= params[:action] %>">
+
+  <% if user_signed_in? %>
+    <%= current_user.email %> | 
+    <%= link_to 'Wyloguj', destroy_user_session_path, :method => :delete %>
+  <% else %>
+    <%= link_to 'Zaloguj się', new_user_session_url %> |
+    <%= link_to 'Zarejestruj się', new_user_registration_url %>
+  <% end %>
+
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
