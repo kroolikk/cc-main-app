@@ -60,6 +60,7 @@ footer, header, hgroup, menu, nav, section {
 }
 a {
   text-decoration: none;
+  color: $blue;
 }
 body {
 	font-size: 13px;
@@ -95,7 +96,7 @@ body {
 header {
   background: rgba(0, 0, 0, 0.01);
   height: 108px;
-  border-bottom: 1px solid #2e261f;
+  border-bottom: 1px solid #303030;
   box-shadow: 0px 1px 0px #232323;
 }
 .logo-cc {
@@ -527,4 +528,30 @@ a.ch-orange {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#58abce', endColorstr='#3286c6',GradientType=0 );
 
 
+}
+.snooper {
+	width: 990px;
+	margin: 0 auto;
+
+		.snoop-left {
+			background: url(/assets/snoop-right.png) no-repeat;
+			width: 22px;
+			height: 38px;
+			float: right;
+		}
+		.snoop-right {
+			background: url(/assets/snoop-left.png) no-repeat;
+			width: 22px;
+			height: 38px;
+			float: right;
+		}
+		.snoop-mid {
+			color: #999;
+			font-size: 11px;
+			background: url(/assets/snoop-med.png) repeat-x;
+			height: 38px;
+			float: right;
+			padding: 0 5px;
+			line-height: 36px;
+		}
 }

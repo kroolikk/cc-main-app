@@ -35,14 +35,6 @@
 </head>
 <body class="<%= params[:controller] %>-<%= params[:action] %>">
 
-  <% if user_signed_in? %>
-    <%= current_user.email %> | 
-    <%= link_to 'Wyloguj', destroy_user_session_path, :method => :delete %>
-  <% else %>
-    <%= link_to 'Zaloguj się', new_user_session_url %> |
-    <%= link_to 'Zarejestruj się', new_user_registration_url %>
-  <% end %>
-
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
@@ -71,6 +63,19 @@
 		</nav>
    </div>
   <div class="clear"></div>
+    <div class="snooper">
+      <div class="snoop-left"></div>
+      <div class="snoop-mid">
+          <% if user_signed_in? %>
+        <%= current_user.email %> | 
+           <%= link_to 'Wyloguj', destroy_user_session_path, :method => :delete %>
+          <% else %>
+            <%= link_to 'Zaloguj się', new_user_session_url %> |
+            <%= link_to 'Zarejestruj się', new_user_registration_url %>
+          <% end %>
+      </div>
+      <div class="snoop-right"></div>
+    </div>
   </header>
   
   <div class="behind-bg">
