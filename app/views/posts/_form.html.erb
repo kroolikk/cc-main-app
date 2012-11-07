@@ -23,7 +23,13 @@
     <%= f.label :start_date %><br />
     <%= f.datetime_select :start_date %>
   </div>
+
+  <%= f.fields_for :photos do |builder| %>
+    <%= render "photo_fields", :f => builder %>
+  <% end %>
+  <p class = "add-picture" ><%= link_to_add_fields "Dodaj zdjęcie", f, :photos %></p>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Zapisz' %>
   </div>
 <% end %>

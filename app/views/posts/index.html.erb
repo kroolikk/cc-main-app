@@ -2,18 +2,20 @@
 
 <table>
   <tr>
-    <th>Tytuł</th>
-    <th>Opis</th>
-    <th>Start</th>
+    <th></th>
+    <th width='40%' >Tytuł</th>    
+    <th width='15%' >Start</th>
+    <th width='15%' >Utworzony</th>
     <th></th>
     <th></th>
   </tr>
 
 <% @posts.each do |post| %>
   <tr>
+    <td><%= (image_tag post.photos.first.photo.thumb.url) if post.photos.present? %></td>
     <td><%= post.title %></td>
-    <td><%= post.description %></td>
-    <td><%= post.start_date %></td>
+    <td><%= post.start_date.strftime("%Y/%m/%d/ %H:%M:%S") %></td>
+    <td><%= post.created_at.strftime("%Y/%m/%d/ %H:%M:%S") %></td>
     <td><%= link_to 'Edytuj', edit_post_path(post) %></td>
     <td><%= link_to 'Usuń', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>

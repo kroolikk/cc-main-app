@@ -1,5 +1,6 @@
 # -*- encoding: utf-8 -*-
 class UsersController < AdminController
+  before_filter :check_is_user_admin
 
   def index
     @users = User.all
