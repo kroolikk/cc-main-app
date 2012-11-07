@@ -1,17 +1,27 @@
-<h2>Sign in</h2>
+<h1>Zaloguj się</h1>
+<div class="box700th">
+	<div class="sign-box adjecent">
+		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+		  <div><%= f.label :email %><br />
+		  <%= f.email_field :email %></div>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+		  <div><%= f.label :password %><br />
+		  <%= f.password_field :password %></div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+		  <% if devise_mapping.rememberable? -%>
+		    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+		  <% end -%>
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
+		  <div><%= f.submit "Sign in" %></div>
+		<% end %>
 
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
+		<p class="top-dashed"><%= render "devise/shared/links" %></p>
+	</div>
 
-<%= render "devise/shared/links" %>
+	<div class="face-box adjecent">
+		[insert loggin with FB]
+	</div>
+
+	<div class="clear"></div>
+
+</div>

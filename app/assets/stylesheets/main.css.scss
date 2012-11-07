@@ -25,7 +25,33 @@ $white: #fff;
 	background: linear-gradient(to bottom,  #e5e5e5 0%,#ffffff 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e5e5', endColorstr='#ffffff',GradientType=0 );
 }
-
+@mixin d-blue-btn-grad {
+	background: #3ca9d8;
+	background: -moz-linear-gradient(top,  #3ca9d8 0%, #0e94ce 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3ca9d8), color-stop(100%,#0e94ce));
+	background: -webkit-linear-gradient(top,  #3ca9d8 0%,#0e94ce 100%);
+	background: -o-linear-gradient(top,  #3ca9d8 0%,#0e94ce 100%);
+	background: -ms-linear-gradient(top,  #3ca9d8 0%,#0e94ce 100%);
+	background: linear-gradient(to bottom,  #3ca9d8 0%,#0e94ce 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3ca9d8', endColorstr='#0e94ce',GradientType=0 );
+}
+@mixin blue-btn-grad {
+	background: #63b6db;
+	background: -moz-linear-gradient(top,  #63b6db 0%, #309dcf 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#63b6db), color-stop(100%,#309dcf));
+	background: -webkit-linear-gradient(top,  #63b6db 0%,#309dcf 100%);
+	background: -o-linear-gradient(top,  #63b6db 0%,#309dcf 100%);
+	background: -ms-linear-gradient(top,  #63b6db 0%,#309dcf 100%);
+	background: linear-gradient(to bottom,  #63b6db 0%,#309dcf 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#63b6db', endColorstr='#309dcf',GradientType=0 );
+}
+@mixin act-fadein {
+	  -webkit-transition: all 1s ease-in-out;
+	  -moz-transition: all 1s ease-in-out;
+	  -ms-transition: all 1s ease-in-out;
+	  -o-transition: all 1s ease-in-out;
+	  transition: all 1s ease-in-out;
+}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -554,4 +580,71 @@ a.ch-orange {
 			padding: 0 5px;
 			line-height: 36px;
 		}
+}
+.box700th {
+	width: 700px;
+	margin: 0 auto;
+}
+.adjecent {
+	float: left;
+}
+.sign-box {
+	border-radius: 10px;
+	padding: 25px;
+	width: 250px;
+	margin: 10px 40px 40px 0px;
+	@include act-fadein;
+		&:hover {
+			box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.2);
+		}
+}
+
+.face-box {
+	margin: 10px 0px 10px 40px;
+	border-radius: 10px;
+	padding: 25px;
+	width: 250px;
+	@include act-fadein;
+	&:hover {
+		box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.2);
+	}
+}
+.front-login-box label {
+	display: block;
+	margin-bottom: 5px;
+}
+.sign-box input[type="submit"] {
+	border-radius: 3px;
+	border: 1px solid #1E99CE;
+	padding: 6px 18px;
+	color: #fff;
+	margin-left: 70px;
+	cursor: pointer;
+	font-weight: bold;
+	@include blue-btn-grad;
+}
+.sign-box input[type="submit"]:hover {
+	@include d-blue-btn-grad;
+}
+.sign-box input[type="text"], .sign-box input[type="password"], .sign-box input[type="email"] {
+	width: 230px;
+	height: 28px;
+	border: 1px solid #ccc;
+	outline: none !important;
+	padding: 0px 5px;
+	border-radius: 5px;
+	line-height: 28px;
+	margin-bottom: 15px;
+}
+.sign-box input[type="text"]:focus, .sign-box input[type="password"]:focus, .sign-box input[type="email"]:focus {
+	border: 1px solid #3ca9d8;
+}
+.why-join {
+	font-size: 12px;
+	margin-bottom: 17px;
+}
+.top-dashed {
+	margin-top: 10px;
+	padding-top: 10px;
+	border-top: 1px dashed #ccc;
 }
