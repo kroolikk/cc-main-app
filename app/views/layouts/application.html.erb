@@ -68,7 +68,7 @@
       <div class="snoop-mid">
           <% if user_signed_in? %>
         <%= current_user.email %> | 
-           <%= link_to 'Wyloguj', destroy_user_session_path, :method => :delete %>
+           <%= link_to "Wyloguj", destroy_user_session_path, :method => :delete %>
           <% else %>
             <%= link_to 'Zaloguj się', new_user_session_url %> |
             <%= link_to 'Zarejestruj się', new_user_registration_url %>
@@ -87,8 +87,10 @@
       <%= yield %>
     </div>
   </div>
-  <div class="clearspace"></div>
-    <% if params[:controller] == 'home' && !params[:action] == 'index' %>
-    hi dasjhf afg uasfh uagf gaiu fgusagf usaigf usaf igausi fgu
+  
+    <% unless params[:controller] == 'home' && params[:action] == 'index' %>
+      <%= render :partial => "shared/footer-link" %>
     <% end %>
+    
+  <div class="clearspace"></div>
 </body>
