@@ -266,44 +266,6 @@ nav a {
 	font-family: 'PT Sans Caption', Helvetica, Arial, sans-serif;
 	padding: 2px 5px 15px 5px;
 }
-footer {
-	width: 950px;
-	margin: 30px auto;
-	font-size: 12px;
-	color: #ffe59c;
-	text-transform: uppercase;
-	font-weight: bold;
-}
-footer a {
-	color: #8c6856;
-	padding: 0px 4px;
-	display: block;
-}
-footer li:hover a{
-	color: #d5b96a;
-}
-footer li {
-	list-style: none;
-	text-transform: none;
-	font-weight: normal;
-	border-bottom: 1px solid #2c2622;
-	padding: 5px 0px;
-	margin: 0px 0px;
-	
-}
-footer li:hover {
-	background: rgba(255, 255, 255, 0.02);
-}
-.f-sitemap {
-	width: 180px;
-	float: left;
-	margin-right: 20px;
-}
-.f-news {
-	float: left;
-	width: 330px;
-	margin-right: 20px;
-}
 .newsletter {
 	padding: 30px;
 }
@@ -662,4 +624,42 @@ a.ch-orange {
 		&:hover {
 			color: #fff;
 		}
+}
+footer {
+
+  width: 990px;
+  margin: 7px auto;
+  a {
+      color: #888;
+      &:hover {
+          color: #ddd;
+        }
+    }
+  .foot-title {
+      margin-top: 7px;
+      text-transform: uppercase;
+    }
+  .foot {
+    float: left;
+      li {
+        line-height: 22px;
+        list-style: none;
+      }
+    }
+  .part1 {
+      width: 180px;
+      margin: 0px 5px;
+    }
+  .part2 {
+      width: 180px;
+      margin: 0px 5px;
+    }
+  .part3 {
+      width: 295px;
+      margin: 0px 5px;
+    }
+  .part4  {
+      width: 295px;
+      margin: 0px 5px;
+    }
 }
