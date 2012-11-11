@@ -52,6 +52,13 @@ $white: #fff;
 	  -o-transition: all 1s ease-in-out;
 	  transition: all 1s ease-in-out;
 }
+@mixin q-fadein {
+	  -webkit-transition: all 0.3s ease-in-out;
+	  -moz-transition: all 0.3s ease-in-out;
+	  -ms-transition: all 0.3s ease-in-out;
+	  -o-transition: all 0.3s ease-in-out;
+	  transition: all 0.3s ease-in-out;
+}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -642,6 +649,7 @@ footer {
   .foot {
     float: left;
       li {
+        margin-left: -5px;
         line-height: 22px;
         list-style: none;
       }
@@ -659,7 +667,55 @@ footer {
       margin: 0px 5px;
     }
   .part4  {
-      width: 295px;
-      margin: 0px 5px;
+      width: 265px;
+      margin: 0px 5px 0px 25px;
     }
+}
+.orange-foot a{
+  padding-left: 5px;
+  border-left: 3px solid transparent;
+  @include q-fadein;
+    &:hover {
+        border-left: 3px solid $orange;
+      }
+}
+.blue-foot a{
+  padding-left: 5px;
+  border-left: 3px solid transparent;
+  @include q-fadein;
+    &:hover {
+        border-left: 3px solid $blue;
+      }
+}
+.green-foot a{
+  padding-left: 5px;
+  border-left: 3px solid transparent;
+  @include q-fadein;
+    &:hover {
+        border-left: 3px solid $green;
+      }
+}
+.yellow-foot a{
+  padding-left: 5px;
+  border-left: 3px solid transparent;
+  @include q-fadein;
+    &:hover {
+        border-left: 3px solid $yellow;
+      }
+}
+.pink-foot a{
+  padding-left: 5px;
+  border-left: 3px solid transparent;
+  @include q-fadein;
+    &:hover {
+        border-left: 3px solid $pink;
+      }
+}
+.white-foot a{
+  padding-left: 5px;
+  border-left: 3px solid transparent;
+  @include q-fadein;
+    &:hover {
+        border-left: 3px solid $white;
+      }
 }
