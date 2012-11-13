@@ -25,7 +25,40 @@ $white: #fff;
 	background: linear-gradient(to bottom,  #e5e5e5 0%,#ffffff 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e5e5', endColorstr='#ffffff',GradientType=0 );
 }
-
+@mixin d-blue-btn-grad {
+	background: #3ca9d8;
+	background: -moz-linear-gradient(top,  #3ca9d8 0%, #0e94ce 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3ca9d8), color-stop(100%,#0e94ce));
+	background: -webkit-linear-gradient(top,  #3ca9d8 0%,#0e94ce 100%);
+	background: -o-linear-gradient(top,  #3ca9d8 0%,#0e94ce 100%);
+	background: -ms-linear-gradient(top,  #3ca9d8 0%,#0e94ce 100%);
+	background: linear-gradient(to bottom,  #3ca9d8 0%,#0e94ce 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3ca9d8', endColorstr='#0e94ce',GradientType=0 );
+}
+@mixin blue-btn-grad {
+	background: #63b6db;
+	background: -moz-linear-gradient(top,  #63b6db 0%, #309dcf 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#63b6db), color-stop(100%,#309dcf));
+	background: -webkit-linear-gradient(top,  #63b6db 0%,#309dcf 100%);
+	background: -o-linear-gradient(top,  #63b6db 0%,#309dcf 100%);
+	background: -ms-linear-gradient(top,  #63b6db 0%,#309dcf 100%);
+	background: linear-gradient(to bottom,  #63b6db 0%,#309dcf 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#63b6db', endColorstr='#309dcf',GradientType=0 );
+}
+@mixin act-fadein {
+	  -webkit-transition: all 1s ease-in-out;
+	  -moz-transition: all 1s ease-in-out;
+	  -ms-transition: all 1s ease-in-out;
+	  -o-transition: all 1s ease-in-out;
+	  transition: all 1s ease-in-out;
+}
+@mixin q-fadein {
+	  -webkit-transition: all 0.3s ease-in-out;
+	  -moz-transition: all 0.3s ease-in-out;
+	  -ms-transition: all 0.3s ease-in-out;
+	  -o-transition: all 0.3s ease-in-out;
+	  transition: all 0.3s ease-in-out;
+}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -60,12 +93,19 @@ footer, header, hgroup, menu, nav, section {
 }
 a {
   text-decoration: none;
+  color: $blue;
 }
 body {
 	font-size: 13px;
 	color: #474646;
 	background: #222 url(/assets/bg.png);
   font-family: 'PT Sans Caption', Helvetica, Tahoma, Arial, sans-serif;
+}
+h1.general {
+	margin: 5px 15px 0px 15px;
+	font-size: 24px;
+	color: #555;
+	padding: 20px 20px 0px 20px;
 }
 .behind-bg {
   background: url(/assets/test.png);
@@ -95,7 +135,7 @@ body {
 header {
   background: rgba(0, 0, 0, 0.01);
   height: 108px;
-  border-bottom: 1px solid #2e261f;
+  border-bottom: 1px solid #303030;
   box-shadow: 0px 1px 0px #232323;
 }
 .logo-cc {
@@ -232,44 +272,6 @@ nav a {
 	font-size: 11px;
 	font-family: 'PT Sans Caption', Helvetica, Arial, sans-serif;
 	padding: 2px 5px 15px 5px;
-}
-footer {
-	width: 950px;
-	margin: 30px auto;
-	font-size: 12px;
-	color: #ffe59c;
-	text-transform: uppercase;
-	font-weight: bold;
-}
-footer a {
-	color: #8c6856;
-	padding: 0px 4px;
-	display: block;
-}
-footer li:hover a{
-	color: #d5b96a;
-}
-footer li {
-	list-style: none;
-	text-transform: none;
-	font-weight: normal;
-	border-bottom: 1px solid #2c2622;
-	padding: 5px 0px;
-	margin: 0px 0px;
-	
-}
-footer li:hover {
-	background: rgba(255, 255, 255, 0.02);
-}
-.f-sitemap {
-	width: 180px;
-	float: left;
-	margin-right: 20px;
-}
-.f-news {
-	float: left;
-	width: 330px;
-	margin-right: 20px;
 }
 .newsletter {
 	padding: 30px;
@@ -527,4 +529,193 @@ a.ch-orange {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#58abce', endColorstr='#3286c6',GradientType=0 );
 
 
+}
+.snooper {
+	width: 990px;
+	margin: 0 auto;
+
+		.snoop-left {
+			background: url(/assets/snoop-right.png) no-repeat;
+			width: 22px;
+			height: 38px;
+			float: right;
+		}
+		.snoop-right {
+			background: url(/assets/snoop-left.png) no-repeat;
+			width: 22px;
+			height: 38px;
+			float: right;
+		}
+		.snoop-mid {
+			color: #999;
+			font-size: 11px;
+			background: url(/assets/snoop-med.png) repeat-x;
+			height: 38px;
+			float: right;
+			padding: 0 5px;
+			line-height: 36px;
+		}
+}
+.box700th {
+	width: 700px;
+	margin: 0 auto;
+}
+.adjecent {
+	float: left;
+}
+.sign-box {
+	border-radius: 10px;
+	padding: 25px;
+	width: 250px;
+	margin: 10px 40px 40px 0px;
+	@include act-fadein;
+		&:hover {
+			box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.2);
+		}
+}
+
+.face-box {
+	margin: 10px 0px 10px 40px;
+	border-radius: 10px;
+	padding: 25px;
+	width: 250px;
+	@include act-fadein;
+	&:hover {
+		box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.2);
+	}
+}
+.front-login-box label {
+	display: block;
+	margin-bottom: 5px;
+}
+.sign-box input[type="submit"] {
+	border-radius: 3px;
+	border: 1px solid #1E99CE;
+	padding: 6px 18px;
+	color: #fff;
+	cursor: pointer;
+	font-weight: bold;
+	@include blue-btn-grad;
+}
+.sign-box input[type="submit"]:hover {
+	@include d-blue-btn-grad;
+}
+.sign-box input[type="text"], .sign-box input[type="password"], .sign-box input[type="email"] {
+	width: 230px;
+	height: 28px;
+	border: 1px solid #ccc;
+	outline: none !important;
+	padding: 0px 5px;
+	border-radius: 5px;
+	line-height: 28px;
+	margin-bottom: 15px;
+}
+.sign-box input[type="text"]:focus, .sign-box input[type="password"]:focus, .sign-box input[type="email"]:focus {
+	border: 1px solid #3ca9d8;
+}
+.why-join {
+	font-size: 12px;
+	margin-bottom: 17px;
+}
+.top-dashed {
+	margin-top: 10px;
+	padding-top: 10px;
+	border-top: 1px dashed #ccc;
+}
+.fb-login-btn {
+	background: url(/assets/log-fb.png) no-repeat;
+	line-height: 24px;
+	font-size: 12px;
+	padding: 4px 15px 5px 29px;
+	color: #DBE2F3;
+		&:hover {
+			color: #fff;
+		}
+}
+footer {
+
+  width: 990px;
+  margin: 7px auto;
+  a {
+      color: #888;
+      &:hover {
+          color: #ddd;
+        }
+    }
+  .foot-title {
+      margin-top: 7px;
+      text-transform: uppercase;
+    }
+  .foot {
+    float: left;
+      li {
+        margin-left: -5px;
+        line-height: 22px;
+        list-style: none;
+      }
+    }
+  .part1 {
+      width: 180px;
+      margin: 0px 5px;
+    }
+  .part2 {
+      width: 180px;
+      margin: 0px 5px;
+    }
+  .part3 {
+      width: 295px;
+      margin: 0px 5px;
+    }
+  .part4  {
+      width: 265px;
+      margin: 0px 5px 0px 25px;
+    }
+}
+.orange-foot a{
+  padding-left: 5px;
+  border-left: 3px solid transparent;
+  @include q-fadein;
+    &:hover {
+        border-left: 3px solid $orange;
+      }
+}
+.blue-foot a{
+  padding-left: 5px;
+  border-left: 3px solid transparent;
+  @include q-fadein;
+    &:hover {
+        border-left: 3px solid $blue;
+      }
+}
+.green-foot a{
+  padding-left: 5px;
+  border-left: 3px solid transparent;
+  @include q-fadein;
+    &:hover {
+        border-left: 3px solid $green;
+      }
+}
+.yellow-foot a{
+  padding-left: 5px;
+  border-left: 3px solid transparent;
+  @include q-fadein;
+    &:hover {
+        border-left: 3px solid $yellow;
+      }
+}
+.pink-foot a{
+  padding-left: 5px;
+  border-left: 3px solid transparent;
+  @include q-fadein;
+    &:hover {
+        border-left: 3px solid $pink;
+      }
+}
+.white-foot a{
+  padding-left: 5px;
+  border-left: 3px solid transparent;
+  @include q-fadein;
+    &:hover {
+        border-left: 3px solid $white;
+      }
 }
