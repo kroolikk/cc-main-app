@@ -53,11 +53,11 @@ $white: #fff;
 	  transition: all 1s ease-in-out;
 }
 @mixin q-fadein {
-	  -webkit-transition: all 0.3s ease-in-out;
-	  -moz-transition: all 0.3s ease-in-out;
-	  -ms-transition: all 0.3s ease-in-out;
-	  -o-transition: all 0.3s ease-in-out;
-	  transition: all 0.3s ease-in-out;
+	  -webkit-transition: all 0.2s ease-in-out;
+	  -moz-transition: all 0.2s ease-in-out;
+	  -ms-transition: all 0.2s ease-in-out;
+	  -o-transition: all 0.2s ease-in-out;
+	  transition: all 0.2s ease-in-out;
 }
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -665,6 +665,10 @@ footer {
   .part3 {
       width: 295px;
       margin: 0px 5px;
+        li {
+          overflow: hidden;
+          height: 22px;
+          }
     }
   .part4  {
       width: 265px;
