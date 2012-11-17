@@ -3,6 +3,7 @@ CcDev1::Application.routes.draw do
 
   # chwilowe routingi wrzucajmy na początku
   # moje dziadowskie routy 
+  match "/single_art" => "home#single_article", :as => :single_art
   match "/kalendarz" => "home#calendar", :as => :calendar
   match "/user_reg" => "home#user_reg", :as => :user_reg
   match "/user_prof" => "home#user_prof", :as => :user_prof

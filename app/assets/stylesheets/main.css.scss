@@ -723,6 +723,19 @@ footer {
         border-left: 3px solid $white;
       }
 }
+.main-article-holder {
+  padding: 17px;
+}
+.first-article-image {
+  float: left;
+  margin-right: 15px;
+    img {max-width: 530px;}
+}
+.additional-article-images {
+  float: left;
+  margin-right: 15px;
+    img {max-width: 390px;}
+}
 $mobs300: 320px;
 @media all and (max-device-width: 480px) {
 	.outer-wrapper {
