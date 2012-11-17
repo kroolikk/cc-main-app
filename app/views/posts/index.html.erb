@@ -1,23 +1,24 @@
-<h1>Artykuły</h1>
+<h3>Artykuły</h3>
 
 <table>
   <tr>
-    <th></th>
+    <th width="10%">Zdjęcie</th>
     <th width='40%' >Tytuł</th>    
     <th width='15%' >Start</th>
     <th width='15%' >Utworzony</th>
-    <th></th>
-    <th></th>
+    <th width="10%">Opcje</th>
   </tr>
 
 <% @posts.each do |post| %>
   <tr>
     <td><%= (image_tag post.photos.first.photo.thumb.url) if post.photos.present? %></td>
-    <td><%= post.title %></td>
+    <td style="vertical-align: top;"><strong><%= post.title %></strong><br>
+      <%= post.description.truncate(200) %>
+    </td>
     <td><%= post.start_date.strftime("%Y/%m/%d/ %H:%M:%S") %></td>
     <td><%= post.created_at.strftime("%Y/%m/%d/ %H:%M:%S") %></td>
-    <td><%= link_to 'Edytuj', edit_post_path(post) %></td>
-    <td><%= link_to 'Usuń', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to '', edit_post_path(post), :class => "ico edit" %>
+    <%= link_to '', post, method: :delete, data: { confirm: 'Are you sure?' }, :class => "ico remove" %></td>
   </tr>
 <% end %>
 </table>

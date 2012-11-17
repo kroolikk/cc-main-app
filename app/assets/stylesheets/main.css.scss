@@ -723,3 +723,39 @@ footer {
         border-left: 3px solid $white;
       }
 }
+$mobs300: 320px;
+@media all and (max-device-width: 480px) {
+	.outer-wrapper {
+	  width: 300px;
+	  margin: 0 auto;
+	}
+	.glass-wrapper {
+		background: rgba(255, 255, 255, 0.04);
+		width: $mobs300;
+		margin: 0 auto 0 auto;
+		border: 1px solid rgba(255, 255, 255, 0.06);
+		box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+	}
+	.main-content {
+	  background: #fff;
+	  width: 300px;
+	  margin: 9px auto;
+	  min-height: 300px;
+	}
+	header {
+		width: $mobs300;
+		margin: 0 auto;
+	}
+	.navigation-area {
+		width: $mobs300;
+	}
+	.logo-cc {
+		float: none;
+		margin: 0 auto;
+	}
+	.behind-bg, .snooper {display: none;}
+	.w300, .w200, .w400 {width: 280px;}
+	.w2 img, .w4 img, .w3 img { max-width: 280px;}
+	.mason {margin: 5px;}
+	
+}
