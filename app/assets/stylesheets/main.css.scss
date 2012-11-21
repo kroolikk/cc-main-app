@@ -200,6 +200,10 @@ nav a {
 .pink-f { border-left: 2px solid $pink;}
 .yellow-f { border-left: 2px solid $yellow;}
 .white-f { border-left: 2px solid #fff;}
+.article-header.orange-f { border-left: 11px solid $orange;}
+.article-header.green-f { border-left: 11px solid $green;}
+.article-header.blue-f { border-left: 11px solid $blue;}
+.article-header.pink-f { border-left: 11px solid $pink;}
 
 .orange-ico {background: url(/assets/cat-sprites.png) -25px 0px no-repeat;}
 .green-ico {background: url(/assets/cat-sprites.png) 0px 0px no-repeat;}
@@ -728,47 +732,55 @@ footer {
 }
 .first-article-image {
   float: left;
+  position: relative;
   margin-right: 15px;
     img {max-width: 530px;}
+    .article-triangle {
+      background: url(/assets/article-triangle.png) no-repeat;
+      width: 140px;
+      height: 140px;
+      display: block;
+      position: absolute;
+      right: 0;
+      bottom: 4px;
+    }
 }
 .additional-article-images {
   float: left;
   margin-right: 15px;
+  margin-top: 15px;
     img {max-width: 390px;}
 }
-$mobs300: 320px;
-@media all and (max-device-width: 480px) {
-	.outer-wrapper {
-	  width: 300px;
-	  margin: 0 auto;
-	}
-	.glass-wrapper {
-		background: rgba(255, 255, 255, 0.04);
-		width: $mobs300;
-		margin: 0 auto 0 auto;
-		border: 1px solid rgba(255, 255, 255, 0.06);
-		box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
-	}
-	.main-content {
-	  background: #fff;
-	  width: 300px;
-	  margin: 9px auto;
-	  min-height: 300px;
-	}
-	header {
-		width: $mobs300;
-		margin: 0 auto;
-	}
-	.navigation-area {
-		width: $mobs300;
-	}
-	.logo-cc {
-		float: none;
-		margin: 0 auto;
-	}
-	.behind-bg, .snooper {display: none;}
-	.w300, .w200, .w400 {width: 280px;}
-	.w2 img, .w4 img, .w3 img { max-width: 280px;}
-	.mason {margin: 5px;}
-	
+.for-articles {
+  color: white;
+  text-transform: uppercase;
+  font-size: 22px;
+  line-height: 40px;
+  font-family: 'PT Sans Caption', Helvetica, Tahoma, Arial, sans-serif;
+  font-weight: bold;
+  display: inline;
+  white-space: pre-line;
+  padding: 6px 0px;
+    span {
+      position: relative;
+      left: -5px;
+    }
+}
+.article-header {
+  margin-bottom: 15px;
+  margin-left: -50px;
+  float: right;
+	z-index: 99;
+	width: 450px;
+	position: relative;
+}
+.first-caption {
+  margin-top: -4px;
+  width: 382px;
+  float: left;
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 4px;
+  color: #fff;
+  font-weight: bold;
 }
