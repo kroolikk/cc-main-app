@@ -9,7 +9,7 @@ CcDev1::Application.routes.draw do
   match "/user_prof" => "home#user_prof", :as => :user_prof
   match "admin/example_form" => "mtest#example_form", :as => :example_form
 
-
+  match "/kontakt" => "home#contact", :as => :contact
 
   devise_for :users
 
