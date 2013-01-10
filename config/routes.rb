@@ -1,6 +1,8 @@
 CcDev1::Application.routes.draw do
 
 
+  mount Ckeditor::Engine => '/ckeditor'
+
   # chwilowe routingi wrzucajmy na początku
   # moje dziadowskie routy 
   match "/single_art" => "home#single_article", :as => :single_art

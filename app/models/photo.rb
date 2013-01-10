@@ -1,5 +1,5 @@
 class Photo < ActiveRecord::Base
-  attr_accessible :post_id, :photo, :slug, :title
+  attr_protected :id
 
   mount_uploader :photo, PhotoUploader
 

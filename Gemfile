@@ -43,3 +43,6 @@ gem "friendly_id", "~> 4.0.1"
 
 gem 'rmagick'
 gem 'carrierwave'
+gem "mini_magick"
+gem "ckeditor"
+

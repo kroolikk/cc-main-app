@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  attr_accessible :description, :slug, :start_date, :title, :photos_attributes
+  attr_protected :id
 
   validates :title, :presence => true
 

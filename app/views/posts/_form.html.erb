@@ -12,12 +12,17 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label :title, "Tytuł" %><br />
     <%= f.text_field :title %>
   </div>
   <div class="field">
+    <%= f.label :promoted, "Promowany?" %><br />
+    <%= f.text_field :promoted %><br>
+    ( im wyższa wartość tym wyższy priorytet )
+  </div>
+  <div class="field">
     <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= f.cktext_area :description, :input_html => {:rows => 5}, :toolbar => 'Full' %>
   </div>
   <div class="field">
     <%= f.label :start_date %><br />
