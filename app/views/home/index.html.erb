@@ -1,5 +1,25 @@
+<% @promoted_posts.each do |pp| %>
+	promowany artykuł, id: <%= pp.id %><br>
+<% end %>
+	
+
 <div class="mason-holder">
-		  
+	<% @posts.each do |p| %>
+		<div class="mason w<%= p.category_id %>00">
+			<div class="w<%= p.category_id %>">
+				<a href="<%= single_post_url(p) %>">
+				<span class="fade-hover"></span>
+				<span class="green-ico ico"></span>
+					<%= image_tag p.main_photo_link %>
+					<p class="green m-title"><%= p.title %></p>
+				</a>
+			</div>
+			<p class="snippet">
+				<%= strip_tags(p.description).truncate(200) %>
+			</p>
+		</div>			
+	<% end %>
+
 			<div class="mason w300">
 				<div class="w3">
 					<a href="/single_art">

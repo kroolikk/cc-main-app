@@ -3,7 +3,8 @@
 <table>
   <tr>
     <th width="15%">Zdjęcie</th>
-    <th width='45%' >Tytuł</th>    
+    <th width='45%' >Tytuł</th>
+    <th width='15%' >Kategoria</th>
     <th width='15%' >Start</th>
     <th width='15%' >Utworzony</th>
     <th width='15%' >Promowany?</th>
@@ -16,6 +17,7 @@
     <td style="vertical-align: top;"><strong><%= post.title %></strong><br>
       <%= strip_tags(post.description).truncate(200) if post.description.present? %>
     </td>
+    <td><%= display_category(post.category_id) if post.category_id.present? %></td>
     <td><%= post.start_date.strftime("%d.%m.%Y") %><br><%= post.start_date.strftime("%H:%M") %></td>
     <td><%= post.created_at.strftime("%d.%m.%Y") %><br><%= post.created_at.strftime("%H:%M") %></td>
     <td><%= post.promoted.present? && post.promoted > 0 ? "Tak: #{post.promoted}" : "Nie" %></td>

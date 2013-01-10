@@ -24,6 +24,9 @@ CcDev1::Application.routes.draw do
   resources :users, :path => 'uzytkownicy'
 
 
+  match "post/:id" => "front_posts#show", :as => :single_post
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
