@@ -1,3 +1,104 @@
+
+<div class="main-article-holder">
+
+  <div class="first-article-image">
+    <span class="article-triangle"></span>
+    <%= image_tag @photos.first.photo.url %>
+    <!-- mati tu wstawiamy główne zdjęcie artykułu (czyli pierwsze) max 530px szerokości, wysokość dowolna -->
+  </div>
+
+  <div class="article-header <%= cat_col(@post.category_id) %>-f">
+    <h1 class="for-articles <%= cat_col(@post.category_id) %>"><span><%= @post.title %></span></h1>
+  </div>
+  <div class="clear first-caption <%= cat_col(@post.category_id) %>">Caption for the main picture</div>
+  <!-- Tutaj dajemy tytuł pierwszego zdjęcia jeżeli istnieje, jak nie ma to div znika -->
+  
+  <% @photos.each do |ph| %>
+    <div class="clear additional-article-images">
+        <%= image_tag ph.photo.url %><br>
+    </div>
+    <div class="clear first-caption <%= cat_col(@post.category_id) %>">Caption other pictures</div>
+  <% end %>
+  
+  <!-- tu dajemy pozostałe zdjęcia i ich tytuł, jeżeli istnieje --> 
+  
+<div class="article-content">
+  <div class="article-date"><%= @post.start_date %></div>
+  <p class="article-lead"> <%= @post.lead %></p>
+  <p><%= raw @post.description %></p>
+ 
+  
+  <div class="article-socials">[article socials]</div>
+  
+  <!-- tu będą sociale, ale to póżniej -->
+  
+  <!-- poniżej moduł miejsca, jezeli jest miejsce przypisane do posta to wyświetlamy tą wizytówke, on ma miec klase yellow -->
+  <div class="article-location">
+    <h4 class="yellow">Dane miejsca</h4>
+    <h2><%= link_to "Teatr Slowackiego", "" %></h2>
+    <p class="location-snippet">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pretium dui quis ante convallis nec fringilla leo suscipit. Etiam et neque urna. Nulla mollis iaculis tempor. Aliquam tincidunt blandit nibh non cursus. Donec risus ligula, adipiscing non iaculis et, placerat sed velit. Proin ornare blandit tellus at dapibus. Curabitur felis urna
+    </p>
+    <table width="550px" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="40%" class="location-detail">Adres:</td>
+        <td width="60%" class="location-info">ul. Krakowska 13A</td>
+      </tr>
+      <tr>
+        <td width="40%" class="location-detail">Telefon:</td>
+        <td width="60%" class="location-info">12 232 12 34</td>
+      </tr>
+      <tr>
+        <td width="40%" class="location-detail">Strona www:</td>
+        <td width="60%" class="location-info">www.tearslowacki.pl</td>
+      </tr>
+      <tr>
+        <td width="40%" class="location-detail">Godziny otwarcia:</td>
+        <td width="60%" class="location-info">
+          pon - pt: 8.00 - 20.00<br>
+          sobota: 8.00 - 22.00<br>
+          niedziela: nieczynne
+        </td>
+      </tr>
+      <tr>
+        <td width="40%" class="location-detail">Cennik:</td>
+        <td width="60%" class="location-info">20 zl</td>
+      </tr>
+      <tr>
+        <td width="40%" class="location-detail"></td>
+        <td width="60%" class="location-info"><%= link_to "Zobacz na mapie", "" %></td>
+      </tr>
+    </table>
+  </div>
+</div>
+  <div class="clearspace"></div>
+  
+  <!-- slider polecane, zawsze mają ten sam rozmiar w200, losujemy z ktorej kategorii pokazujemy 4 artykuły -->
+  <div class="<%= cat_col(@post.category_id) %> more-from-us">CollegeCity Poleca!</div>
+  <% 4.times do %>		  
+  <div class="mason w200">
+    <div class="w2">
+      <a href="/single_art">
+      <span class="fade-hover"></span>
+      <span class="blue-ico ico"></span>
+        <img src="https://fbcdn-sphotos-f-a.akamaihd.net/hphotos-ak-ash4/487412_531660170183336_643351316_n.jpg" alt="image" />
+        <p class="blue m-title">Magical worlds now in theaters</p>
+      </a>
+    </div>
+    <p class="snippet">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pretium dui quis ante convallis nec fringilla leo suscipit. Etiam et neque urna. Nulla mollis
+    </p>
+  </div>
+  <% end %>
+  <div class="clearspace"></div>
+ 
+</div>
+
+
+
+  
+
+<% if false %>
 <h1>FrontPosts#show</h1>
 <p>Find me in app/views/front_posts/show.html.erb</p>
 
@@ -21,3 +122,4 @@ Polecane artykuły:
     promowany artykuł, id: <%= pp.id %><br>
   <% end %>
 </div>
+<% end %>

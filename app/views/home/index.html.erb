@@ -8,17 +8,19 @@
 
 <div class="mason-holder">
 	<% @posts.each do |p| %>
-		<div class="mason w<%= p.category_id %>00">
-			<div class="w<%= p.category_id %>">
+		<div class="mason w300">
+			<div class="w3">
+            <!-- w300 i w3 są sprzężone razem. To są ropzmiary boxów. czyli jak w300 to w3, w200 to w2, w400 to w4 -->
+            <!-- w sumie to wystarczy tylko tą pierwszą liczbe podmienić -->
 				<a href="<%= single_post_url(p) %>">
 				<span class="fade-hover"></span>
 				<span class="<%= cat_col(p.category_id) %>-ico ico"></span>
-					<%= image_tag p.main_photo_link("medium") %>
+					<%= image_tag p.main_photo_link("original") %>
 					<p class="<%= cat_col(p.category_id) %> m-title"><%= p.title %></p>
 				</a>
 			</div>
 			<p class="snippet">
-				<%= p.lead %>
+				<%= p.lead.truncate(150) %>
 			</p>
 		</div>			
 	<% end %>

@@ -38,7 +38,11 @@ class Post < ActiveRecord::Base
   def main_photo_link(ver="thumb")
     main_photo = self.main_photo
     if main_photo.present?
-      photo_link = main_photo.photo.send(ver).url
+        if ver=="original"
+            photo_link = main_photo.photo.url
+        else
+	        photo_link = main_photo.photo.send(ver).url
+	    end
     else
       photo_link = "/assets/test.png"
     end
