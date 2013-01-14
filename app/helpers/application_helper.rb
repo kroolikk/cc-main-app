@@ -26,4 +26,13 @@ module ApplicationHelper
   end
 
   
+  def cat_col(id=0)
+    case id
+    when 1 then 'orange'
+    when 2 then 'green'
+    when 3 then 'blue'
+    when 4 then 'pink'
+    end
+  end
+
 end

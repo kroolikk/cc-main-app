@@ -11,7 +11,6 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
-ROLES = [['Użytkownik', 'user'], ['Moderator', 'mod'], ['Admin', 'admin']]
 
 module CcDev1
   class Application < Rails::Application

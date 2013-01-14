@@ -1,6 +1,8 @@
 CcDev1::Application.routes.draw do
 
 
+  get "front_posts/show"
+
   mount Ckeditor::Engine => '/ckeditor'
 
   # chwilowe routingi wrzucajmy na początku

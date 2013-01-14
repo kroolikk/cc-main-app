@@ -1,0 +1,23 @@
+<h1>FrontPosts#show</h1>
+<p>Find me in app/views/front_posts/show.html.erb</p>
+
+<% @photos.each do |ph| %>
+  <%= image_tag ph.photo.medium.url %><br>
+<% end %>
+<br>
+<br>
+<br>
+Tytuł: <%= @post.title %><br>
+Data publikacji: <%= @post.start_date %><br>
+Lead: <%= @post.lead %><br>
+Treść: <%= raw @post.description %><br>
+<br>
+<br>
+<br>
+Polecane artykuły:
+<div>
+  Tu bedzie slider promowanych:<br>
+  <% @promoted_posts.each do |pp| %>
+    promowany artykuł, id: <%= pp.id %><br>
+  <% end %>
+</div>

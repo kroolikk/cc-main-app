@@ -15,7 +15,7 @@
   <tr>
     <td><%= (image_tag post.photos.first.photo.thumb.url) if post.photos.present? %></td>
     <td style="vertical-align: top;"><strong><%= post.title %></strong><br>
-      <%= strip_tags(post.description).truncate(200) if post.description.present? %>
+      <%= post.lead %>
     </td>
     <td><%= display_category(post.category_id) if post.category_id.present? %></td>
     <td><%= post.start_date.strftime("%d.%m.%Y") %><br><%= post.start_date.strftime("%H:%M") %></td>

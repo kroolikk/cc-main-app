@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 class Post < ActiveRecord::Base
   attr_protected :id
 
@@ -36,11 +37,23 @@ class Post < ActiveRecord::Base
 
   def main_photo_link(ver="thumb")
     main_photo = self.main_photo
-    if false # main_photo.present?
+    if main_photo.present?
       photo_link = main_photo.photo.send(ver).url
     else
       photo_link = "/assets/test.png"
     end
     photo_link
+  end
+
+
+  def recommended(limit=0)
+    if limit == 0
+      recom_posts = Post.active.promoted.where("id != #{self.id}").to_a
+    else
+      recom_posts = Post.active.promoted.where("id != #{self.id}").limit(limit).to_a
+      recom_posts += Post.active.where("#{recom_posts.sql_prepared_ids(id=self.id)}").order("id DESC").limit(limit-recom_posts.size).to_a if recom_posts.size < limit
+    end
+
+    recom_posts
   end
 end

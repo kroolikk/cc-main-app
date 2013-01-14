@@ -1,0 +1,2 @@
+module FrontPostsHelper
+end
