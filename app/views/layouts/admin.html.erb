@@ -8,18 +8,6 @@
   <%= javascript_include_tag "ckeditor/init" %>
   <%= csrf_meta_tags %>
 
-  <%# javascript_include_tag "tiny_mce/tiny_mce.js" %>
-  <% if false %>
-  <script type="text/javascript">
-  tinyMCE.init({
-    mode : "textareas",
-    editor_selector : "mceEditor",
-    plugins: "media",
-    media_strict: false 
-  });
-  </script>
-  <% end %>
-
   <script type="text/javascript">
     function remove_fields(link) {
       $(link).prev("input[type=hidden]").val("1");
@@ -66,14 +54,14 @@
       <span class="unstyled-nav">Na skróty:</span> 
       <%= link_to "Nowy artykuł", new_post_url %> 
       <%= link_to "Nowe wydarzenie", "" %> 
-      <%= link_to "Dodaj miejsce", "" %> 
+      <%= link_to "Dodaj miejsce", new_place_url %> 
     </nav>
     <div class="admin-content">
       <aside class="main-nav">
         <ul>
           <li><%= link_to "Artykuły", posts_url %><span class="left-selected"></span></li>
           <li><%= link_to "Kalendarz", "" %> </li>
-          <li><%= link_to "Miejsca", "" %> </li>
+          <li><%= link_to "Miejsca", places_url %> </li>
           <li><%= link_to "Użytkownicy", users_url %> </li>
           <li><%= link_to "Wygląd", example_form_path %> </li>
           <li><%= link_to "Wyloguj", admin_logout_url %> </li>

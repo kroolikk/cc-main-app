@@ -1,10 +1,6 @@
 CcDev1::Application.routes.draw do
 
 
-  get "front_posts/show"
-
-  mount Ckeditor::Engine => '/ckeditor'
-
   # chwilowe routingi wrzucajmy na początku
   # moje dziadowskie routy 
   match "/single_art" => "home#single_article", :as => :single_art
@@ -15,14 +11,19 @@ CcDev1::Application.routes.draw do
 
   match "/kontakt" => "home#contact", :as => :contact
 
-  devise_for :users
+
+
+  mount Ckeditor::Engine => '/ckeditor'
 
   match "/admin" => "admin#index", :as => :admin
   match "admin/login" => "admin#login", :as => :admin_login
   match "admin/enter" => "admin#enter", :as => :admin_enter
   match "admin/logout" => "admin#logout", :as => :admin_logout
 
+  resources :places
   resources :posts
+
+  devise_for :users
   resources :users, :path => 'uzytkownicy'
 
 

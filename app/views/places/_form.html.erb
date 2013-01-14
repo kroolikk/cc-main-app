@@ -1,0 +1,55 @@
+<%= form_for(@place) do |f| %>
+  <% if @place.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@place.errors.count, "error") %> prohibited this place from being saved:</h2>
+
+      <ul>
+      <% @place.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, "Nazwa" %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :city, "Miasto" %><br />
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :street, "Ulica" %><br />
+    <%= f.text_field :street %>
+  </div>
+  <div class="field">
+    <%= f.label :street_no, "Nr. budynku" %><br />
+    <%= f.text_field :street_no %>
+  </div>
+  <div class="field">
+    <%= f.label :zip_code, "Kod pocztowy" %><br />
+    <%= f.text_field :zip_code %>
+  </div>
+  <div class="field">
+    <%= f.label :detect_coords, "Wykryj współrzędne" %><br />
+    <%= f.check_box :detect_coords, {:onclick => "$('.coords').toggle();"} %>
+  </div>
+  <div class="coords" style="display:none;">
+    <div class="field">
+      <%= f.label :latitude, "Długość geograficzna" %><br />
+      <%= f.text_field :latitude %>
+    </div>
+    <div class="field">
+      <%= f.label :longitude, "Szerokość geograficzna" %><br />
+      <%= f.text_field :longitude %>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :description, "Opis" %><br />
+    <%= f.cktext_area :description, :input_html => {:rows => 5}, :toolbar => 'Full' %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Zapisz" %>
+  </div>
+<% end %>

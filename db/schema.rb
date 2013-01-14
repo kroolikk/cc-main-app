@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130112152011) do
+ActiveRecord::Schema.define(:version => 20130114193306) do
 
   create_table "ckeditor_assets", :force => true do |t|
     t.string   "data_file_name",                  :null => false
@@ -36,6 +36,20 @@ ActiveRecord::Schema.define(:version => 20130112152011) do
     t.string   "slug"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "places", :force => true do |t|
+    t.string   "name"
+    t.string   "city"
+    t.string   "street"
+    t.string   "street_no"
+    t.string   "zip_code"
+    t.boolean  "detect_coords", :default => true
+    t.float    "latitude"
+    t.float    "longitude"
+    t.text     "description"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   create_table "posts", :force => true do |t|
