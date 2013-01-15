@@ -49,6 +49,24 @@
     <%= f.label :description, "Opis" %><br />
     <%= f.cktext_area :description, :input_html => {:rows => 5}, :toolbar => 'Full' %>
   </div>
+  <div class="field">
+    <%= f.label :phone, "Telefon" %><br />
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :website, "Strona" %><br />
+    <%= f.text_field :website %><br>
+    (np. http://www.onet.pl)
+  </div>
+  <div class="field">
+    <%= f.label :opening_hours, "Godziny otwarcia" %><br />
+    <%= f.cktext_area :opening_hours, :toolbar => 'Basic'  %>
+  </div>
+  <div class="field">
+    <%= f.label :info, "Info" %><br />
+    <%= f.text_field :info %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Zapisz" %>
   </div>

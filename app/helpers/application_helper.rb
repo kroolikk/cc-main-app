@@ -1,6 +1,16 @@
 module ApplicationHelper
 
 
+  def box_size(p)
+    if p.size.present? && p.size > 0
+      result = p.size + 1
+    else
+      result = rand(3) + 2
+    end
+    result
+  end
+
+
   def link_to_remove_fields(name, f)
     f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)")
   end

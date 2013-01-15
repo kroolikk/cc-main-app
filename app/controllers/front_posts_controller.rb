@@ -5,6 +5,7 @@ class FrontPostsController < ApplicationController
     @post = Post.active.where(:slug => params[:id]).first
     if @post.present?
       @photos = Photo.where("post_id = #{@post.id}").to_a
+      @place = @post.place
       @promoted_posts = @post.recommended(5)
     else
      Rails.logger.info "err - post not found --------------------------------------"

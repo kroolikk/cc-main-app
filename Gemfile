@@ -46,3 +46,4 @@ gem 'carrierwave'
 gem "mini_magick"
 gem "ckeditor"
 
+gem "geocoder"
