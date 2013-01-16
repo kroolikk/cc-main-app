@@ -4,6 +4,9 @@ class Place < ActiveRecord::Base
   after_validation :geocode 
   geocoded_by :full_street_address
 
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   has_many :posts
 
 

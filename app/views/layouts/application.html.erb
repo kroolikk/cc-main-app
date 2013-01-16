@@ -50,19 +50,17 @@
   
   <header>
     <div class="navigation-area">
-      <%= link_to "", root_url, :class => "logo-cc" %>
-   
-    
-		<nav>
-          <a href="" class="orange-bar">Rozrywka</a><span class="seperator"></span>
-          <a href="" class="green-bar">Kultura</a><span class="seperator"></span>
-          <a href="" class="blue-bar">Studia</a><span class="seperator"></span>
-          <a href="" class="pink-bar">Lifestyle</a><span class="seperator"></span>
-          <a href="" class="yellow-bar">Miejsca</a><span class="seperator"></span>
-          <%= link_to "Kalendarz", calendar_path, :class => "white-bar" %>
-		</nav>
-   </div>
-  <div class="clear"></div>
+      <%= link_to "", root_url, :class => "logo-cc" %>    
+  		<nav>
+        <a href="<%= category_url('rozrywka') %>" class="orange-bar">Rozrywka</a><span class="seperator"></span>
+        <a href="<%= category_url('kultura') %>" class="green-bar">Kultura</a><span class="seperator"></span>
+        <a href="<%= category_url('studia') %>" class="blue-bar">Studia</a><span class="seperator"></span>
+        <a href="<%= category_url('lifestyle') %>" class="pink-bar">Lifestyle</a><span class="seperator"></span>
+        <a href="<%= front_places_url %>" class="yellow-bar">Miejsca</a><span class="seperator"></span>
+        <%= link_to "Kalendarz", calendar_path, :class => "white-bar" %>
+  		</nav>
+    </div>
+    <div class="clear"></div>
     <div class="snooper">
       <div class="snoop-left"></div>
       <div class="snoop-mid">

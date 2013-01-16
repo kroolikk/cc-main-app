@@ -33,7 +33,7 @@
     <% if @place.present? %>
       <div class="article-location">
         <h4 class="yellow">Dane miejsca</h4>
-        <h2><%= link_to @place.name, "" %></h2>
+        <h2><%= link_to @place.name, single_place_url(@place) %></h2>
         <div class="location-snippet">
           <%= raw @place.description %>
         </div>

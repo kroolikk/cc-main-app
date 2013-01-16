@@ -26,10 +26,10 @@ CcDev1::Application.routes.draw do
   devise_for :users
   resources :users, :path => 'uzytkownicy'
 
-
   match "post/:id" => "front_posts#show", :as => :single_post
-
-
+  match "miejsca" => "front_places#index", :as => :front_places
+  match "miejsce/:id" => "front_places#show", :as => :single_place
+  match "/:category" => "home#index", :as => :category
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
