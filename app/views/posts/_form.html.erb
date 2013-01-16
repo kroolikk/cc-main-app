@@ -12,42 +12,42 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title, "Tytuł" %><br />
+    <%= f.label :title, "Tytuł" %>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :category_id, "Kategoria" %><br />
+    <%= f.label :category_id, "Kategoria" %>
     <%= f.select :category_id, options_for_select( MAIN_CATEGORIES.collect{ |c| [c[:name], c[:id]] }, @post.category_id ) %>
   </div>
   <div class="field">
-    <%= f.label :place_id, "Miejsce" %><br />
+    <%= f.label :place_id, "Miejsce" %>
     <%= f.select  :place_id, 
                   options_for_select( Place.all.collect{|p| ["#{p.id} - #{truncate(p.name, :length => 20)}", p.id]}, @post.place_id ), 
                   :include_blank => "------ brak ------" %>
   </div>
   <div class="field">
-    <%= f.label :size, "Wielkość" %><br />
+    <%= f.label :size, "Wielkość" %>
     <%= f.select :size, options_for_select( [["losowy", 0],["mały", 1],["średni", 2],["duży", 3]], @post.size ) %>
   </div>
   <div class="field">
-    <%= f.label :promoted, "Promowany?" %><br />
-    <%= f.text_field :promoted %><br>
+    <%= f.label :promoted, "Promowany?" %>
+    <%= f.text_field :promoted, :style => "width: 50px" %>
     ( im wyższa wartość tym wyższy priorytet )
   </div>
   <div class="field">
-    <%= f.label :lead, "Opis" %><br />
+    <%= f.label :lead, "Opis" %>
     <%= f.text_area :lead %>
   </div>
   <div class="field">
-    <%= f.label :description, "Treść" %><br />
+    <%= f.label :description, "Treść" %>
     <%= f.cktext_area :description, :input_html => {:rows => 5}, :toolbar => 'Full' %>
   </div>
   <div class="field">
-    <%= f.label :author, "Autor" %><br />
+    <%= f.label :author, "Autor" %>
     <%= f.text_field :author %>
   </div>
   <div class="field">
-    <%= f.label :start_date %><br />
+    <%= f.label :start_date %>
     <%= f.datetime_select :start_date %>
   </div>
 
@@ -55,8 +55,9 @@
     <%= render "photo_fields", :f => builder %>
   <% end %>
   <p class = "add-picture" ><%= link_to_add_fields "Dodaj zdjęcie", f, :photos %></p>
-
+<br><br>
   <div class="actions">
-    <%= f.submit 'Zapisz' %>
+    <%= f.submit 'Zapisz', :class => "main-btn" %>
+    <%= link_to 'Anuluj', posts_path, :class => "cancel-btn" %>
   </div>
 <% end %>
