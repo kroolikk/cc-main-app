@@ -242,6 +242,20 @@ nav a {
 	float: left;
 	margin: 14px;
 }
+.m-title-fixed {
+	text-transform: uppercase;
+	font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	color: #fff;
+	padding: 2px 5px;
+	position: absolute;
+	bottom: 0px;
+}
+.w2 .m-title, .w2 .m-title-fixed {
+    max-height: 40px;
+    overflow: hidden;
+}
 .m-title {
 	text-transform: uppercase;
 	font-family: 'PT Sans', Helvetica, Arial, sans-serif;
@@ -251,7 +265,6 @@ nav a {
 	padding: 2px 5px;
 	position: absolute;
 	bottom: 4px;
-	
 }
 .fade-hover {
 	position: absolute;
@@ -851,4 +864,8 @@ h4 {
 }
 .e500 {
 	background: url(/assets/500main.png) center top no-repeat;
+}
+.display-rec {
+    height: 160px;
+    overflow: hidden;
 }

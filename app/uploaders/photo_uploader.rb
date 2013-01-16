@@ -36,6 +36,15 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
+  
+  # Nie wiem któr¹ opcje trzeba dac fill||fit dla zdjec, bo generalnie ograniczamy tylko szerokosc, help???
+  # edit: na stackoverflow napisali ze podaje sie width = 392 a height 10000 scale to fit, 10000 zeby nigdy nie osiagnelo tego limitu.
+  # Do wszystkich boxow w2-w4 image ma miec maks width 392px, wysokosc dowolna.
+  # glowne zdjecie artykulu ma miec max width 530px, pozostale zdjecia  392px. wysokosc dowolna.
+  # logo miejsca i avatar uzytkownika 300x300 | dla logotypu miejsca scale to fit, dla avatara scale to fill.
+  # mini logo miejsca do uzytku na mapie 100x100px scale to fit. idealnie by bylo przy logotypach zeby dorobic biale tlo w obrazku jak paperclip na stolcu robil.
+  # slider na stronie glownej 600x200px scale to fill.
+  
   version :thumb do
     process :resize_to_fill => [100, 60]
   end

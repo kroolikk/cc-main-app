@@ -6,7 +6,7 @@ class FrontPostsController < ApplicationController
     if @post.present?
       @photos = Photo.where("post_id = #{@post.id}").to_a
       @place = @post.place
-      @promoted_posts = @post.recommended(5)
+      @promoted_posts = @post.recommended(4)
     else
      Rails.logger.info "err - post not found --------------------------------------"
      render :status => 404, :layout => false, :file => "#{Rails.root}/public/404"

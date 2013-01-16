@@ -21,7 +21,7 @@
   <!-- tu dajemy pozostałe zdjęcia i ich tytuł, jeżeli istnieje --> 
   
   <div class="article-content">
-    <div class="article-date"><%= @post.start_date %></div>
+    <div class="article-date">Opublikowano: <%= @post.start_date.strftime("%e %B %Y") %></div>
     <p class="article-lead"> <%= @post.lead %></p>
     <p><%= raw @post.description %></p>
 
@@ -78,12 +78,12 @@
         <a href="<%= single_post_url(pp) %>">
           <span class="fade-hover"></span>
           <span class="<%= cat_col(pp.category_id) %>-ico ico"></span>
-          <%= image_tag pp.main_photo_link("original"), :alt => 'photo' %>
-          <p class="<%= cat_col(pp.category_id) %> m-title"><%= pp.title %></p>
+          <p class="display-rec"><%= image_tag pp.main_photo_link("original"), :alt => 'photo' %></p>
+          <p class="<%= cat_col(pp.category_id) %> m-title-fixed"><%= pp.title %></p>
         </a>
       </div>
       <p class="snippet">
-        <%= pp.lead.truncate(120) %>
+        <%= pp.lead.truncate(110) %>
       </p>
     </div>
   <% end %>

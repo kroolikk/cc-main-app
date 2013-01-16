@@ -7,5 +7,6 @@ class FrontPlacesController < ApplicationController
   def show
     @place = Place.find(params[:id])
   end
+  
 
 end

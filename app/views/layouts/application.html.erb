@@ -78,6 +78,14 @@
   
   <div class="behind-bg">
     <div class="blurme"><div class="stripes"></div></div>
+    <% if params[:controller] == 'front_posts' && params[:action] == 'show' %>
+        <style>
+            .behind-bg {
+                background-image: url(<%= image_path @post.main_photo_link("original") %>);
+                background-position: center center;
+            }
+        </style>
+    <% end %>
   </div>
   
   <div class="glass-wrapper">
