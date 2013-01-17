@@ -1,32 +1,64 @@
 <div class="user-profile">
-	<div class="user-avatar">
+  <% if @place.present? %>
+	<div class="place-avatar">
 		<a href="#" class="edit-avatar">Edytuj zdjęcie</a>
 		<img src="http://25.media.tumblr.com/tumblr_m8fufgWFxN1rp2ebfo1_400.jpg" />
 	</div>
 
-	<div class="user-info">
-		<a href="#" class="edit-box">Edytuj dane</a>
-		<h1 class="your-name">Halina Goliatowska</h1>
-		<p class="your-username">a.k.a GoHa</p><br>
-		<p class="your-arrival">Dołączył: 16 Lipiec 2012</p>
-		Been there: <div class="been-there-bg">7889</div><div class="done-that-bg">12</div> :Done that
+	<div class="place-info">
+		      <div class="article-location">
+        <h4 class="yellow">Dane miejsca</h4>
+        <h2><%= link_to @place.name, single_place_url(@place) %></h2>
+        <div class="location-snippet">
+          <%= raw @place.description %>
+        </div>
+        <table width="550px" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="40%" class="location-detail">Adres:</td>
+            <td width="60%" class="location-info"><%= "#{@place.street} #{@place.street_no}, #{@place.city}" %></td>
+          </tr>
+          <tr>
+            <td width="40%" class="location-detail">Telefon:</td>
+            <td width="60%" class="location-info"><%= @place.phone %></td>
+          </tr>
+          <tr>
+            <td width="40%" class="location-detail">Strona www:</td>
+            <td width="60%" class="location-info"><%= @place.website %></td>
+          </tr>
+          <tr>
+            <td width="40%" class="location-detail">Godziny otwarcia:</td>
+            <td width="60%" class="location-info">
+              <%= raw @place.opening_hours %>
+            </td>
+          </tr>
+          <tr>
+            <td width="40%" class="location-detail">Info:</td>
+            <td width="60%" class="location-info"><%= @place.info %></td>
+          </tr>
+          <tr>
+            <td width="40%" class="location-detail"></td>
+            <td width="60%" class="location-info"><%= link_to "Zobacz na mapie", "" %></td>
+          </tr>
+        </table>
+      </div>
 	</div>
+  <% end %>
+	<div class="clearspace"></div>
 
-	<div class="clear"></div>
+  <div class="yellow more-from-us">CollegeCity Poleca!</div>
+    <div class="mason w200">
+      <div class="w2">
+        <a href="">
+          <span class="fade-hover"></span>
+          <span class="blue-ico ico"></span>
+          <p class="display-rec">[image]</p>
+          <p class="blue m-title-fixed">title</p>
+        </a>
+      </div>
+      <p class="snippet">
+        lead
+      </p>
+    </div>
+  </div>
+  <div class="clearspace"></div>
 </div>
-
-
-
-
-<script>
-	$('.user-avatar').hover(function(){
-		$('.edit-avatar').delay(200).fadeIn('fast');
-	},function(){
-		$('.edit-avatar').delay(200).fadeOut('fast');
-	});
-	$('.user-info').hover(function(){
-		$('.edit-box').delay(200).fadeIn('fast');
-	},function(){
-		$('.edit-box').delay(200).fadeOut('fast');
-	});
-</script>
