@@ -756,6 +756,7 @@ footer {
       position: absolute;
       right: 0;
       bottom: 4px;
+      z-index: 4;
     }
 }
 .additional-article-images {
@@ -788,7 +789,9 @@ footer {
 	position: relative;
 }
 .first-caption {
-  margin-top: -4px;
+  z-index: 2;
+  position: relative;
+  margin-top: -30px;
   width: 382px;
   float: left;
   font-size: 14px;
@@ -868,4 +871,26 @@ h4 {
 .display-rec {
     height: 160px;
     overflow: hidden;
+}
+.top-notificator {
+}
+.tm-notice {
+  color: #fff;
+  background-color: #84A300;
+    p {
+      width: 990px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 10px;
+    }
+}
+.tm-error {
+  color: #fff;
+  background-color: #de4343;
+    p {
+      width: 990px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 10px;
+    }
 }
