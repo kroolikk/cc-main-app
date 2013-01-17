@@ -3,18 +3,20 @@
 
 <table>
   <tr>
-    <th width="8%">Zdjęcie</th>
-    <th width='7%' >Kategoria</th>
-    <th width='40%' >Tytuł</th>
-    <th width='8%' >Start</th>
-    <th width='15%' >Miejsce</th>
-    <th width='6%' >Promowany? / Wielkość</th>
-    <th width='8%' >Utworzony</th>
-    <th width="8%">Opcje</th>
+    <th width=''>Id</th>
+    <th width=''>Zdjęcie</th>
+    <th width='' >Kategoria</th>
+    <th width='' >Tytuł</th>
+    <th width='120px' >Data publikacji /<br> Start wydarzenia</th>
+    <th width='120px' >Miejsce</th>
+    <th width='90px' >Promowany? /<br> Wielkość</th>
+    <th width='' >Utworzony</th>
+    <th width="">Opcje</th>
   </tr>
 
 <% @posts.each do |post| %>
   <tr>
+    <td><%= post.id %></td>
     <td><%= (image_tag post.photos.first.photo.thumb.url) if post.photos.present? %></td>
     <td>
       <%= display_category(post.category_id) if post.category_id.present? %>
@@ -22,9 +24,20 @@
     <td style="vertical-align: top;"><strong><%= post.title %></strong><br>
       <%= post.lead.truncate(200) %>
     </td>
-    <td><%= post.start_date.strftime("%d.%m.%Y") %> - <%= post.start_date.strftime("%H:%M") %></td>    
     <td>
-      <%= truncate( post.place.name ) if post.place.present? %>
+      <%= post.start_date.strftime("%d.%m.%Y") %> - <%= post.start_date.strftime("%H:%M") %><br>
+      <% if post.is_event? %>
+        <%= post.event_start.strftime("%d.%m.%Y") %> - <%= post.event_start.strftime("%H:%M") %>
+      <% else %>
+        -- brak --
+      <% end %>
+    </td>    
+    <td>
+      <% place = post.place %>
+      <% if place.present? %>        
+        Id: <%= place.id %><br>
+        <%= truncate( place.name ) %>
+      <% end %>
     </td>
     <td>
       <%= post.promoted.present? && post.promoted > 0 ? "Tak: #{post.promoted}" : "Nie" %><br>
