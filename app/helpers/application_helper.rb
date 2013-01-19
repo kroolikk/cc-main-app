@@ -1,6 +1,48 @@
 module ApplicationHelper
 
 
+  def previous_calendar_params(year, month, week)
+    curr_date_str = "#{year}/#{month}/#{day_from_id(week)}"
+    curr_date = curr_date_str.to_date
+    prev_date = curr_date - 8.day
+    result = {:year => prev_date.strftime('%Y'), :month => prev_date.strftime('%m'), :week => id_from_day(prev_date.strftime('%d'))}
+  end
+
+
+  def next_calendar_params(year, month, week)
+    curr_date_str = "#{year}/#{month}/#{day_from_id(week, false)}"
+    curr_date = curr_date_str.to_date
+    prev_date = curr_date + 8.day
+    result = {:year => prev_date.strftime('%Y'), :month => prev_date.strftime('%m'), :week => id_from_day(prev_date.strftime('%d'))}
+  end
+
+
+  def day_from_id(week, pre=true)
+    day = case week.to_i
+    when 1 then pre ? 7 : 1
+    when 2 then pre ? 15 : 9
+    when 3 then pre ? 23 : 17
+    when 4 then pre ? 28 : 25
+    end
+    day
+  end
+
+
+  def id_from_day(day)
+    d = day.to_i
+    if (1..8).to_a.include?(d)
+      week = 1
+    elsif (9..16).to_a.include?(d)
+      week = 2
+    elsif (17..24).to_a.include?(d)
+      week = 3
+    elsif (25..31).to_a.include?(d)
+      week = 4
+    end
+    week
+  end
+
+
   def box_size(p)
     if p.size.present? && p.size > 0
       result = p.size + 1

@@ -1,44 +1,47 @@
 <div class="cal-header">
 	<div class="cal-archives">Pokaż archiwum:
-		<select>
-			<option>Październik 2012</option>
-			<option>Listopad 2012</option>
-		</select>
-		<input type="submit" value="Ustaw" />
+		<%= select_tag :year, options_for_select(@years, params[:year]), :class => "cat_year" %>
+		<%= select_tag :month, options_for_select(MONTHS_TO_SELECT, params[:month]), :class => "cat_month" %>
+		<%= select_tag :week, options_for_select(WEEK_TO_SELECT, params[:week]), :class => "cat_week" %>
+		<%= link_to "Ustaw", "#", :class => "change_cal_date_link" %>
+
+		<script type="text/javascript">
+			$('.change_cal_date_link').click(function() {
+				var year = $('.cat_year').val();
+				var month = $('.cat_month').val();
+				var week = $('.cat_week').val();
+				document.location.href='<%= calendar_url %>/'+year+'/'+month+'/'+week;
+				return false;
+			});
+		</script>
 	</div>
+
 	<h1 class="cal-title">Kalendarz Wydarzeń</h1>
 </div>
-<div class="calendar-holder">	
-	<!-- begin date loop -->
-	<div class="cal-head-date">28.10</div>
-		<table>
-			<tr>
-				<td class="ch-time">15:45</td>
-				<td class="ch-title"><%= link_to "Koncert familyjny w filharmonii krakowskiej", "", :class => "cal-news ch-green" %></td>
-				<td class="ch-street">ul Barona 13 pok. 134</td>
-				<td class="ch-more"><%= link_to "Zobacz więcej", "" %></td>
-			</tr>
-			<tr>
-				<td class="ch-time">15:45</td>
-				<td class="ch-title"><%= link_to "Coś tam magicznego się dzieje w teatrze słowackiego w krakowie, oooh yeah!", "", :class => "cal-news ch-orange" %></td>
-				<td class="ch-street">ul Barona 13 pok. 134</td>
-				<td class="ch-more"><%= link_to "Zobacz więcej", "" %></td>
-			</tr>
-		</table>
-	<!-- end loop -->
-	<div class="cal-head-date">29.10</div>
-		<table>
-			<tr>
-				<td class="ch-time">15:45</td>
-				<td class="ch-title"><%= link_to "CollegeCity Party Number 6", "", :class => "cal-news ch-blue" %></td>
-				<td class="ch-street">ul Barona 13 pok. 134</td>
-				<td class="ch-more"><%= link_to "Zobacz więcej", "" %></td>
-			</tr>
-			<tr>
-				<td class="ch-time">15:45</td>
-				<td class="ch-title"><%= link_to "Koncert familyjny w filharmonii krakowskiej", "", :class => "cal-news ch-pink" %></td>
-				<td class="ch-street">ul Barona 13 pok. 134</td>
-				<td class="ch-more"><%= link_to "Zobacz więcej", "" %></td>
-			</tr>
-		</table>
+
+<div class="calendar-holder">
+	<%= link_to "Poprzednie", calendar_date_url( previous_calendar_params(params[:year], params[:month], params[:week]) ) %>
+
+	<% if @grouped_posts.present? %>
+		<% @grouped_posts.each do |posts| %>
+			<div class="cal-head-date"><%= posts[0] %></div>
+			<table>
+				<% posts[1].each do |p| %>
+					<tr>
+						<td class="ch-time"><%= p.event_start.strftime("%H:%M") %></td>
+						<td class="ch-title"><%= link_to p.title, single_post_url(p), :class => "cal-news ch-#{cat_col(p.category_id)}" %></td>
+						<% place = p.place %>
+						<% if place.present? %>
+							<td class="ch-street"><%= "#{place.street} #{place.street_no}, #{place.city}" %></td>
+						<% end %>
+						<td class="ch-more"><%= link_to "Zobacz więcej", single_post_url(p) %></td>
+					</tr>
+				<% end %>
+			</table>
+		<% end %>
+	<% else %>
+		W tym przedziale czasu nie odbywają się żadne wydarzenia. Wybierz inny przedział.
+	<% end %>
+
+	<%= link_to "Następne", calendar_date_url( next_calendar_params(params[:year], params[:month], params[:week]) ) %>
 </div>

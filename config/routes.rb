@@ -4,12 +4,11 @@ CcDev1::Application.routes.draw do
   # chwilowe routingi wrzucajmy na początku
   # moje dziadowskie routy 
   match "/single_art" => "home#single_article", :as => :single_art
-  match "/kalendarz" => "home#calendar", :as => :calendar
   match "/user_reg" => "home#user_reg", :as => :user_reg
   match "/user_prof" => "home#user_prof", :as => :user_prof
   match "admin/example_form" => "mtest#example_form", :as => :example_form
 
-  match "/kontakt" => "home#contact", :as => :contact
+
 
 
 
@@ -27,8 +26,12 @@ CcDev1::Application.routes.draw do
   resources :users, :path => 'uzytkownicy'
 
   match "post/:id" => "front_posts#show", :as => :single_post
+
   match "miejsca" => "front_places#index", :as => :front_places
   match "miejsce/:id" => "front_places#show", :as => :single_place
+  match "/kalendarz" => "home#calendar", :as => :calendar
+  match "/kalendarz/:year/:month/:week" => "home#calendar", :as => :calendar_date
+  match "/kontakt" => "home#contact", :as => :contact
   match "/:category" => "home#index", :as => :category
 
   # The priority is based upon order of creation:
