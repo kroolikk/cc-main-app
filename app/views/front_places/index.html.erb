@@ -1,2 +1,3 @@
-<h1>FrontPlaces#index</h1>
-<p>Find me in app/views/front_places/index.html.erb</p>
+<% @places.each do |p| %>
+  <%= p.id %> - <%= p.name %><br>
+<% end %>

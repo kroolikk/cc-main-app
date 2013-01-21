@@ -7,8 +7,10 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :role, :name, :avatar
+  attr_accessible :role, :name, :image, :image_cache
 
   extend FriendlyId
   friendly_id :email, use: :slugged
+
+  mount_uploader :image, ImageUploader
 end

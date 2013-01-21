@@ -16,6 +16,16 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
+    <%= f.label :image, "Plik" %>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
+  </div>
+  <div class="field">
+    <% if @place.image.present? %>
+      <%= image_tag @place.image.thumb.url %>
+    <% end %>
+  </div>
+  <div class="field">
     <%= f.label :city, "Miasto" %><br />
     <%= f.text_field :city %>
   </div>
