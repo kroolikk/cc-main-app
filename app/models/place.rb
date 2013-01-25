@@ -21,10 +21,13 @@ class Place < ActiveRecord::Base
     result += zip_code if zip_code.present?
     result += ' ' if result.present?
     result += city if city.present?
-
     Rails.logger.info "----------#{result}------------"
-
     result
+  end
+
+  def self.random_coord(min, max)
+    res = rand * (max-min) + min
+    res
   end
 
 end
