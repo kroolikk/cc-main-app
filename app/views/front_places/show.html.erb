@@ -1,47 +1,55 @@
 <div class="user-profile">
   <% if @place.present? %>
-	<div class="place-avatar">
-		<a href="#" class="edit-avatar">Edytuj zdjęcie</a>
-		<img src="http://25.media.tumblr.com/tumblr_m8fufgWFxN1rp2ebfo1_400.jpg" />
-	</div>
+  	<div class="place-avatar">
+  		<a href="#" class="edit-avatar">Edytuj zdjęcie</a>
+  		<img src="http://25.media.tumblr.com/tumblr_m8fufgWFxN1rp2ebfo1_400.jpg" />
+  	</div>
 
-	<div class="place-info">
-		      <div class="article-location">
-        <h4 class="yellow">Dane miejsca</h4>
-        <h2><%= link_to @place.name, single_place_url(@place) %></h2>
-        <div class="location-snippet">
-          <%= raw @place.description %>
+  	<div class="place-info">
+  		      <div class="article-location">
+          <h4 class="yellow">Dane miejsca</h4>
+          <h2><%= link_to @place.name, single_place_url(@place) %></h2>
+          <div class="location-snippet">
+            <%= raw @place.description %>
+          </div>
+          <table width="550px" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="40%" class="location-detail">Adres:</td>
+              <td width="60%" class="location-info"><%= "#{@place.street} #{@place.street_no}, #{@place.city}" %></td>
+            </tr>
+            <tr>
+              <td width="40%" class="location-detail">Telefon:</td>
+              <td width="60%" class="location-info"><%= @place.phone %></td>
+            </tr>
+            <tr>
+              <td width="40%" class="location-detail">Strona www:</td>
+              <td width="60%" class="location-info"><%= @place.website %></td>
+            </tr>
+            <tr>
+              <td width="40%" class="location-detail">Godziny otwarcia:</td>
+              <td width="60%" class="location-info">
+                <%= raw @place.opening_hours %>
+              </td>
+            </tr>
+            <tr>
+              <td width="40%" class="location-detail">Info:</td>
+              <td width="60%" class="location-info"><%= @place.info %></td>
+            </tr>
+            <tr>
+              <td width="40%" class="location-detail"></td>
+              <td width="60%" class="location-info"><%= link_to "Zobacz na mapie", "" %></td>
+            </tr>
+          </table>
         </div>
-        <table width="550px" cellspacing="0" cellpadding="0">
-          <tr>
-            <td width="40%" class="location-detail">Adres:</td>
-            <td width="60%" class="location-info"><%= "#{@place.street} #{@place.street_no}, #{@place.city}" %></td>
-          </tr>
-          <tr>
-            <td width="40%" class="location-detail">Telefon:</td>
-            <td width="60%" class="location-info"><%= @place.phone %></td>
-          </tr>
-          <tr>
-            <td width="40%" class="location-detail">Strona www:</td>
-            <td width="60%" class="location-info"><%= @place.website %></td>
-          </tr>
-          <tr>
-            <td width="40%" class="location-detail">Godziny otwarcia:</td>
-            <td width="60%" class="location-info">
-              <%= raw @place.opening_hours %>
-            </td>
-          </tr>
-          <tr>
-            <td width="40%" class="location-detail">Info:</td>
-            <td width="60%" class="location-info"><%= @place.info %></td>
-          </tr>
-          <tr>
-            <td width="40%" class="location-detail"></td>
-            <td width="60%" class="location-info"><%= link_to "Zobacz na mapie", "" %></td>
-          </tr>
-        </table>
-      </div>
-	</div>
+
+        <br>
+        <br>
+        <% @place.posts.each do |po| %>
+          <%= link_to single_post_url(po) do %>
+            <%= po.id %> -- <%= display_category(po.category_id) %> -- <%= po.title %>
+          <% end %><br>
+        <% end %>
+  	</div>
   <% end %>
 	<div class="clearspace"></div>
 

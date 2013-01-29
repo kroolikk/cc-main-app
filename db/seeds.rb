@@ -9,8 +9,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-if false # posts seeds
-  amount = 70
+if true # posts seeds
+  amount = 270
   amount.times do |i|
     post = Post.new({ :title => "artykuł #{i}", 
       :description => DESCRIPTION_EXAMPLE,
@@ -35,9 +35,11 @@ if false # posts seeds
 end
 
 "50.114194,19.821688 ----------  50.009945,20.127245"
-if true # places seeds
+if false # places seeds
   amount = 1000
   amount.times do |i|
+    rand_lat = Place.random_coord(50.114194, 50.009945)
+    rand_lon = Place.random_coord(19.821688, 20.127245)
     place = Place.new({
                       :name => "place #{i}",
                       :city => 'city_xxx',
@@ -45,8 +47,8 @@ if true # places seeds
                       :street_no => '17',
                       :zip_code => 'XX-XXX',
                       :detect_coords => false,
-                      :latitude => Place.random_coord(50.114194, 50.009945),
-                      :longitude => Place.random_coord(19.821688, 20.127245),
+                      :latitude => rand_lat,
+                      :longitude => rand_lon,
                       :description => DESCRIPTION_EXAMPLE,
                       :phone => 'XXX XXX XXX',
                       :website => 'http://www.xxxxx.com',
@@ -55,6 +57,7 @@ if true # places seeds
                       :image => File.open(File.join(Rails.root, "/public/test_photos/photo_#{rand(9)}.jpg")) 
                       })
     place.save
+    puts "#{i} - place_id: #{place.id} -- lat: #{place.latitude} -- lon: #{place.longitude}"
   end
 
 

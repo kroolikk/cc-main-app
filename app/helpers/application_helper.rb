@@ -1,6 +1,11 @@
 module ApplicationHelper
 
 
+  def rq(str)
+    return str.gsub('"', '')
+  end
+
+
   def previous_calendar_params(year, month, week)
     curr_date_str = "#{year}/#{month}/#{day_from_id(week)}"
     curr_date = curr_date_str.to_date
@@ -75,6 +80,16 @@ module ApplicationHelper
   end
 
   
+  def cat_col_codes(id=0)
+    case id
+    when 1 then 'E86800'
+    when 2 then 'A2C306'
+    when 3 then '0093BA'
+    when 4 then '810A42'
+    else 'c70104'
+    end
+  end
+
   def cat_col(id=0)
     case id
     when 1 then 'orange'

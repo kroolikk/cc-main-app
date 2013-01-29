@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130121192812) do
+ActiveRecord::Schema.define(:version => 20130129200108) do
 
   create_table "ckeditor_assets", :force => true do |t|
     t.string   "data_file_name",                  :null => false
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(:version => 20130121192812) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "photos", ["slug"], :name => "index_photos_on_slug", :unique => true
+
   create_table "places", :force => true do |t|
     t.string   "name"
     t.string   "city"
@@ -58,6 +60,8 @@ ActiveRecord::Schema.define(:version => 20130121192812) do
     t.string   "image"
   end
 
+  add_index "places", ["slug"], :name => "index_places_on_slug", :unique => true
+
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -75,6 +79,10 @@ ActiveRecord::Schema.define(:version => 20130121192812) do
     t.datetime "event_start"
   end
 
+  add_index "posts", ["category_id"], :name => "index_posts_on_category_id"
+  add_index "posts", ["is_event"], :name => "index_posts_on_is_event"
+  add_index "posts", ["place_id"], :name => "index_posts_on_place_id"
+  add_index "posts", ["promoted"], :name => "index_posts_on_promoted"
   add_index "posts", ["slug"], :name => "index_posts_on_slug", :unique => true
 
   create_table "users", :force => true do |t|

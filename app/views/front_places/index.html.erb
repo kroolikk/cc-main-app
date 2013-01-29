@@ -1,3 +1,52 @@
-<% @places.each do |p| %>
-  <%= p.id %> - <%= p.name %><br>
+<div style="width:990px; height:100px; background:black;">
+  <nav>
+    <a href="<%= front_places_category_url('rozrywka') %>" class="orange-bar">Rozrywka</a><span class="seperator"></span>
+    <a href="<%= front_places_category_url('kultura') %>" class="green-bar">Kultura</a><span class="seperator"></span>
+    <a href="<%= front_places_category_url('studia') %>" class="blue-bar">Studia</a><span class="seperator"></span>
+    <a href="<%= front_places_category_url('lifestyle') %>" class="pink-bar">Lifestyle</a><span class="seperator"></span>
+  </nav>
+</div>
+
+<%= will_paginate @places %>
+
+<div id='map_canvas' style='width:100%; height:500px'>
+</div>
+
+<% if false # @places.each_with_index do |p, index| %>
+  <% ind = index + 1 %>
+  l.p. <%= ind %> -- p_id: <%= p.id %> -- p_name: <%= p.name %> <br>
 <% end %>
+
+
+<script>
+  var map;
+  var markersArray = [];
+  var coordsArray = [];
+  var infoBubbles = [];
+
+  function initialize() {
+    var pointCoords = new google.maps.LatLng(50.070169,19.920656);
+    var mapOptions = {
+      zoom: 10,
+      center: pointCoords,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+
+    <% @places.each_with_index do |p, index| %>
+      <% ind = index + 1 %>
+      addStyledMarker(<%= p.latitude %>, <%= p.longitude %>, "<%= ind %>", "<%= rq(p.name) %>", "<%= ind %>", "<%= p.category_id.present? ? cat_col_codes(p.category_id) : 'c70104' %>");
+      addInfoBubble("<%= ind %>", "<%= rq(p.name) %>", "<%= rq(p.city) %>", "<%= rq(p.street) %>", "<%= rq(p.street_no) %>" , "<%= single_place_url(p) %>", "<%= rq(p.zip_code) %>")
+    <% end %>
+
+    // Zoom do zestawu markerow
+    var LatLngList = coordsArray;
+    var bounds = new google.maps.LatLngBounds ();
+    for (var i = 0, LtLgLen = LatLngList.length; i < LtLgLen; i++) {
+      bounds.extend (LatLngList[i]);
+    }
+    map.fitBounds (bounds);
+  }
+
+  initialize();
+</script>

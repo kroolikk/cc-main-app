@@ -17,49 +17,50 @@
   <%= javascript_include_tag 'jquery-ui.js'  %>
   <%= javascript_include_tag 'blur.js'       %>
   <%= javascript_include_tag 'init.js'       %>
-  <%= javascript_include_tag 'masonry.js'    %> 
+  <%= javascript_include_tag 'masonry.js'    %>
+  
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" %>
+  <%= javascript_include_tag "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/styledmarker/src/StyledMarker.js" %>
   
   <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35205487-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-35205487-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
+  <%= render 'shared/javascripts' %>
 </head>
 <body class="<%= params[:controller] %>-<%= params[:action] %>">
   <% if notice.present? %>
     <div class="top-notificator tm-notice">
       <p class="notice" style="display:none;"><%= notice %></p>
-    </div>
-    
+    </div>  
     <script>
-      $('.notice').delay(1000).slideDown("slow").delay(5000).slideUp("slow");
+    $('.notice').delay(1000).slideDown("slow").delay(5000).slideUp("slow");
     </script>
   <% end %>
   <% if alert.present? %>
     <div class="top-notificator tm-error">
       <p class="alert"><%= alert %></p>
     </div>
-    
     <script>
-      $('.alert').delay(1000).slideDown("slow").delay(5000).slideUp("slow");
+    $('.alert').delay(1000).slideDown("slow").delay(5000).slideUp("slow");
     </script>
   <% end %>
   <div id="fb-root"></div>
-  <script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=208374365888731";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
+  <script>
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=208374365888731";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
   </script>
   
   <header>

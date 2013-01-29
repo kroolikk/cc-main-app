@@ -45,7 +45,7 @@
     <%= f.label :detect_coords, "Wykryj współrzędne" %><br />
     <%= f.check_box :detect_coords, {:onclick => "$('.coords').toggle();"} %>
   </div>
-  <div class="coords" style="display:none;">
+  <div class="coords" style="<%= 'display:none;' if @place.detect_coords == true %>">
     <div class="field">
       <%= f.label :latitude, "Długość geograficzna" %><br />
       <%= f.text_field :latitude %>

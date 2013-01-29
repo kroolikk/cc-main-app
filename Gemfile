@@ -47,3 +47,4 @@ gem "mini_magick"
 gem "ckeditor"
 
 gem "geocoder"
+gem 'will_paginate', '~> 3.0'

@@ -34,9 +34,11 @@
     </td>    
     <td>
       <% place = post.place %>
-      <% if place.present? %>        
-        Id: <%= place.id %><br>
-        <%= truncate( place.name ) %>
+      <% if place.present? %>
+        <%= link_to edit_place_url(place) do %>      
+          Id: <%= place.id %><br>
+          <%= truncate( place.name ) %>
+        <% end %>
       <% end %>
     </td>
     <td>

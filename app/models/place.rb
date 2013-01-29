@@ -1,7 +1,8 @@
 class Place < ActiveRecord::Base
   attr_protected :id
+  # attr_accessor :category_id
 
-  after_validation :geocode 
+  after_validation :geocode, :if => :auto_detect?
   geocoded_by :full_street_address
 
   extend FriendlyId
@@ -11,6 +12,11 @@ class Place < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
+
+
+  def auto_detect?
+    self.detect_coords
+  end
 
   def full_street_address
     result = ''
