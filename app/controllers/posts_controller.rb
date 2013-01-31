@@ -2,7 +2,18 @@
 class PostsController < AdminController
 
   def index
-    @posts = Post.all
+    @posts = Post.select("id, 
+                          slug, 
+                          category_id, 
+                          title, 
+                          lead, 
+                          start_date,
+                          is_event, 
+                          event_start, 
+                          place_id, 
+                          promoted, 
+                          size, 
+                          created_at").paginate(:page => params[:page], :per_page => 100)
   end
 
 

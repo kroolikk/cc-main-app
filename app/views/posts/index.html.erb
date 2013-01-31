@@ -1,6 +1,9 @@
 <h3>Artykuły <%= link_to 'Nowy artykuł', new_post_path,:class => "mini main-btn" %>
 </h3>
 
+<%= will_paginate @posts %>
+<br>
+
 <table>
   <tr>
     <th width='2%'>Id</th>
@@ -13,7 +16,6 @@
     <th width='12%' >Utworzony</th>
     <th width='8%'>Opcje</th>
   </tr>
-
 <% @posts.each do |post| %>
   <tr>
     <td><%= post.id %></td>
@@ -52,5 +54,7 @@
 <% end %>
 </table>
 
-<br />
+<br>
+<%= will_paginate @posts %>
+<br>
 <%= link_to 'Nowy artykuł', new_post_path,:class => "mini main-btn" %>

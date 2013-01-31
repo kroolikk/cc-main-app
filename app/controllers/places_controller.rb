@@ -1,7 +1,7 @@
 class PlacesController < AdminController
 
   def index
-    @places = Place.all
+    @places = Place.select("id, slug, image, name, city, street, street_no, zip_code").paginate(:page => params[:page], :per_page => 100)
   end
 
 

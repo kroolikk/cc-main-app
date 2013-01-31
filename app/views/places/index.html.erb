@@ -13,6 +13,8 @@
     <th></th>
   </tr>
 
+<%= will_paginate @places %>
+<br>
 <% @places.each do |place| %>
   <tr>
     <td><%= place.id %></td>
@@ -32,6 +34,8 @@
 <% end %>
 </table>
 
-<br />
+<br>
+<%= will_paginate @places %>
+<br>
 
 <%= link_to 'New Place', new_place_path %>
