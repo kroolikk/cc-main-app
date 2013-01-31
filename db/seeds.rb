@@ -34,7 +34,7 @@ if true # posts seeds
   end
 end
 
-"50.114194,19.821688 ----------  50.009945,20.127245"
+
 if false # places seeds
   amount = 1000
   amount.times do |i|
@@ -42,16 +42,16 @@ if false # places seeds
     rand_lon = Place.random_coord(19.821688, 20.127245)
     place = Place.new({
                       :name => "place #{i}",
-                      :city => 'city_xxx',
+                      :city => 'kraków',
                       :street => 'street_xxx',
                       :street_no => '17',
-                      :zip_code => 'XX-XXX',
+                      :zip_code => '30-001',
                       :detect_coords => false,
                       :latitude => rand_lat,
                       :longitude => rand_lon,
                       :description => DESCRIPTION_EXAMPLE,
                       :phone => 'XXX XXX XXX',
-                      :website => 'http://www.xxxxx.com',
+                      :website => 'http://www.website.com',
                       :opening_hours => '15:00 - 24:00',
                       :info => 'info info info',
                       :image => File.open(File.join(Rails.root, "/public/test_photos/photo_#{rand(9)}.jpg")) 
