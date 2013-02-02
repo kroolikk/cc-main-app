@@ -277,12 +277,12 @@ nav a {
 .w3:hover .fade-hover, .w2:hover .fade-hover, .w4:hover .fade-hover{
 	display: block;
 }
-.w400 { width: 392px;}
-.w200 { width: 192px;}
+.w400 { width: 292px;}
+.w200 { width: 292px;}
 .w300 {	width: 292px;}
 .w3, .w2, .w4 { position: relative;}
-.w2 img { max-width: 192px;}
-.w4 img { max-width: 392px;}
+.w2 img { max-width: 292px;}
+.w4 img { max-width: 292px;}
 .w3 img { max-width: 292px;}
 .snippet {
 	color: #241e1a;
@@ -923,4 +923,15 @@ h4 {
       text-align: center;
       padding: 10px;
     }
+}
+.filter-map {
+  position: absolute;
+  z-index: 101;
+  left: 6%;
+  top: 200px;
+  background: white;
+  width: 200px;
+  box-shadow: 0px 0px 6px black;
+  border-radius: 6px;
+  padding: 12px;
 }

@@ -8,9 +8,9 @@ $(document).ready(function(){
 	$container.imagesLoaded(function(){
 	  $container.masonry({
 		itemSelector: '.mason',
-		isFitWidth: true,
-		isResizable: true,
-		columnWidth: 1
+		// isFitWidth: true,
+		// isResizable: true,
+		// columnWidth: 220
 	  });
 	}); // end masonry
 	

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>CollegeCity</title>
+<link rel="icon" type="image/png" href="http://collegecity.pl/assets/favi.png" />
+<link rel="apple-touch-icon" href="http://collegecity.pl/assets/apple-favi.png" />
+	<meta property="og:type" content="website"/>
+	<meta property="og:title" content="CollegeCity"/>
+    <meta property="og:url" content="http://collegecity.pl"/>
+    <meta property="og:image" content="http://collegecity.pl/assets/apple-favi.png"/>
+    <meta property="og:description" content="CollegeCity - studencka platforma informacyjna. College lifestyle, fajni ludzie, życie nocne, student power, ciekawe miejsca. Pozytywna energia!"/>
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|PT+Sans+Caption:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    'main.css.scss' %>
+  <%= javascript_include_tag 'jquery.js'     %>
+  <%= javascript_include_tag 'jquery_ujs.js' %>
+  <%= javascript_include_tag 'jquery-ui.js'  %>
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" %>
+  <%= javascript_include_tag "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/styledmarker/src/StyledMarker.js" %>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35205487-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  <%= render 'shared/javascripts' %>
+</head>
+<body class="<%= params[:controller] %>-<%= params[:action] %>">
+  <% if notice.present? %>
+    <div class="top-notificator tm-notice">
+      <p class="notice" style="display:none;"><%= notice %></p>
+    </div>  
+    <script>
+    $('.notice').delay(1000).slideDown("slow").delay(5000).slideUp("slow");
+    </script>
+  <% end %>
+  <% if alert.present? %>
+    <div class="top-notificator tm-error">
+      <p class="alert"><%= alert %></p>
+    </div>
+    <script>
+    $('.alert').delay(1000).slideDown("slow").delay(5000).slideUp("slow");
+    </script>
+  <% end %>
+  <div id="fb-root"></div>
+  <script>
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=208374365888731";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+  
+  <header>
+    <div class="navigation-area">
+      <%= link_to "", root_url, :class => "logo-cc" %>    
+  		<nav>
+        <a href="<%= category_url('rozrywka') %>" class="orange-bar">Rozrywka</a><span class="seperator"></span>
+        <a href="<%= category_url('kultura') %>" class="green-bar">Kultura</a><span class="seperator"></span>
+        <a href="<%= category_url('studia') %>" class="blue-bar">Studia</a><span class="seperator"></span>
+        <a href="<%= category_url('lifestyle') %>" class="pink-bar">Lifestyle</a><span class="seperator"></span>
+        <a href="<%= front_places_url %>" class="yellow-bar">Miejsca</a><span class="seperator"></span>
+        <%= link_to "Kalendarz", calendar_path, :class => "white-bar" %>
+  		</nav>
+    </div>
+    <div class="clear"></div>
+    <div class="snooper" style="position: relative;">
+    <div  style="position: absolute; z-index: 100; right: 0;">
+      <div class="snoop-left"></div>
+      <div class="snoop-mid">
+          <% if user_signed_in? %>
+        <%= current_user.email %> | 
+           <%= link_to "Wyloguj", destroy_user_session_path, :method => :delete %>
+          <% else %>
+            <%= link_to 'Zaloguj się', new_user_session_url %> |
+            <%= link_to 'Zarejestruj się', new_user_registration_url %>
+          <% end %>
+      </div>
+      <div class="snoop-right"></div>
+    </div>
+    </div>
+  </header>
+    
+    <div class="map-content">
+      <%= yield %>
+    </div>
+
+    
+  <div class="clearspace"></div>
+</body>

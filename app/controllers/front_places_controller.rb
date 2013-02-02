@@ -1,4 +1,5 @@
 class FrontPlacesController < ApplicationController
+  layout "map"
   include ApplicationHelper
   require 'will_paginate/array'
 
