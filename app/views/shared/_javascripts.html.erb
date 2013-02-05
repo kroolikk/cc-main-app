@@ -32,4 +32,12 @@
     markersArray.push(window['styleMarker'+index]);
     coordsArray.push(window['pointCoords'+index]);
   };
+
+  function clearOverlays() {
+    if (markersArray) {
+      for (i in markersArray) {
+        markersArray[i].setMap(null);
+      }
+    }
+  };
 </script>

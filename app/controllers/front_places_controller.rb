@@ -4,6 +4,11 @@ class FrontPlacesController < ApplicationController
   require 'will_paginate/array'
 
   def index
+    params[:category].present? ? @cat = params[:category] : @cat = 'all'
+  end
+
+
+  def add_places_to_map
     if params[:category].present?
       @all_places = Place.find_by_sql(" SELECT  p.id,
                                                 p.name,
@@ -38,7 +43,14 @@ class FrontPlacesController < ApplicationController
                                       ;").uniq
     end
     @places = @all_places.to_a.paginate(:page => params[:page], :per_page => 99)
+
+    params[:category].present? ? @cat = params[:category] : @cat = 'all'
+
+    respond_to do |format|
+      format.js
+    end
   end
+
 
   def show
     @place = Place.find(params[:id])

@@ -1,20 +1,24 @@
+<style type="text/css">
+  .selected a {
+    color:red;
+    background-color:yellow;
+  }
+</style>
+
+
 <div class="filter-map">
   <ul>
-    <li class="orange-foot"><a href="<%= front_places_category_url('rozrywka') %>">Rozrywka</a></li>
-    <li class="green-foot"><a href="<%= front_places_category_url('kultura') %>" >Kultura</a></li>
-    <li class="blue-foot"><a href="<%= front_places_category_url('studia') %>">Studia</a></li>
-    <li class="pink-foot"><a href="<%= front_places_category_url('lifestyle') %>">Lifestyle</a></li>
+    <li class="orange-foot map_nav all"><a href="#" onclick="add_places(); return false;" data-remote="true">Wszystkie</a></li>
+    <li class="orange-foot map_nav rozrywka"><a href="#" onclick="add_places('rozrywka'); return false;" data-remote="true">Rozrywka</a></li>
+    <li class="green-foot map_nav kultura"><a href="#" onclick="add_places('kultura'); return false;" data-remote="true">Kultura</a></li>
+    <li class="blue-foot map_nav studia"><a href="#" onclick="add_places('studia'); return false;" data-remote="true">Studia</a></li>
+    <li class="pink-foot map_nav lifestyle"><a href="#" onclick="add_places('lifestyle'); return false;" data-remote="true">Lifestyle</a></li>
+    <li class="places_loading" style="display:none;">!!!LOADING!!!</li>
   </ul>
 <%# will_paginate @places %>
 </div>
-<div id='map_canvas' style='width:100%; min-height: 600px; top:110px;
-bottom:0; position: absolute; '>
+<div id='map_canvas' style='width:100%; min-height: 600px; top:110px; bottom:0; position: absolute; '>
 </div>
-
-<% if false # @places.each_with_index do |p, index| %>
-  <% ind = index + 1 %>
-  l.p. <%= ind %> -- p_id: <%= p.id %> -- p_name: <%= p.name %> <br>
-<% end %>
 
 
 <script>
@@ -31,21 +35,30 @@ bottom:0; position: absolute; '>
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+  };
 
-    <% @places.each_with_index do |p, index| %>
-      <% ind = index + 1 %>
-      addStyledMarker(<%= p.latitude %>, <%= p.longitude %>, "<%= ind %>", "<%= rq(p.name) %>", "<%= ind %>", "<%= p.category_id.present? ? cat_col_codes(p.category_id) : 'c70104' %>");
-      addInfoBubble("<%= ind %>", "<%= rq(p.name) %>", "<%= rq(p.city) %>", "<%= rq(p.street) %>", "<%= rq(p.street_no) %>" , "<%= single_place_url(p) %>", "<%= rq(p.zip_code) %>")
-    <% end %>
+  function add_places(category, page) {
+    $('.places_loading').show();
+    $.ajax({
+      type: "POST",
+      url: '<%= add_places_to_map_url %>',
+      data: { category: category, page: page }
+    }).done(function() {
+      $('.places_loading').hide();      
+    });
+  };
 
-    // Zoom do zestawu markerow
-    var LatLngList = coordsArray;
-    var bounds = new google.maps.LatLngBounds ();
-    for (var i = 0, LtLgLen = LatLngList.length; i < LtLgLen; i++) {
-      bounds.extend (LatLngList[i]);
-    }
-    map.fitBounds (bounds);
-  }
 
-  initialize();
+  $(document).ready(function() {
+    initialize();
+
+    var cat_param = '<%= params[:category] %>';    
+    if (cat_param.length > 0) {
+      add_places(cat_param);
+    } else {
+      add_places();
+    };
+
+    $('.<%= @cat %>').addClass('selected');
+  });  
 </script>

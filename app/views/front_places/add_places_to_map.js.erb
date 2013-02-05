@@ -1,0 +1,18 @@
+clearOverlays();
+$('.map_nav').removeClass('selected');
+$('.<%= @cat %>').addClass('selected');
+history.pushState("<%= @cat %>", "College City", "<%= front_places_url %><%= '/'+params[:category] if params[:category].present? %>");
+
+<% @places.each_with_index do |p, index| %>
+  <% ind = index + 1 %>
+  addStyledMarker(<%= p.latitude %>, <%= p.longitude %>, "<%= ind %>", "<%= rq(p.name) %>", "<%= ind %>", "<%= p.category_id.present? ? cat_col_codes(p.category_id) : 'c70104' %>");
+  addInfoBubble("<%= ind %>", "<%= rq(p.name) %>", "<%= rq(p.city) %>", "<%= rq(p.street) %>", "<%= rq(p.street_no) %>" , "<%= single_place_url(p) %>", "<%= rq(p.zip_code) %>")
+<% end %>
+
+// Zoom do zestawu markerow
+var LatLngList = coordsArray;
+var bounds = new google.maps.LatLngBounds ();
+for (var i = 0, LtLgLen = LatLngList.length; i < LtLgLen; i++) {
+  bounds.extend (LatLngList[i]);
+}
+map.fitBounds (bounds);

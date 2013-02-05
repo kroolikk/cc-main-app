@@ -28,8 +28,9 @@ CcDev1::Application.routes.draw do
   match "post/:id" => "front_posts#show", :as => :single_post
 
   match "miejsca" => "front_places#index", :as => :front_places
-  match "miejsca/:category" => "front_places#index", :as => :front_places_category
+  match "miejsca/:category" => "front_places#index"
   match "miejsca/:category/strona_:page" => "front_places#index"
+  match "pokaz-miejsca" => "front_places#add_places_to_map", :as => :add_places_to_map
   match "miejsce/:id" => "front_places#show", :as => :single_place  
 
   match "/kalendarz" => "home#calendar", :as => :calendar
