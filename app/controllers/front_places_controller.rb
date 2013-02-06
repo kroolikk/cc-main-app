@@ -1,9 +1,10 @@
 class FrontPlacesController < ApplicationController
-  layout "map"
+  
   include ApplicationHelper
   require 'will_paginate/array'
 
   def index
+    render :layout => "map"
     params[:category].present? ? @cat = params[:category] : @cat = 'all'
   end
 

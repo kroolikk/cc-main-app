@@ -277,6 +277,15 @@ nav a {
 .w3:hover .fade-hover, .w2:hover .fade-hover, .w4:hover .fade-hover{
 	display: block;
 }
+.end-post-promo{
+  .w200 {
+    width: 192px;
+  }
+  .w2 img{
+    max-width: 192px;
+  }
+}
+
 .w400 { width: 292px;}
 .w200 { width: 292px;}
 .w300 {	width: 292px;}
@@ -934,4 +943,50 @@ h4 {
   box-shadow: 0px 0px 6px black;
   border-radius: 6px;
   padding: 12px;
+    .selected a {
+      font-weight: bold;
+    }
+    .orange-foot.selected a{
+      border-left: 3px solid $orange;
+      color: $orange;
+    }
+    .blue-foot.selected a{
+      border-left: 3px solid $blue;
+      color: $blue;
+    }
+    .green-foot.selected a{
+      border-left: 3px solid $green;
+      color: $green;
+    }
+    .yellow-foot.selected a{
+      border-left: 3px solid $yellow;
+      color: #333;
+    }
+    .pink-foot.selected a{
+      border-left: 3px solid $pink;
+      color: $pink;
+    }
+  ul li {
+    list-style: none;
+      a {
+        color: #777;
+          &:hover {
+            color: #333;
+          }
+      }
+  }
+}
+.places_loading {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  z-index: 99;
+  display: none;
+  position: absolute;
+  top: 110px;
+  bottom: 0;
+    img {
+      position: absolute;
+      left: 50%;
+      top: 40%;
+    }
 }
