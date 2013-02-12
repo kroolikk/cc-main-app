@@ -133,10 +133,19 @@ h1.general {
 	background-position: center center;
 }
 header {
-  background: rgba(0, 0, 0, 0.01);
+  background: #222 url(/assets/bg.png);
   height: 108px;
   border-bottom: 1px solid #303030;
   box-shadow: 0px 1px 0px #232323;
+
+}
+.small-nav {
+  position: fixed; 
+  background: red; 
+  width: 100%;
+  z-index: 999;
+  box-shadow: 0px 1px 15px #111;
+  background: #222 url(/assets/bg.png);
 }
 .logo-cc {
 	float: left;
@@ -145,6 +154,14 @@ header {
 	width: 282px;
 	height: 94px;
 	background: url(/assets/logo-cc.png) no-repeat;
+}
+.small-logo-cc {
+	float: left;
+	margin-top: 70px;
+	display: block;
+	width: 164px;
+	height: 34px;
+	background: url(/assets/small-logo.png) no-repeat;
 }
 .navigation-area {
   width: 990px;
@@ -989,4 +1006,43 @@ h4 {
       left: 50%;
       top: 40%;
     }
+}
+.main-search-area {
+  margin-right: -10px;
+  margin-left: 30px;
+  margin-top: 6px;
+  width: 214px;
+  border: 0;
+  height: 17px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.2);
+  outline: none;
+  padding: 0 8px 3px 8px;
+  @include act-fadein;
+    &:focus {
+      @include act-fadein;
+      background: #fff;
+    }
+}
+.search-btn {
+  width: 26px;
+  height: 20px;
+  display: inline-block;
+  background: url(/assets/search-btn.png) no-repeat top left;
+  border: 0;
+  cursor: pointer;
+    &:hover {
+      background-position: bottom left;
+    }
+    
+}
+.fix-me {
+  top: -68px;
+  position: fixed;
+  width: 100%;
+  z-index: 900;
+  box-shadow: 0px 1px 15px #111;
+}
+.move-me {
+  margin-top: 108px !important;
 }
