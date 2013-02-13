@@ -11,12 +11,17 @@
     </div>
   <% end %>
 
+
+  <div class="field">
+    <%= f.label :category_id, "Kategoria" %>
+    <%= f.select :category_id, options_for_select( MAIN_CATEGORIES.collect{ |c| [c[:name], c[:id]] }, @place.category_id ) %>
+  </div>
   <div class="field">
     <%= f.label :name, "Nazwa" %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :image, "Plik" %>
+    <%= f.label :image, "Grafika" %>
     <%= f.file_field :image %>
     <%= f.hidden_field :image_cache %>
   </div>
@@ -58,6 +63,10 @@
   <div class="field">
     <%= f.label :description, "Opis" %><br />
     <%= f.cktext_area :description, :input_html => {:rows => 5}, :toolbar => 'Full' %>
+  </div>
+  <div class="field">
+    <%= f.label :email, "E-mail" %><br />
+    <%= f.text_field :email %>
   </div>
   <div class="field">
     <%= f.label :phone, "Telefon" %><br />

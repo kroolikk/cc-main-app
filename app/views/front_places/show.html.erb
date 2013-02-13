@@ -1,76 +1,101 @@
 <div class="user-profile">
   <% if @place.present? %>
-  	<div class="place-avatar">
-  		<a href="#" class="edit-avatar">Edytuj zdjęcie</a>
-  		<img src="http://25.media.tumblr.com/tumblr_m8fufgWFxN1rp2ebfo1_400.jpg" />
-  	</div>
-
-  	<div class="place-info">
-  		      <div class="article-location">
-          <h4 class="yellow">Dane miejsca</h4>
-          <h2><%= link_to @place.name, single_place_url(@place) %></h2>
-          <div class="location-snippet">
-            <%= raw @place.description %>
-          </div>
-          <table width="550px" cellspacing="0" cellpadding="0">
-            <tr>
-              <td width="40%" class="location-detail">Adres:</td>
-              <td width="60%" class="location-info"><%= "#{@place.street} #{@place.street_no}, #{@place.city}" %></td>
-            </tr>
-            <tr>
-              <td width="40%" class="location-detail">Telefon:</td>
-              <td width="60%" class="location-info"><%= @place.phone %></td>
-            </tr>
-            <tr>
-              <td width="40%" class="location-detail">Strona www:</td>
-              <td width="60%" class="location-info"><%= @place.website %></td>
-            </tr>
-            <tr>
-              <td width="40%" class="location-detail">Godziny otwarcia:</td>
-              <td width="60%" class="location-info">
-                <%= raw @place.opening_hours %>
-              </td>
-            </tr>
-            <tr>
-              <td width="40%" class="location-detail">Info:</td>
-              <td width="60%" class="location-info"><%= @place.info %></td>
-            </tr>
-            <tr>
-              <td width="40%" class="location-detail"></td>
-              <td width="60%" class="location-info"><%= link_to "Zobacz na mapie", "" %></td>
-            </tr>
-          </table>
-        </div>
-
-        <br>
-        <br>
-        <% @place.posts.each do |po| %>
-          <%= link_to single_post_url(po) do %>
-            <%= po.id %> -- <%= display_category(po.category_id) %> -- <%= po.title %>
-          <% end %><br>
-        <% end %>
-  	</div>
-  <% end %>
-	<div class="clearspace"></div>
-
-  <div class="yellow more-from-us">CollegeCity Poleca!</div>
-  <div class="end-post-promo">
-    <!-- start pętli -->
-    <div class="mason w200">
-      <div class="w2">
-        <a href="">
-          <span class="fade-hover"></span>
-          <span class="blue-ico ico"></span>
-          <p class="display-rec">[image]</p>
-          <p class="blue m-title-fixed">title</p>
-        </a>
-      </div>
-      <p class="snippet">
-        lead
-      </p>
+    <div class="place-avatar">      
+      <%= image_tag @place.image.medium_fill.url if @place.image.present? %>
     </div>
-    <!-- end -->
-  </div>
-  </div>
+
+    <div class="place-info">
+      <div class="article-location">
+        Kategoria miejsca: <%= cat_col(@place.category_id) %><br>
+        <h4 class="yellow">Dane miejsca</h4>
+        <h2><%= link_to @place.name, single_place_url(@place) %></h2>
+        <div class="location-snippet">
+          <%= raw @place.description %>
+        </div>
+        <table width="550px" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="40%" class="location-detail">Adres:</td>
+            <td width="60%" class="location-info"><%= "#{@place.street} #{@place.street_no}, #{@place.city}" %></td>
+          </tr>
+          <tr>
+            <td width="40%" class="location-detail">Telefon:</td>
+            <td width="60%" class="location-info"><%= @place.phone %></td>
+          </tr>
+          <tr>
+            <td width="40%" class="location-detail">Email:</td>
+            <td width="60%" class="location-info"><%= @place.email %></td>
+          </tr>
+          <tr>
+            <td width="40%" class="location-detail">Strona www:</td>
+            <td width="60%" class="location-info"><%= @place.website %></td>
+          </tr>
+          <tr>
+            <td width="40%" class="location-detail">Godziny otwarcia:</td>
+            <td width="60%" class="location-info">
+              <%= raw @place.opening_hours %>
+            </td>
+          </tr>
+          <tr>
+            <td width="40%" class="location-detail">Info:</td>
+            <td width="60%" class="location-info"><%= @place.info %></td>
+          </tr>
+          <tr>
+            <td>
+              <div id='map_canvas' style='width:600px; min-height: 300px; position: absolute;'></div>
+              <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            </td>
+          </tr>
+        </table>        
+      </div>
+    </div>
+  <% end %>
+  <div class="clearspace"></div>
+
+
+  <% if @place.posts.present? %>
+    <div class="<%= cat_col(@place.category_id) %> more-from-us">Ostatnio w tym miejscu:</div>
+    <div class="end-post-promo">
+      <% @place.posts.limit(4).reverse.each do |pp| %>
+        <div class="mason w200">
+          <div class="w2">
+            <a href="<%= single_post_url(pp) %>">
+              <span class="fade-hover"></span>
+              <span class="<%= cat_col(pp.category_id) %>-ico ico"></span>
+              <p class="display-rec"><%= image_tag pp.main_photo_link("original"), :alt => 'photo' %></p>
+              <p class="<%= cat_col(pp.category_id) %> m-title-fixed"><%= pp.title %></p>
+            </a>
+          </div>
+          <p class="snippet">
+            <%= pp.lead.truncate(110) %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
   <div class="clearspace"></div>
 </div>
+
+
+<script>
+  var map;
+  var markersArray = [];
+  var coordsArray = [];
+  var infoBubbles = [];
+
+  function initialize() {
+    var pointCoords = new google.maps.LatLng(<%= @place.latitude %>, <%= @place.longitude %>);
+    var mapOptions = {
+      zoom: 15,
+      center: pointCoords,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+    addStyledMarker(<%= @place.latitude %>, <%= @place.longitude %>, "0", "<%= rq(@place.name) %>", "<%= 0 %>", "<%= cat_col_codes(@place.category_id) %>");
+    addInfoBubble("0", "<%= rq(@place.name) %>", "<%= rq(@place.city) %>", "<%= rq(@place.street) %>", "<%= rq(@place.street_no) %>" , "<%= single_place_url(@place) %>", "<%= rq(@place.zip_code) %>")
+  };
+
+  $(document).ready(function() {
+    initialize();
+  });  
+</script>

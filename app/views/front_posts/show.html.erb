@@ -72,21 +72,21 @@
   
   <div class="<%= cat_col(@post.category_id) %> more-from-us">CollegeCity Poleca!</div>
   <div class="end-post-promo">
-  <% @promoted_posts.each do |pp| %>
-    <div class="mason w200">
-      <div class="w2">
-        <a href="<%= single_post_url(pp) %>">
-          <span class="fade-hover"></span>
-          <span class="<%= cat_col(pp.category_id) %>-ico ico"></span>
-          <p class="display-rec"><%= image_tag pp.main_photo_link("original"), :alt => 'photo' %></p>
-          <p class="<%= cat_col(pp.category_id) %> m-title-fixed"><%= pp.title %></p>
-        </a>
+    <% @promoted_posts.each do |pp| %>
+      <div class="mason w200">
+        <div class="w2">
+          <a href="<%= single_post_url(pp) %>">
+            <span class="fade-hover"></span>
+            <span class="<%= cat_col(pp.category_id) %>-ico ico"></span>
+            <p class="display-rec"><%= image_tag pp.main_photo_link("original"), :alt => 'photo' %></p>
+            <p class="<%= cat_col(pp.category_id) %> m-title-fixed"><%= pp.title %></p>
+          </a>
+        </div>
+        <p class="snippet">
+          <%= pp.lead.truncate(110) %>
+        </p>
       </div>
-      <p class="snippet">
-        <%= pp.lead.truncate(110) %>
-      </p>
-    </div>
-  <% end %>
+    <% end %>
   </div>
   <div class="clearspace"></div>
 </div>

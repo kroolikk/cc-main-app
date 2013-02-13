@@ -1,4 +1,5 @@
-<h3>Artykuły <%= link_to 'Nowy artykuł', new_post_path,:class => "mini main-btn" %>
+<h3>
+  Artykuły <%= link_to 'Nowy artykuł', new_post_path,:class => "mini main-btn" %>
 </h3>
 
 <%= will_paginate @posts %>
@@ -8,7 +9,6 @@
   <tr>
     <th width='2%'>Id</th>
     <th width='5%'>Zdjęcie</th>
-    <th width='5%' >Kategoria</th>
     <th width='40%' >Tytuł</th>
     <th width='12%' >Data publikacji /<br> Start wydarzenia</th>
     <th width='12%' >Miejsce</th>
@@ -18,11 +18,8 @@
   </tr>
 <% @posts.each do |post| %>
   <tr>
-    <td><%= post.id %></td>
+    <td class="tr_<%= cat_col(post.category_id) %>"><%= post.id %></td>
     <td><%= (image_tag post.photos.first.photo.thumb.url) if post.photos.present? %></td>
-    <td>
-      <%= display_category(post.category_id) if post.category_id.present? %>
-    </td>
     <td style="vertical-align: top;"><strong><%= post.title %></strong><br>
       <%= post.lead.truncate(200) %>
     </td>

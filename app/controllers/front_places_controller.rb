@@ -20,10 +20,9 @@ class FrontPlacesController < ApplicationController
                                                 p.latitude,
                                                 p.longitude,
                                                 p.slug,
-                                                po.category_id AS category_id
-                                        FROM places p
-                                        JOIN posts po ON po.place_id = p.id
-                                        WHERE po.category_id = #{cat_id_from_param(params[:category])}
+                                                p.category_id
+                                        FROM places p                                        
+                                        WHERE p.category_id = #{cat_id_from_param(params[:category])}
                                   ;").uniq
     else
       @all_places = Place.find_by_sql(" SELECT  p.id,
@@ -35,11 +34,7 @@ class FrontPlacesController < ApplicationController
                                                 p.latitude,
                                                 p.longitude,
                                                 p.slug,
-                                                ( SELECT category_id 
-                                                  FROM posts po 
-                                                  WHERE po.place_id = p.id
-                                                  ORDER BY id DESC
-                                                  LIMIT 1 ) AS category_id
+                                                p.category_id
                                                 FROM places p
                                       ;").uniq
     end
@@ -55,6 +50,7 @@ class FrontPlacesController < ApplicationController
 
   def show
     @place = Place.find(params[:id])
+    @promoted_posts = recommended_posts(4)
   end
   
 

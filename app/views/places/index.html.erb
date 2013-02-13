@@ -1,9 +1,11 @@
-<h1>Listing places</h1>
+<h3>
+  Miejsca <%= link_to 'Nowe miejsce', new_place_path,:class => "mini main-btn" %>
+</h3>
 
 <table>
   <tr>
-    <th>Id</th>
-    <th></th>
+    <th width='2%'>Id</th>
+    <th width='5%'></th>
     <th>Nazwa</th>
     <th>Miasto</th>
     <th>Ulica</th>
@@ -17,7 +19,7 @@
 <br>
 <% @places.each do |place| %>
   <tr>
-    <td><%= place.id %></td>
+    <td class="tr_<%= cat_col(place.category_id) %>"><%= place.id %></td>
     <td>
       <% if place.image.present? %>
         <%= image_tag place.image.thumb.url %>
@@ -38,4 +40,4 @@
 <%= will_paginate @places %>
 <br>
 
-<%= link_to 'New Place', new_place_path %>
+<%= link_to 'Nowe miejsce', new_place_path,:class => "mini main-btn" %>

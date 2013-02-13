@@ -11,13 +11,14 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title, "Tytuł" %>
-    <%= f.text_field :title %>
-  </div>
+
   <div class="field">
     <%= f.label :category_id, "Kategoria" %>
     <%= f.select :category_id, options_for_select( MAIN_CATEGORIES.collect{ |c| [c[:name], c[:id]] }, @post.category_id ) %>
+  </div>
+  <div class="field">
+    <%= f.label :title, "Tytuł" %>
+    <%= f.text_field :title %>
   </div>
   <div class="field">
     <%= f.label :place_id, "Miejsce" %>
@@ -33,6 +34,16 @@
     <%= f.label :promoted, "Promowany?" %>
     <%= f.text_field :promoted, :style => "width: 50px" %>
     ( im wyższa wartość tym wyższy priorytet )
+  </div>
+  <div class="field">
+    <%= f.label :is_event, "Czy to event?" %><br />
+    <%= f.check_box :is_event, {:onclick => "$('.ev_start').toggle();"} %>
+  </div>
+  <div class="ev_start" style="<%= 'display:none;' unless @post.is_event == true %>">
+    <div class="field">
+      <%= f.label :event_start, "Start eventu:" %><br />
+      <%= f.datetime_select :event_start %>
+    </div>
   </div>
   <div class="field">
     <%= f.label :lead, "Opis" %>

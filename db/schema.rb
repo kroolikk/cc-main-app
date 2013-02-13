@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130129200108) do
+ActiveRecord::Schema.define(:version => 20130213191418) do
 
   create_table "ckeditor_assets", :force => true do |t|
     t.string   "data_file_name",                  :null => false
@@ -58,8 +58,11 @@ ActiveRecord::Schema.define(:version => 20130129200108) do
     t.text     "info"
     t.string   "slug"
     t.string   "image"
+    t.string   "email"
+    t.integer  "category_id"
   end
 
+  add_index "places", ["category_id"], :name => "index_places_on_category_id"
   add_index "places", ["slug"], :name => "index_places_on_slug", :unique => true
 
   create_table "posts", :force => true do |t|
@@ -86,8 +89,8 @@ ActiveRecord::Schema.define(:version => 20130129200108) do
   add_index "posts", ["slug"], :name => "index_posts_on_slug", :unique => true
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "",     :null => false
-    t.string   "encrypted_password",     :default => "",     :null => false
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -96,12 +99,12 @@ ActiveRecord::Schema.define(:version => 20130129200108) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "role",                   :default => "user"
+    t.string   "role"
     t.string   "slug"
     t.string   "name"
     t.string   "avatar"
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.string   "image"
   end
 

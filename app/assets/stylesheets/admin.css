@@ -575,3 +575,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3ca9d8', end
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#63b6db', endColorstr='#309dcf',GradientType=0 );
 
 }
+
+.tr_orange {
+	background: #E86800;
+}
+.tr_green {
+	background: #A2C306;
+}
+.tr_blue {
+	background: #0093BA;
+}
+.tr_pink {
+	background: #810A42;
+}
