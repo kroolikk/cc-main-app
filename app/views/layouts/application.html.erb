@@ -40,21 +40,17 @@
       $(window).scroll(function() {
           if ($(this).scrollTop()> 68)
            {
-            //$('.small-nav').fadeIn(500);
-            $('header').addClass('fix-me');
-            $('#logo').removeClass("logo-cc");
-            $('#logo').addClass("small-logo-cc");
-            //$('.behind-bg').addClass('move-me');
-            $('.snooper').fadeOut(500);
+           $('header').addClass('fix-me');
+           $('#logo').removeClass("logo-cc");
+           $('#logo').addClass("small-logo-cc");
+           $('.snooper').fadeOut(500);
            }
           else
            {
-            //$('.small-nav').fadeOut(20);
-            $('header').removeClass('fix-me');
-            $('#logo').removeClass("small-logo-cc");
-            $('#logo').addClass("logo-cc");
-            //$('.behind-bg').removeClass('move-me');
-            $('.snooper').fadeIn(200);
+           $('header').removeClass('fix-me');
+           $('#logo').removeClass("small-logo-cc");
+           $('#logo').addClass("logo-cc");
+           $('.snooper').fadeIn(200);
            }
        });
   });
