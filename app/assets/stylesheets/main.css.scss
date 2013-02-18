@@ -865,7 +865,9 @@ footer {
   font-weight: bold;
 }
 .article-content {
+  z-index: 100;
   margin-left: 405px;
+  position: relative;
       p{ margin: 8px 0px;}
 }
 .article-caption {
@@ -1046,4 +1048,24 @@ h4 {
 }
 .move-me {
   margin-top: 108px !important;
+}
+.share-the-love {
+  padding-left: 184px;
+  width: 328px;
+  margin: 35px auto;
+  height: 70px;
+  background: url(/assets/sharebg.png) no-repeat top left;
+    .add-sep {
+      background: url(/assets/sharesep.png) no-repeat left center;
+    }
+    td {
+      vertical-align: middle;
+      height: 70px;
+      padding-left: 15px;
+    }
+}
+.overlap {
+  background: #fff;
+  border-radius: 10px;
+  padding-top: 1px;
 }
