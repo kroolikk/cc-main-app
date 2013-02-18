@@ -34,7 +34,7 @@ class PostsController < AdminController
 
   def create
     @post = Post.new(params[:post])
-
+    @post.tag_list = params[:p_tags].map{|k,v| v}.join(', ') if params[:p_tags].present?
     if @post.save
       redirect_to posts_url, notice: 'Artykuł utworzony.'
     else
@@ -44,8 +44,11 @@ class PostsController < AdminController
 
 
   def update
-    @post = Post.find(params[:id])
+    Rails.logger.info '==========================================='
+    Rails.logger.info params[:p_tags].map{|k,v| v}.join(', ')
 
+    @post = Post.find(params[:id])
+    @post.tag_list = params[:p_tags].map{|k,v| v}.join(', ') if params[:p_tags].present?
     if @post.update_attributes(params[:post])
       redirect_to posts_url, notice: 'Artykuł wyedytowany.'
     else

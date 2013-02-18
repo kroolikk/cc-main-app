@@ -5,7 +5,6 @@ class Post < ActiveRecord::Base
   validates :title, :presence => true
   validates :category_id, :presence => true
 
-
   extend FriendlyId
   friendly_id :title, use: :slugged
 
@@ -13,6 +12,9 @@ class Post < ActiveRecord::Base
   accepts_nested_attributes_for :photos, :reject_if => lambda { |a| a[:title] && a[:photo].blank? }, :allow_destroy => true
 
   belongs_to :place
+
+  acts_as_taggable
+
 
   def self.active
     where("start_date <= '#{Time.now.to_s(:db)}'")

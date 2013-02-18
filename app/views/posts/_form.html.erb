@@ -4,12 +4,88 @@
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
       <ul>
-      <% @post.errors.full_messages.each do |msg| %>
+        <% @post.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
-      <% end %>
+        <% end %>
       </ul>
     </div>
   <% end %>
+
+
+
+  <div class="tag_module">
+    <br>
+    Tagi przypisane do tego artykułu:<br>
+    <div class="list_of_tags">
+      <% last = 0 %>
+      <% @post.tag_list.each_with_index do |t, index| %>
+        <input type='text' rel='<%= index %>' name='p_tags[<%= index %>]' value='<%= t %>' readonly='readonly' class='tag_field' onclick='add_or_remove("<%= index %>");'>
+        <% last = index %>
+      <% end %>
+    </div>
+    <br>
+    Tagi do wyboru:<br>
+    <div class="available_tags">
+      <% Tag.all.each_with_index do |t, index| %>
+        <% a_index = last + index + 1 %>
+        <input type='text' rel='<%= a_index %>' name='avail_p_tags[<%= a_index %>]' value='<%= t.name %>' readonly='readonly' class='available_tag' onclick='add_or_remove("<%= a_index %>");'>
+      <% end %>
+    </div>
+    <div class="field">
+      <%= label_tag :tags_to_add, "Nowe tagi:" %>
+      <%= text_area_tag :tags_to_add, '', :class => "new_tags" %><br>
+      <%= link_to "Add new tags", "#", :onclick => "addNewTags(); return false;" %>
+    </div>
+  </div>
+
+
+
+
+  <script type="text/javascript">
+    function addNewTags() {
+      var last_index = 0;
+      var tags_array = [];
+      var old_tag_fields = $('.tag_field');    
+      if (old_tag_fields.length > 0) {
+        var last_index = old_tag_fields.last().attr('rel')
+      };
+      console.log('last_ind: '+last_index);
+
+      var tags_string = $('.new_tags').val();
+      console.log(tags_string);
+
+      if (tags_string.length > 0) {
+        var tags_array = tags_string.split(", ");
+        $.each(tags_array, function(index,value){
+          curr_index = parseInt(last_index) + index +1
+          console.log(curr_index+' - '+value);
+          var tid = curr_index;
+          var new_tag_input = "<input type='text' rel='"+curr_index+"' name='p_tags["+curr_index+"]' value='"+value+"' readonly='readonly' class='tag_field' onclick='add_or_remove(&#39;"+tid+"&#39;);'>"
+          $('.list_of_tags').append(new_tag_input);
+        });
+      };
+    }
+  </script>
+
+
+  <script>
+    function add_or_remove(tid) {  
+      var this_obj = $('[rel='+tid+']');   
+      console.log( this_obj.attr('class') );
+      if ( this_obj.attr('class') == 'tag_field' ) {
+        this_obj.removeClass('tag_field').addClass('available_tag');
+        this_obj.attr('name', 'avail_p_tags['+tid+']');
+        this_obj.appendTo('.available_tags');
+      } else {
+        this_obj.removeClass('available_tag').addClass('tag_field');
+        this_obj.attr('name', 'p_tags['+tid+']');
+        this_obj.appendTo('.list_of_tags');
+      };
+    };
+  </script>
+  
+  <br><br><br><br>
+
 
 
   <div class="field">
@@ -23,8 +99,8 @@
   <div class="field">
     <%= f.label :place_id, "Miejsce" %>
     <%= f.select  :place_id, 
-                  options_for_select( Place.all.collect{|p| ["#{p.id} - #{truncate(p.name, :length => 20)}", p.id]}, @post.place_id ), 
-                  :include_blank => "------ brak ------" %>
+    options_for_select( Place.all.collect{|p| ["#{p.id} - #{truncate(p.name, :length => 20)}", p.id]}, @post.place_id ), 
+    :include_blank => "------ brak ------" %>
   </div>
   <div class="field">
     <%= f.label :size, "Wielkość" %>
@@ -61,12 +137,16 @@
     <%= f.label :start_date %>
     <%= f.datetime_select :start_date %>
   </div>
+  <div class="field" style="display:none;">
+    <%= f.label :list_of_tags, "Lista tagów" %>
+    <%= f.text_area :list_of_tags %>
+  </div>
 
   <%= f.fields_for :photos do |builder| %>
     <%= render "photo_fields", :f => builder %>
   <% end %>
   <p class = "add-picture" ><%= link_to_add_fields "Dodaj zdjęcie", f, :photos %></p>
-<br><br>
+  <br><br>
   <div class="actions">
     <%= f.submit 'Zapisz', :class => "main-btn" %>
     <%= link_to 'Anuluj', posts_path, :class => "cancel-btn" %>
