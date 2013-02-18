@@ -2,14 +2,14 @@
   <div class="first-article-image">
     <span class="article-triangle"></span>
     <%= image_tag @post.main_photo_link("original"), :alt => 'photo' %>
-    <!-- mati tu wstawiamy główne zdjęcie artykułu (czyli pierwsze) max 530px szerokości, wysokość dowolna -->
+
   </div>
 
   <div class="article-header <%= cat_col(@post.category_id) %>-f">
     <h1 class="for-articles <%= cat_col(@post.category_id) %>"><span><%= @post.title %></span></h1>
   </div>
   <div class="clear first-caption <%= cat_col(@post.category_id) %>">Caption for the main picture</div>
-  <!-- Tutaj dajemy tytuł pierwszego zdjęcia jeżeli istnieje, jak nie ma to div znika -->
+
   
   <% @photos[1..@photos.size].each do |ph| %>
     <div class="clear additional-article-images">
@@ -18,7 +18,6 @@
     <div class="clear first-caption <%= cat_col(@post.category_id) %>">Caption other pictures</div>
   <% end %>
   
-  <!-- tu dajemy pozostałe zdjęcia i ich tytuł, jeżeli istnieje --> 
   
   <div class="article-content">
     <div class="article-date">Opublikowano: <%= @post.start_date.strftime("%e %B %Y") %></div>
@@ -28,6 +27,7 @@
     <div class="article-socials"><%= @post.author %></div>
 
     <!-- tu będą sociale, ale to póżniej -->
+    <div class="overlap">
     <div class="share-the-love">
       <table>
         <tr>
@@ -58,22 +58,22 @@
         <div class="location-snippet">
           <%= raw @place.description %>
         </div>
-        <table width="550px" cellspacing="0" cellpadding="0">
+        <table width="550px" cellspacing="0" cellpadding="0" style="display: inherit;">
           <tr>
-            <td width="40%" class="location-detail">Adres:</td>
+            <td class="location-detail">Adres:</td>
             <td width="60%" class="location-info"><%= "#{@place.street} #{@place.street_no}, #{@place.city}" %></td>
           </tr>
           <tr>
-            <td width="40%" class="location-detail">Telefon:</td>
-            <td width="60%" class="location-info"><%= @place.phone %></td>
+            <td  class="location-detail">Telefon:</td>
+            <td  class="location-info"><%= @place.phone %></td>
           </tr>
           <tr>
-            <td width="40%" class="location-detail">Strona www:</td>
-            <td width="60%" class="location-info"><%= @place.website %></td>
+            <td  class="location-detail">Strona www:</td>
+            <td  class="location-info"><%= @place.website %></td>
           </tr>
           <tr>
-            <td width="40%" class="location-detail">Godziny otwarcia:</td>
-            <td width="60%" class="location-info">
+            <td  class="location-detail">Godziny otwarcia:</td>
+            <td  class="location-info">
               <%= raw @place.opening_hours %>
             </td>
           </tr>
@@ -88,6 +88,7 @@
         </table>
       </div>
     <% end %>
+    </div>
   </div>
   <div class="clearspace"></div>
   

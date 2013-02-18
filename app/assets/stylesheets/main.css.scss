@@ -865,7 +865,9 @@ footer {
   font-weight: bold;
 }
 .article-content {
+  z-index: 100;
   margin-left: 405px;
+  position: relative;
       p{ margin: 8px 0px;}
 }
 .article-caption {
@@ -1061,4 +1063,9 @@ h4 {
       height: 70px;
       padding-left: 15px;
     }
+}
+.overlap {
+  background: #fff;
+  border-radius: 10px;
+  padding-top: 1px;
 }
