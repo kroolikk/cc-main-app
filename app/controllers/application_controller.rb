@@ -12,4 +12,22 @@ class ApplicationController < ActionController::Base
 
     recom_posts
   end
+
+
+  def most_popular_tags(tags=[])
+    if tags.present?
+      where_cond = "WHERE "+tags.sql_prepared_ids
+    else
+      where_cond = ""
+    end
+    pop_tags = Tag.find_by_sql("SELECT t.name,
+                                       ( SELECT COUNT(*)
+                                         FROM taggings tg
+                                         WHERE tg.tag_id = t.id ) AS counter
+                                FROM tags t
+                                #{where_cond}
+                                ORDER BY counter DESC
+                                LIMIT 20
+                              ;")
+  end
 end
