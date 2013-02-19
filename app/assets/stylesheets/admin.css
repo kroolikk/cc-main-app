@@ -588,3 +588,44 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3ca9d8', end
 .tr_pink {
 	background: #810A42;
 }
+.tag-tip {
+  background: url('/assets/tag-tip.png') top left no-repeat;
+  width: 12px;
+  height: 23px;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -12px;
+}
+.tagger {
+  margin: 5px 12px;
+  position: relative;
+  background: #f1fcff;
+  background: -moz-linear-gradient(top,  #f1fcff 0%, #def4ff 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f1fcff), color-stop(100%,#def4ff));
+  background: -webkit-linear-gradient(top,  #f1fcff 0%,#def4ff 100%);
+  background: -o-linear-gradient(top,  #f1fcff 0%,#def4ff 100%);
+  background: -ms-linear-gradient(top,  #f1fcff 0%,#def4ff 100%);
+  background: linear-gradient(to bottom,  #f1fcff 0%,#def4ff 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1fcff', endColorstr='#def4ff',GradientType=0 );
+  padding: 3px 18px 3px 6px;
+  border: 1px solid #6cc6ef;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  color: #626262;
+  font-size: 13px;
+  height: 23px;
+  overflow: hidden;
+}
+.tag-x {
+  width: 11px;
+  height: 11px;
+  position: absolute;
+  right: 5px;
+  top: 6px;
+  display: block;
+  background: url(/assets/tag-x.png) no-repeat top left;
+}
+.tag-x:hover {
+  background-position: bottom left; 
+}

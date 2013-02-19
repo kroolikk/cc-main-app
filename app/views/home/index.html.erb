@@ -4,13 +4,14 @@
       <% @promoted_posts.each do |pp| %>
       <div>	          
           <div class="slider-content">
+          <a href="<%= single_post_url(pp) %>">
             <span class="slide-cut"></span>
             <%= image_tag pp.main_photo_link("original"), :alt => 'photo' %>
             <p class="slide-article">
               <span class="slide-caption <%= cat_col(pp.category_id) %>"><%= pp.title %></span>
               <span class="clear slide-lead"><%= pp.lead %></span>
             </p>
-           
+          </a> 
           </div>
       </div>
       <% end %>

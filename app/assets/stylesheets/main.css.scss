@@ -112,7 +112,7 @@ h1.general {
   height: 325px;
 }
 .behind-bg {
-  background: url(/assets/test.png);
+  background: url(/assets/test3.png);
   height: 225px;
   background-size: 100%;
   margin-top: 1px;
@@ -298,7 +298,7 @@ nav a {
 	display: none;
 	width: 100%;
 	height: 100%;
-	background: url(/assets/overlay.png) no-repeat center center rgba(255, 255, 255, 0.2);
+	background: url(/assets/overlay.png) no-repeat center center rgba(255, 255, 255, 0.5);
 
 }
 .w3:hover .fade-hover, .w2:hover .fade-hover, .w4:hover .fade-hover{
@@ -1081,7 +1081,7 @@ h4 {
 #slides {
   position: relative;
   float: left;
-  margin: -208px 15px 0 15px;
+  margin: -218px 15px 0 15px;
   background: #222;
 }
 .slides_container {
