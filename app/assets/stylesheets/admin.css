@@ -617,6 +617,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3ca9d8', end
   height: 23px;
   overflow: hidden;
 }
+.tagger a {
+  color: #626262;
+  text-decoration: none;
+}
 .tag-x {
   width: 11px;
   height: 11px;
