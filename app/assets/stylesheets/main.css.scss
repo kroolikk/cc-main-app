@@ -108,6 +108,9 @@ h1.general {
 	color: #555;
 	padding: 20px 20px 0px 20px;
 }
+.home-index .behind-bg, .home-index .stripes, .home-index .blurme {
+  height: 325px;
+}
 .behind-bg {
   background: url(/assets/test.png);
   height: 225px;
@@ -240,12 +243,18 @@ nav a {
   width: 990px;
   margin: 0 auto;
 }
+.home-index .glass-wrapper {
+	margin: -170px auto 0 auto;
+}
 .glass-wrapper {
 	background: rgba(255, 255, 255, 0.04);
 	width: 1028px;
 	margin: -160px auto 0 auto;
 	border: 1px solid rgba(255, 255, 255, 0.06);
 	box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+}
+.home-index .main-content {
+  padding-top: 135px;
 }
 .main-content {
   background: #fff;
@@ -1068,4 +1077,81 @@ h4 {
   background: #fff;
   border-radius: 10px;
   padding-top: 1px;
+}
+#slides {
+  position: relative;
+  float: left;
+  margin: -208px 15px 0 15px;
+  background: #222;
+}
+.slides_container {
+  width:952px;
+  height:200px;
+  position: relative;
+}
+.slides_container div {
+  width: 952px;
+  height:200px;
+  display:block;
+  overflow: hidden;
+    img {
+      max-width: 552px;
+      margin-top: -19%;
+    }
+}
+.slide-article {
+  width: 400px;
+  height: 150px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.slide-page {
+  background: #222;
+  text-align: right;
+  width: 393px;
+  position: absolute;
+  bottom: 4px;
+  right: 5px;
+    li {
+        a {
+          display: inline-block;
+          width: 10px;
+          height: 10px;
+          background: #333;
+        }
+      text-indent: 9999px;
+      list-style: none;
+      display: inline;
+      margin: 4px;
+        
+    }
+    li.current a {
+          background: $blue;
+        }
+}
+.slide-caption {
+  float: left;
+  font-size: 20px;
+  text-transform: uppercase;
+  padding: 5px 8px;
+  color: white;
+  font-weight: bold;
+  margin-left: -15px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+.slide-lead {
+  color: white;
+  display: block;
+  font-weight: bold;
+  padding: 0px 10px;
+}
+.slide-cut {
+  right: 384px;
+  position: absolute;
+  background: url(/assets/slide-tide.png) no-repeat;
+  display: block;
+  width: 50px;
+  height: 200px;
 }

@@ -1,10 +1,31 @@
 <div>
-	Tu bedzie slider promowanych:<br>
-	<% @promoted_posts.each do |pp| %>
-		promowany artykuł, id: <%= pp.id %><br>
-	<% end %>
+	<div id="slides">
+    <div class="slides_container">
+      <% @promoted_posts.each do |pp| %>
+      <div>	          
+          <div class="slider-content">
+            <span class="slide-cut"></span>
+            <%= image_tag pp.main_photo_link("original"), :alt => 'photo' %>
+            <p class="slide-article">
+              <span class="slide-caption <%= cat_col(pp.category_id) %>"><%= pp.title %></span>
+              <span class="clear slide-lead"><%= pp.lead %></span>
+            </p>
+           
+          </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
 </div>
-	
+<script>
+  $(function(){
+      $("#slides").slides({
+        effect: 'fade',
+        paginationClass: 'slide-page'
+      });
+  });
+</script>
 
 <div class="mason-holder">
 	<% @posts.each do |p| %>
