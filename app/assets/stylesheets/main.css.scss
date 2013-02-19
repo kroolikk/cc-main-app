@@ -108,6 +108,9 @@ h1.general {
 	color: #555;
 	padding: 20px 20px 0px 20px;
 }
+.home-index .behind-bg, .home-index .stripes, .home-index .blurme {
+  height: 325px;
+}
 .behind-bg {
   background: url(/assets/test.png);
   height: 225px;
@@ -241,7 +244,7 @@ nav a {
   margin: 0 auto;
 }
 .home-index .glass-wrapper {
-	margin: -80px auto 0 auto;
+	margin: -170px auto 0 auto;
 }
 .glass-wrapper {
 	background: rgba(255, 255, 255, 0.04);
