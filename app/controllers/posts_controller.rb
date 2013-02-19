@@ -24,11 +24,13 @@ class PostsController < AdminController
 
   def new
     @post = Post.new
+    @available_tags = most_popular_tags(@post.tags)
   end
 
 
   def edit
     @post = Post.find(params[:id])
+    @available_tags = most_popular_tags(@post.tags)
   end
 
 
@@ -44,11 +46,8 @@ class PostsController < AdminController
 
 
   def update
-    Rails.logger.info '==========================================='
-    Rails.logger.info params[:p_tags].map{|k,v| v}.join(', ')
-
     @post = Post.find(params[:id])
-    @post.tag_list = params[:p_tags].map{|k,v| v}.join(', ') if params[:p_tags].present?
+    @post.tag_list = params[:p_tags].map{|k,v| v}.join(', ') if params[:p_tags].present?    
     if @post.update_attributes(params[:post])
       redirect_to posts_url, notice: 'Artykuł wyedytowany.'
     else

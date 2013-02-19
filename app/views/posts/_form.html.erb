@@ -26,7 +26,7 @@
     <br>
     Tagi do wyboru:<br>
     <div class="available_tags">
-      <% Tag.all.each_with_index do |t, index| %>
+      <% @available_tags.each_with_index do |t, index| %>
         <% a_index = last + index + 1 %>
         <input type='text' rel='<%= a_index %>' name='avail_p_tags[<%= a_index %>]' value='<%= t.name %>' readonly='readonly' class='available_tag' onclick='add_or_remove("<%= a_index %>");'>
       <% end %>
