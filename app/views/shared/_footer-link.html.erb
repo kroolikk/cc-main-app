@@ -1,12 +1,12 @@
 <footer>
   <ul class="foot part1">
     <p class="foot-title">Sitemap</p>
-      <li class="orange-foot"><%= link_to "Rozrywka", "" %></li>
-      <li class="green-foot"><%= link_to "Kultura", "" %></li>
-      <li class="blue-foot"><%= link_to "Studia", "" %></li>
-      <li class="pink-foot"><%= link_to "Lifestyle", "" %></li>
-      <li class="yellow-foot"><%= link_to "Miejsca", "" %></li>
-      <li class="white-foot"><%= link_to "Kalendarz", "" %></li>
+      <li class="orange-foot"><%= link_to "Rozrywka", category_url('rozrywka') %></li>
+      <li class="green-foot"><%= link_to "Kultura", category_url('kultura') %></li>
+      <li class="blue-foot"><%= link_to "Studia", category_url('studia') %></li>
+      <li class="pink-foot"><%= link_to "Lifestyle", category_url('lifestyle') %></li>
+      <li class="yellow-foot"><%= link_to "Miejsca", front_places_url %></li>
+      <li class="white-foot"><%= link_to "Kalendarz", calendar_path %></li>
   </ul>
   <ul class="foot part2">
     <p class="foot-title">Top tagi</p>

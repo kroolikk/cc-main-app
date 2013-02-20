@@ -230,6 +230,63 @@ nav a {
 .green-ico {background: url(/assets/cat-sprites.png) 0px 0px no-repeat;}
 .blue-ico {background: url(/assets/cat-sprites.png) -75px 0px no-repeat;}
 .pink-ico {background: url(/assets/cat-sprites.png) -50px 0px no-repeat;}
+.top-notificator {
+  position: absolute;
+  width: 100%;
+  z-index: 3;
+		-webkit-background-size: 40px 40px;
+		-moz-background-size: 40px 40px;
+		background-size: 40px 40px;			
+		background-image: -webkit-gradient(linear, left top, right bottom,
+								color-stop(.25, rgba(255, 255, 255, .05)), color-stop(.25, transparent),
+								color-stop(.5, transparent), color-stop(.5, rgba(255, 255, 255, .05)),
+								color-stop(.75, rgba(255, 255, 255, .05)), color-stop(.75, transparent),
+								to(transparent));
+		background-image: -webkit-linear-gradient(135deg, rgba(255, 255, 255, .05) 25%, transparent 25%,
+							transparent 50%, rgba(255, 255, 255, .05) 50%, rgba(255, 255, 255, .05) 75%,
+							transparent 75%, transparent);
+		background-image: -moz-linear-gradient(135deg, rgba(255, 255, 255, .05) 25%, transparent 25%,
+							transparent 50%, rgba(255, 255, 255, .05) 50%, rgba(255, 255, 255, .05) 75%,
+							transparent 75%, transparent);
+		background-image: -ms-linear-gradient(135deg, rgba(255, 255, 255, .05) 25%, transparent 25%,
+							transparent 50%, rgba(255, 255, 255, .05) 50%, rgba(255, 255, 255, .05) 75%,
+							transparent 75%, transparent);
+		background-image: -o-linear-gradient(135deg, rgba(255, 255, 255, .05) 25%, transparent 25%,
+							transparent 50%, rgba(255, 255, 255, .05) 50%, rgba(255, 255, 255, .05) 75%,
+							transparent 75%, transparent);
+		background-image: linear-gradient(135deg, rgba(255, 255, 255, .05) 25%, transparent 25%,
+							transparent 50%, rgba(255, 255, 255, .05) 50%, rgba(255, 255, 255, .05) 75%,
+							transparent 75%, transparent);
+		 width: 100%;
+		 left: 0px;
+		 top: 0px;
+		 color: #fff;
+		 position: fixed;
+		 _position: absolute;
+		 text-shadow: 0 1px 0 rgba(0,0,0,.5);
+		 -webkit-animation: animate-bg 5s linear infinite;
+		 -moz-animation: animate-bg 5s linear infinite;
+}
+@-webkit-keyframes animate-bg
+{
+    from {
+        background-position: 0 0;
+    }
+    to {
+       background-position: -80px 0;
+    }
+}
+
+
+@-moz-keyframes animate-bg 
+{
+    from {
+        background-position: 0 0;
+    }
+    to {
+       background-position: -80px 0;
+    }
+}
 
 .ico {	
 	width: 23px;
@@ -238,6 +295,13 @@ nav a {
 	position: absolute;
 	right: -4px;
 	top: -4px;
+}
+.front_places-show .location-snippet{
+  margin-top: 10px;
+}
+.front_places-show .ico {
+  right: 0px;
+  top: 0px;
 }
 .outer-wrapper {
   width: 990px;
@@ -523,9 +587,10 @@ a.ch-orange {
 		}
 }
 .place-avatar  {
-	position: relative;
-	float: left;
-	width: 240px;
+  margin-right: 30px;
+  position: relative;
+  float: left;
+  width: 210px;
 	img{
 		border-radius: 3px;
 		padding: 5px;
@@ -1154,4 +1219,49 @@ h4 {
   display: block;
   width: 50px;
   height: 200px;
+}
+.tag-tip {
+  background: url('/assets/tag-tip.png') top left no-repeat;
+  width: 12px;
+  height: 23px;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -12px;
+}
+.tagger {
+  margin: 5px 12px;
+  position: relative;
+  background: #f1fcff;
+  background: -moz-linear-gradient(top,  #f1fcff 0%, #def4ff 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f1fcff), color-stop(100%,#def4ff));
+  background: -webkit-linear-gradient(top,  #f1fcff 0%,#def4ff 100%);
+  background: -o-linear-gradient(top,  #f1fcff 0%,#def4ff 100%);
+  background: -ms-linear-gradient(top,  #f1fcff 0%,#def4ff 100%);
+  background: linear-gradient(to bottom,  #f1fcff 0%,#def4ff 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1fcff', endColorstr='#def4ff',GradientType=0 );
+  padding: 3px 18px 3px 6px;
+  border: 1px solid #6cc6ef;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  color: #626262;
+  font-size: 13px;
+  height: 23px;
+  overflow: hidden;
+}
+.tagger a {
+  color: #626262;
+  text-decoration: none;
+}
+.tag-x {
+  width: 11px;
+  height: 11px;
+  position: absolute;
+  right: 5px;
+  top: 6px;
+  display: block;
+  background: url(/assets/tag-x.png) no-repeat top left;
+}
+.tag-x:hover {
+  background-position: bottom left; 
 }

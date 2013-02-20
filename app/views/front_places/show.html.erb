@@ -1,12 +1,12 @@
 <div class="user-profile">
   <% if @place.present? %>
-    <div class="place-avatar">      
+    <div class="place-avatar">
+      <span class="<%= cat_col(@place.category_id) %>-ico ico"></span>
       <%= image_tag @place.image.medium_fill.url if @place.image.present? %>
     </div>
 
     <div class="place-info">
       <div class="article-location">
-        Kategoria miejsca: <%= cat_col(@place.category_id) %><br>
         <h4 class="yellow">Dane miejsca</h4>
         <h2><%= link_to @place.name, single_place_url(@place) %></h2>
         <div class="location-snippet">
@@ -39,13 +39,8 @@
             <td width="40%" class="location-detail">Info:</td>
             <td width="60%" class="location-info"><%= @place.info %></td>
           </tr>
-          <tr>
-            <td>
-              <div id='map_canvas' style='width:600px; min-height: 300px; position: absolute;'></div>
-              <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-            </td>
-          </tr>
-        </table>        
+         </table>
+        <div id='map_canvas' style='width:544px; min-height: 300px;margin-top: 25px; border: 1px solid #ccc; padding: 3px;'></div>         
       </div>
     </div>
   <% end %>
