@@ -1,25 +1,119 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h1 class="general">Edytuj Profil</h1>
+<div class="box900th">
+	<div class="profile-box adjecent">
+    <h5>Dostosuj CollegeCity do twoich wymagań</h5>
+		<p class="why-join">Zaznacz to co Cię najbardziej interesuje lub wpisz tagi a my przefiltrujemy stronę tak aby zawsze pokazywała Tobie najświeższe informacje z tego co cię interesuje - czy coś w ten deseń ja tekstów nie będę pisać bo ja nie żem stąd.</p>
+    
+    <label>Dopisz tagi:</label><br>
+    <input type="text" class="user-tags" />
+    
+    <div class="added-user-tags">
+    <% 3.times do %>
+      <span class="tagger">
+        <span class="tag-tip"></span>
+          tag
+        <a href="" class="tag-x"></a>
+      </span>
+      
+      <span class="tagger">
+        <span class="tag-tip"></span>
+          tag numer2
+        <a href="" class="tag-x"></a>
+      </span>
+      
+      <span class="tagger">
+        <span class="tag-tip"></span>
+          Awesomeness
+        <a href="" class="tag-x"></a>
+      </span>
+      
+      <span class="tagger">
+        <span class="tag-tip"></span>
+          College
+        <a href="" class="tag-x"></a>
+      </span>
+      
+      <span class="tagger">
+        <span class="tag-tip"></span>
+          BlackJack & Hookers
+        <a href="" class="tag-x"></a>
+      </span>
+      
+      <span class="tagger">
+        <span class="tag-tip"></span>
+          Family Guy
+        <a href="" class="tag-x"></a>
+      </span>
+    <% end %>
+    </div>
+		<br>
+  <h5>Ogóle działy serwisu</h5>  
+  <table width="100%" border="1" cellspacing="0" cellpadding="0" class="tag-selector">
+    <tr>
+      <td width="25%"><a href="">a</a></td>
+      <td width="25%"><a href="">s</a></td>
+      <td width="25%"><a href="">d</a></td>
+      <td width="25%"><a href="">f</a></td>
+    </tr>
+    <tr>
+      <td><a href="">q</a></td>
+      <td><a href="">w</a></td>
+      <td><a href="">e</a></td>
+      <td><a href="">r</a></td>
+    </tr>
+    <tr>
+      <td><a href="">t</a></td>
+      <td><a href="">y</a></td>
+      <td><a href="">u</a></td>
+      <td><a href="">i</a></td>
+    </tr>
+    <tr>
+      <td><a href="">g</a></td>
+      <td><a href="">h</a></td>
+      <td><a href="">j</a></td>
+      <td><a href="">k</a></td>
+    </tr>
+  </table>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
+	</div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+	<div class="sign-box adjecent">
+		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+    <%= devise_error_messages! %>
+    <div class="user-avatar">
+      <a href="#" class="edit-avatar" style="display: none; ">Edytuj zdjęcie</a>
+      <img src="http://25.media.tumblr.com/tumblr_m8fufgWFxN1rp2ebfo1_400.jpg">
+    </div>
+    <br>
+    <div><label>Avatar</label><br />
+    <input type="file"/></div>
+    <br>
+    <div><label>Username</label><br />
+    <input type="text"/></div>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password, :autocomplete => "off" %></div>
+    <div><%= f.label :name, "Imię" %><br />
+    <%= f.text_field :name %></div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+    <div><label>Nazwisko</label><br />
+    <input type="text"/></div>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
+    <div><%= f.label :email, "Email" %><br />
+    <%= f.email_field :email %></div>
 
-  <div><%= f.submit "Update" %></div>
+    <div><%= f.label :password, "Nowe hasło" %><br />
+    <%= f.password_field :password, :autocomplete => "off" %></div>
+
+    <div><%= f.label :password_confirmation, "Potwórz hasło" %><br />
+    <%= f.password_field :password_confirmation %></div>
+
+    <div><%= f.label :current_password, "Aktualne hasło" %><br />
+    <%= f.password_field :current_password %></div>
+
+    <div><%= f.submit "Zaktualizuj" %></div>
 <% end %>
+	</div>
 
-<h3>Cancel my account</h3>
+	<div class="clear"></div>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
+</div>
 
-<%= link_to "Back", :back %>

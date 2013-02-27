@@ -98,7 +98,7 @@ a {
 body {
 	font-size: 13px;
 	color: #474646;
-	background: #222 url(/assets/bg.png);
+	background: #222 url(/assets/bg3.png);
  /* background: #021E2D;*/
   font-family: 'PT Sans Caption', Helvetica, Tahoma, Arial, sans-serif;
 }
@@ -318,7 +318,7 @@ nav a {
 	box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
 }
 .home-index .main-content {
-  padding-top: 135px;
+  padding-top: 110px;
 }
 .main-content {
   background: #fff;
@@ -708,8 +708,29 @@ a.ch-orange {
 	width: 700px;
 	margin: 0 auto;
 }
+.box900th {
+	width: 960px;
+	margin: 0 auto;
+}
 .adjecent {
 	float: left;
+}
+.profile-box {
+	border-radius: 10px;
+	padding: 25px;
+	width: 500px;
+	margin: 10px 40px 40px 0px;
+	@include act-fadein;
+		&:hover {
+			box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.2);
+		}
+    
+    h5 {
+      margin-bottom: 7px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
 }
 .sign-box {
 	border-radius: 10px;
@@ -720,6 +741,14 @@ a.ch-orange {
 		&:hover {
 			box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.2);
 		}
+    .user-avatar img {
+      border-radius: 3px;
+      padding: 5px;
+      width: 235px;
+      height: 235px;
+      background: #F1F1F1;
+      margin-bottom: 15px;
+    }
 }
 
 .face-box {
@@ -748,7 +777,7 @@ a.ch-orange {
 .sign-box input[type="submit"]:hover {
 	@include d-blue-btn-grad;
 }
-.sign-box input[type="text"], .sign-box input[type="password"], .sign-box input[type="email"] {
+.sign-box input[type="text"], .sign-box input[type="password"], .sign-box input[type="email"], .profile-box input[type="text"] {
 	width: 230px;
 	height: 28px;
 	border: 1px solid #ccc;
@@ -757,8 +786,9 @@ a.ch-orange {
 	border-radius: 5px;
 	line-height: 28px;
 	margin-bottom: 15px;
+  margin-top: 5px;
 }
-.sign-box input[type="text"]:focus, .sign-box input[type="password"]:focus, .sign-box input[type="email"]:focus {
+.sign-box input[type="text"]:focus, .sign-box input[type="password"]:focus, .sign-box input[type="email"]:focus, .profile-box input[type="text"]:focus {
 	border: 1px solid #3ca9d8;
 }
 .why-join {
@@ -1144,9 +1174,10 @@ h4 {
   padding-top: 1px;
 }
 #slides {
+  box-shadow: 0px -10px 24px rgba(0, 0, 0, 0.2);
   position: relative;
   float: left;
-  margin: -218px 15px 0 15px;
+  margin: -215px 15px 0 18px;
   background: #222;
 }
 .slides_container {
@@ -1172,9 +1203,9 @@ h4 {
   top: 0;
 }
 .slide-page {
+  float: right;
   background: #222;
   text-align: right;
-  width: 393px;
   position: absolute;
   bottom: 4px;
   right: 5px;
@@ -1182,13 +1213,15 @@ h4 {
         a {
           display: inline-block;
           width: 10px;
-          height: 10px;
+          height: 0;
+          padding-top: 10px;
           background: #333;
         }
-      text-indent: 9999px;
       list-style: none;
-      display: inline;
+      display: block;
       margin: 4px;
+      overflow: hidden;
+      float: left;
         
     }
     li.current a {
@@ -1230,7 +1263,7 @@ h4 {
   left: -12px;
 }
 .tagger {
-  margin: 5px 12px;
+  margin: 5px 6px;
   position: relative;
   background: #f1fcff;
   background: -moz-linear-gradient(top,  #f1fcff 0%, #def4ff 100%);
@@ -1240,18 +1273,29 @@ h4 {
   background: -ms-linear-gradient(top,  #f1fcff 0%,#def4ff 100%);
   background: linear-gradient(to bottom,  #f1fcff 0%,#def4ff 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1fcff', endColorstr='#def4ff',GradientType=0 );
-  padding: 3px 18px 3px 6px;
+  padding: 3px 20px 2px 6px;
   border: 1px solid #6cc6ef;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
   color: #626262;
   font-size: 13px;
-  height: 23px;
-  overflow: hidden;
+  display: inline-block;
 }
 .tagger a {
   color: #626262;
   text-decoration: none;
+}
+.tag-plus {
+  width: 11px;
+  height: 11px;
+  position: absolute;
+  right: 5px;
+  top: 6px;
+  display: block;
+  background: url(/assets/tag-plus.png) no-repeat top left;
+}
+.tag-plus:hover {
+  background-position: bottom left; 
 }
 .tag-x {
   width: 11px;
@@ -1264,4 +1308,24 @@ h4 {
 }
 .tag-x:hover {
   background-position: bottom left; 
+}
+.added-user-tags {
+  margin: 15px 0px;
+}
+.tag-selector {
+    td a{
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle;
+      width: 125px;
+      height: 125px;
+      border-radius: 3px;
+      @include q-fadein;
+        &:hover {
+          background: #DFF5FF;
+        }
+        &:active {
+          background: #e5f497;
+        }
+    }
 }
