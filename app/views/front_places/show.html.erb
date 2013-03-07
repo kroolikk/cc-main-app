@@ -81,13 +81,13 @@
   function initialize() {
     var pointCoords = new google.maps.LatLng(<%= @place.latitude %>, <%= @place.longitude %>);
     var mapOptions = {
-      zoom: 15,
+      scrollwheel: false,
+      zoom: 16,
       center: pointCoords,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-    addStyledMarker(<%= @place.latitude %>, <%= @place.longitude %>, "0", "<%= rq(@place.name) %>", "<%= 0 %>", "<%= cat_col_codes(@place.category_id) %>");
-    addInfoBubble("0", "<%= rq(@place.name) %>", "<%= rq(@place.city) %>", "<%= rq(@place.street) %>", "<%= rq(@place.street_no) %>" , "<%= single_place_url(@place) %>", "<%= rq(@place.zip_code) %>")
+    addStyledMarker(<%= @place.latitude %>, <%= @place.longitude %>, "", "<%= rq(@place.name) %>", "", "<%= cat_col_codes(@place.category_id) %>");
   };
 
   $(document).ready(function() {

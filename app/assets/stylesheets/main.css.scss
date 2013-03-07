@@ -137,7 +137,7 @@ h1.general {
 	background-position: center center;
 }
 header {
-  background: #222 url(/assets/bg.png);
+  background: #222 url(/assets/bg3.png);
   height: 108px;
   border-bottom: 1px solid #303030;
   box-shadow: 0px 1px 0px #232323;
@@ -1192,7 +1192,7 @@ h4 {
   overflow: hidden;
     img {
       max-width: 552px;
-      margin-top: -19%;
+      margin-top: -10%;
     }
 }
 .slide-article {
@@ -1328,4 +1328,7 @@ h4 {
           background: #e5f497;
         }
     }
+}
+.end-post-promo {
+	padding-left: 20px;
 }

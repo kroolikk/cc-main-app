@@ -123,7 +123,7 @@
     <% if params[:controller] == 'front_posts' && params[:action] == 'show' %>
         <style>
             .behind-bg {
-                background-image: url(<%= image_path @post.main_photo_link("original") %>);
+                background-image: url(<%= image_path @post.main_photo_link("main") %>);
                 background-position: center center;
             }
         </style>

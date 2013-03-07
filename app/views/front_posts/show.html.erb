@@ -1,7 +1,7 @@
 <div class="main-article-holder">
   <div class="first-article-image">
     <span class="article-triangle"></span>
-    <%= image_tag @post.main_photo_link("original"), :alt => 'photo' %>
+    <%= image_tag @post.main_photo_link("main"), :alt => 'photo' %>
 
   </div>
 
@@ -13,7 +13,7 @@
   
   <% @photos[1..@photos.size].each do |ph| %>
     <div class="clear additional-article-images">
-      <%= image_tag ph.photo.url %><br>
+      <%= image_tag ph.photo.url('list') %><br>
     </div>
     <div class="clear first-caption <%= cat_col(@post.category_id) %>">Caption other pictures</div>
   <% end %>
@@ -60,7 +60,7 @@
         </div>
         <table width="550px" cellspacing="0" cellpadding="0" style="display: inherit;">
           <tr>
-            <td class="location-detail">Adres:</td>
+            <td width="40%"class="location-detail">Adres:</td>
             <td width="60%" class="location-info"><%= "#{@place.street} #{@place.street_no}, #{@place.city}" %></td>
           </tr>
           <tr>
@@ -83,7 +83,7 @@
           </tr>
           <tr>
             <td width="40%" class="location-detail"></td>
-            <td width="60%" class="location-info"><%= link_to "Zobacz na mapie", "" %></td>
+            <td width="60%" class="location-info"><%= link_to "Zobacz na mapie", single_place_url(@place) %></td>
           </tr>
         </table>
       </div>
