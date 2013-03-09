@@ -13,7 +13,7 @@ class PostsController < AdminController
                           place_id, 
                           promoted, 
                           size, 
-                          created_at").paginate(:page => params[:page], :per_page => 100)
+                          created_at").paginate(:page => params[:page], :per_page => 100) 
   end
 
 

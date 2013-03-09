@@ -11,7 +11,14 @@
     </div>
   <% end %>
 
-
+  <div class="field">
+    <%= f.label :category_id, "Kategoria" %>
+    <%= f.select :category_id, options_for_select( MAIN_CATEGORIES.collect{ |c| [c[:name], c[:id]] }, @post.category_id ) %>
+  </div>
+  <div class="field">
+    <%= f.label :title, "Tytuł" %>
+    <%= f.text_field :title %>
+  </div>
 
   <div class="tag_module">
     <br>
@@ -84,18 +91,6 @@
     };
   </script>
   
-  <br><br><br><br>
-
-
-
-  <div class="field">
-    <%= f.label :category_id, "Kategoria" %>
-    <%= f.select :category_id, options_for_select( MAIN_CATEGORIES.collect{ |c| [c[:name], c[:id]] }, @post.category_id ) %>
-  </div>
-  <div class="field">
-    <%= f.label :title, "Tytuł" %>
-    <%= f.text_field :title %>
-  </div>
   <div class="field">
     <%= f.label :place_id, "Miejsce" %>
     <%= f.select  :place_id, 

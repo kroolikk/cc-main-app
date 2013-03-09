@@ -8,14 +8,17 @@
   <div class="article-header <%= cat_col(@post.category_id) %>-f">
     <h1 class="for-articles <%= cat_col(@post.category_id) %>"><span><%= @post.title %></span></h1>
   </div>
-  <div class="clear first-caption <%= cat_col(@post.category_id) %>">Caption for the main picture</div>
-
+  <% if @post.main_photo.title.present? %>
+    <div class="clear first-caption <%= cat_col(@post.category_id) %>"><%= @post.main_photo.title %></div>
+  <% end %>
   
   <% @photos[1..@photos.size].each do |ph| %>
     <div class="clear additional-article-images">
       <%= image_tag ph.photo.url('list') %><br>
     </div>
-    <div class="clear first-caption <%= cat_col(@post.category_id) %>">Caption other pictures</div>
+    <% if ph.title.present? %>
+      <div class="clear first-caption <%= cat_col(@post.category_id) %>"><%= ph.title %></div>
+    <% end %>
   <% end %>
   
   
