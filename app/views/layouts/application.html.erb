@@ -44,14 +44,12 @@
            $('header').addClass('fix-me');
            $('#logo').removeClass("logo-cc");
            $('#logo').addClass("small-logo-cc");
-           $('.snooper').fadeOut(500);
            }
           else
            {
            $('header').removeClass('fix-me');
            $('#logo').removeClass("small-logo-cc");
            $('#logo').addClass("logo-cc");
-           $('.snooper').fadeIn(200);
            }
        });
   });
@@ -88,6 +86,23 @@
   </script>
   <div style="height: 109px;">
   <header>
+    <div class="snooper">
+      <div class="snoop-left"></div>
+      <div class="snoop-mid">
+          <% if user_signed_in? %>
+            <%= current_user.email %> |
+            <%= link_to "Profil", edit_user_registration_path %> |
+            <%= link_to "Wyloguj", destroy_user_session_path, :method => :delete %>
+          <% else %>
+            <%= link_to 'Zaloguj się', new_user_session_url %> |
+            <%= link_to 'Zarejestruj się', new_user_registration_url %>
+          <% end %>
+            <input type="text" class="main-search-area" />
+            <input type="submit" value="" class="search-btn" />
+
+      </div>
+      <div class="snoop-right"></div>
+    </div>
     <div class="navigation-area">
       <%= link_to "", root_url, :id => "logo", :class => "logo-cc" %>    
   		<nav>
@@ -100,22 +115,7 @@
   		</nav>
     </div>
     <div class="clear"></div>
-    <div class="snooper">
-      <div class="snoop-left"></div>
-      <div class="snoop-mid">
-          <% if user_signed_in? %>
-        <%= current_user.email %> | 
-           <%= link_to "Wyloguj", destroy_user_session_path, :method => :delete %>
-          <% else %>
-            <%= link_to 'Zaloguj się', new_user_session_url %> |
-            <%= link_to 'Zarejestruj się', new_user_registration_url %>
-          <% end %>
-            <input type="text" class="main-search-area" />
-            <input type="submit" value="" class="search-btn" />
 
-      </div>
-      <div class="snoop-right"></div>
-    </div>
   </header>
   </div>
   <div class="behind-bg">

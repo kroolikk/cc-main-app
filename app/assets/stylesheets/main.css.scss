@@ -161,9 +161,9 @@ header {
 }
 .small-logo-cc {
 	float: left;
-	margin-top: 70px;
+	margin-top: 72px;
 	display: block;
-	width: 164px;
+	width: 180px;
 	height: 34px;
 	background: url(/assets/small-logo.png) no-repeat;
 }
@@ -173,7 +173,7 @@ header {
 }
 nav {
   font-size: 12px;
-  margin-top: 32px;
+  margin-top: -3px;
   color: #fff;
   float: right;
 }
@@ -189,7 +189,7 @@ nav a {
   background: url(/assets/seperator.png) no-repeat;
   width: 1px;
   height: 77px;
-  display: block;
+  display: none;
 }
 .orange{ background: $orange;}
 .green{ background: $green;}
@@ -695,6 +695,7 @@ a.ch-orange {
 			float: right;
 		}
 		.snoop-mid {
+			position: relative;
 			color: #999;
 			font-size: 11px;
 			background: url(/assets/snoop-med.png) repeat-x;
@@ -702,6 +703,7 @@ a.ch-orange {
 			float: right;
 			padding: 0 5px;
 			line-height: 36px;
+			text-align: right;
 		}
 }
 .box700th {
@@ -1115,7 +1117,7 @@ h4 {
     }
 }
 .main-search-area {
-  margin-right: -10px;
+  margin-right: 15px;
   margin-left: 30px;
   margin-top: 6px;
   width: 214px;
@@ -1132,6 +1134,9 @@ h4 {
     }
 }
 .search-btn {
+	position: absolute;
+	top: 9px;
+	right: 0px;
   width: 26px;
   height: 20px;
   display: inline-block;

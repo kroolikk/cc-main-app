@@ -8,6 +8,9 @@ CcDev1::Application.routes.draw do
   match "/user_prof" => "home#user_prof", :as => :user_prof
   match "admin/example_form" => "mtest#example_form", :as => :example_form
 
+  match "/o_nas" => "home#about", :as => :about
+  match "/regulamin" => "home#terms", :as => :terms
+
 
 
 
