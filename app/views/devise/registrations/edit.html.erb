@@ -1,5 +1,7 @@
 <h1 class="general">Edytuj Profil</h1>
 <div class="box900th">
+      <%= devise_error_messages! %>
+
 	<div class="profile-box adjecent">
     <h5>Dostosuj CollegeCity do twoich wymagań</h5>
 		<p class="why-join">Zaznacz to co Cię najbardziej interesuje lub wpisz tagi a my przefiltrujemy stronę tak aby zawsze pokazywała Tobie najświeższe informacje z tego co cię interesuje - czy coś w ten deseń ja tekstów nie będę pisać bo ja nie żem stąd.</p>
@@ -50,7 +52,7 @@
   <h5>Ogóle działy serwisu</h5>  
   <table width="100%" border="1" cellspacing="0" cellpadding="0" class="tag-selector">
     <tr>
-      <td width="25%"><a href="">a</a></td>
+      <td width="25%"><a href=""><%= image_tag('pacman.png') %></a></td>
       <td width="25%"><a href="">s</a></td>
       <td width="25%"><a href="">d</a></td>
       <td width="25%"><a href="">f</a></td>
@@ -79,7 +81,6 @@
 
 	<div class="sign-box adjecent">
 		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-    <%= devise_error_messages! %>
     <div class="user-avatar">
       <a href="#" class="edit-avatar" style="display: none; ">Edytuj zdjęcie</a>
       <img src="http://25.media.tumblr.com/tumblr_m8fufgWFxN1rp2ebfo1_400.jpg">

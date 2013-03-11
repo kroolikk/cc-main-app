@@ -355,7 +355,7 @@ nav a {
 	color: #fff;
 	padding: 2px 5px;
 	position: absolute;
-	bottom: 4px;
+	bottom: 3px;
 }
 .fade-hover {
 	position: absolute;
@@ -481,6 +481,9 @@ nav a {
 	background-color: #E1FBBC;
 	border: 1px solid #60A607;
 }
+.main-cal-table {
+	margin-bottom: 45px;
+}
 .cal-header {
 	margin: 0 20px;
 	border-bottom: 3px solid #286868;
@@ -496,7 +499,8 @@ nav a {
 	color: #286868;
 }
 .cal-head-date {
-	font-size: 20px;
+	font-size: 27px;
+	font-weight: bold;
 	padding: 5px 19px;
 }
 .calendar-holder table {
@@ -505,19 +509,27 @@ nav a {
 }
 .calendar-holder table td {
 	border-bottom: 1px solid #ddd;
-	padding: 10px 0px;
+	padding: 13px 5px;
 }
 .ch-more {
 	width: 100px;
 	text-align: right;
 	vertical-align: middle;
+	font-weight: bold;
+	font-size: 12px;
 }
 .ch-time {
 	width: 62px;
+	color: #868686;
+	font-size: 18px;
+	font-weight: bold;
 	vertical-align: middle;
 }
 .ch-title {}
 .ch-street {
+	color: #215f62;
+	font-size: 12px;
+	font-weight: bold;
 	vertical-align: middle;
 	width: 260px;
 }
@@ -525,7 +537,59 @@ nav a {
 	font-weight: bold;
 	padding-left: 12px;
 	text-transform: uppercase;
-	font-size: 16px;
+	font-size: 18px;
+}
+.row-green {
+	@include act-fadein;
+	&:hover{
+		@include q-fadein;
+		background-color: #f7ffd3;
+	}
+}
+.row-orange {
+	@include act-fadein;
+	&:hover{
+		@include q-fadein;
+		background-color: #FDF0E6;
+	}
+}
+.row-blue {
+	@include act-fadein;
+	&:hover{
+		@include q-fadein;
+		background-color: #E6F4F8;
+	}
+}
+.row-pink {
+	@include act-fadein;
+	&:hover{
+		@include q-fadein;
+		background-color: #F3E7EC;
+	}
+}
+a.chlink-green {
+	color: $green;
+		&:hover {
+			text-decoration: underline;
+		}
+}
+a.chlink-orange {
+	color: $orange;
+		&:hover {
+			text-decoration: underline;
+		}
+}
+a.chlink-blue {
+	color: $blue;
+		&:hover {
+			text-decoration: underline;
+		}
+}
+a.chlink-pink {
+	color: $pink;
+		&:hover {
+			text-decoration: underline;
+		}
 }
 a.ch-green {
 	display: block;
@@ -713,6 +777,22 @@ a.ch-orange {
 .box900th {
 	width: 960px;
 	margin: 0 auto;
+		#error_explanation {
+			width: 80%;
+			border-radius: 3px;
+			border: 1px solid salmon;
+			padding: 10px;
+			margin: 10px auto;
+			background: #ffd5e4;
+				li {
+					list-style: none;
+					margin-left: 15px;
+				}
+				h2 {
+					font-weight: bold;
+					margin-bottom: 5px;
+				}
+		}
 }
 .adjecent {
 	float: left;
@@ -917,7 +997,7 @@ footer {
       height: 140px;
       display: block;
       position: absolute;
-      right: 0;
+      right: -2px;
       bottom: 4px;
       z-index: 4;
     }
@@ -926,7 +1006,7 @@ footer {
   float: left;
   margin-right: 15px;
   margin-top: 15px;
-    img {max-width: 390px;}
+    img {max-width: 392px;}
 }
 .for-articles {
   color: white;
@@ -955,7 +1035,7 @@ footer {
   z-index: 2;
   position: relative;
   margin-top: -29px;
-  width: 382px;
+  width: 384px;
   float: left;
   font-size: 14px;
   text-transform: uppercase;
@@ -1197,7 +1277,6 @@ h4 {
   overflow: hidden;
     img {
       max-width: 552px;
-      margin-top: -10%;
     }
 }
 .slide-article {
@@ -1318,6 +1397,9 @@ h4 {
   margin: 15px 0px;
 }
 .tag-selector {
+		td {
+			vertical-align: top;
+		}
     td a{
       display: table-cell;
       text-align: center;
