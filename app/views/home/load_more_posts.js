@@ -1,0 +1,1 @@
+$('.post_box').append("<%= escape_javascript( render( :partial => 'shared/post_box') ) %>");

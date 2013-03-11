@@ -17,8 +17,9 @@
       <% end %>
     </div>
   </div>
-
 </div>
+
+
 <script>
   $(function(){
       $("#slides").slides({
@@ -28,21 +29,34 @@
   });
 </script>
 
-<div class="mason-holder">
-	<% @posts.each do |p| %>
-		<% b_size = box_size(p) %>
-		<div class="mason w<%= b_size %>00">
-			<div class="w<%= b_size %>">
-				<a href="<%= single_post_url(p) %>">
-				<span class="fade-hover"></span>
-				<span class="<%= cat_col(p.category_id) %>-ico ico"></span>
-					<%= image_tag p.main_photo_link("list") %>
-					<p class="<%= cat_col(p.category_id) %> m-title"><%= p.title %></p>
-				</a>
-			</div>
-			<p class="snippet">
-				<%= p.lead.truncate(120) %>
-			</p>
-		</div>			
-	<% end %>	
+<div class="mason-holder post_box">
+  <%= render 'shared/post_box' %>
 </div>
+
+
+<script type="text/javascript" src="http://www.beyondcoding.com/demos/endless-scroll/js/jquery.endless-scroll-1.3.js"></script>
+<script type="text/javascript" charset="utf-8">
+  function loadMore(pageNr) {
+    $.ajax({
+      format: 'JS',
+      type: "POST",
+      url: '<%= load_more_posts_url %>',
+      data: { page: pageNr,
+              category: "<%= params[:category] %>" }
+    }).done(function() {
+      $('.places_loading').hide();      
+    });
+  }
+
+  var currentPage = 1;
+  $(document).ready(function(){
+    $(document).endlessScroll({
+      bottomPixels: 450,
+      fireDelay: 10,
+      callback: function(p){
+        currentPage += 1;
+        loadMore(currentPage);
+      }
+    });
+  });
+</script>

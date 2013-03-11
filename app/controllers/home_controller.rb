@@ -1,13 +1,27 @@
 class HomeController < ApplicationController
   include ApplicationHelper
 
+
+  def load_more_posts
+    if params[:category].present?
+      @posts = Post.normal.active.where("category_id = #{cat_id_from_param(params[:category])}").order("id DESC").paginate(:page => params[:page], :per_page => 21)
+    else
+      @posts = Post.active.normal.order("id DESC").paginate(:page => params[:page], :per_page => 21)
+    end
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
+
   def index
     if params[:category].present?
       @promoted_posts = Post.active.promoted.where("category_id = #{cat_id_from_param(params[:category])}").limit(10)
-      @posts = Post.normal.active.where("category_id = #{cat_id_from_param(params[:category])}").order("id DESC").limit(21)
+      @posts = Post.normal.active.where("category_id = #{cat_id_from_param(params[:category])}").order("id DESC").paginate(:page => 1, :per_page => 21)
     else
       @promoted_posts = Post.active.promoted.limit(10)
-      @posts = Post.active.normal.order("id DESC").limit(21)
+      @posts = Post.active.normal.order("id DESC").paginate(:page => 1, :per_page => 21)
     end
   end
 

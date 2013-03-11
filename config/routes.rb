@@ -28,6 +28,7 @@ CcDev1::Application.routes.draw do
   devise_for :users
   resources :users, :path => 'uzytkownicy'
 
+  match "nastepne-posty" => "home#load_more_posts", :as => :load_more_posts
   match "post/:id" => "front_posts#show", :as => :single_post
 
   match "miejsca" => "front_places#index", :as => :front_places

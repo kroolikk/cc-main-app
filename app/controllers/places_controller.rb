@@ -1,7 +1,7 @@
 class PlacesController < AdminController
 
   def index
-    @places = Place.select("id, category_id, slug, image, name, city, street, street_no, zip_code").paginate(:page => params[:page], :per_page => 100).order("id DESC")
+    @places = Place.select("id, category_id, slug, image, name, city, street, street_no, zip_code").order("id DESC").paginate(:page => params[:page], :per_page => 100)
   end
 
 
