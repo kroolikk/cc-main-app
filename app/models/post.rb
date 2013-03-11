@@ -9,7 +9,7 @@ class Post < ActiveRecord::Base
   friendly_id :title, use: :slugged
 
   has_many :photos, :dependent => :destroy
-  accepts_nested_attributes_for :photos, :reject_if => lambda { |a| a[:title] && a[:photo].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :photos, :reject_if => lambda { |a| a[:title].blank? && a[:photo].blank? }, :allow_destroy => true
 
   belongs_to :place
 
@@ -21,7 +21,7 @@ class Post < ActiveRecord::Base
   end
 
   def self.promoted
-    where("promoted IS NOT NULL AND promoted > 0")
+    where("promoted IS NOT NULL AND promoted > 0").order("promoted ASC")
   end
 
   def self.normal

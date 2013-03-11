@@ -3,10 +3,10 @@ class HomeController < ApplicationController
 
   def index
     if params[:category].present?
-      @promoted_posts = Post.active.promoted.where("category_id = #{cat_id_from_param(params[:category])}").order("id DESC").limit(10)
+      @promoted_posts = Post.active.promoted.where("category_id = #{cat_id_from_param(params[:category])}").limit(10)
       @posts = Post.normal.active.where("category_id = #{cat_id_from_param(params[:category])}").order("id DESC").limit(21)
     else
-      @promoted_posts = Post.active.promoted.order("id DESC").limit(10)
+      @promoted_posts = Post.active.promoted.limit(10)
       @posts = Post.active.normal.order("id DESC").limit(21)
     end
   end
