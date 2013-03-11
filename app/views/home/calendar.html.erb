@@ -24,17 +24,20 @@
 
 	<% if @grouped_posts.present? %>
 		<% @grouped_posts.each do |posts| %>
-			<div class="cal-head-date"><%= posts[0] %></div>
-			<table>
+			<div class="cal-head-date"><%= posts[0].strftime("%d %B") %></div>
+			<table cellpadding="0" cellspacing="0" class="main-cal-table">
 				<% posts[1].each do |p| %>
-					<tr>
+					<tr class="row-<%= cat_col(p.category_id) %>">
 						<td class="ch-time"><%= p.event_start.strftime("%H:%M") %></td>
 						<td class="ch-title"><%= link_to p.title, single_post_url(p), :class => "cal-news ch-#{cat_col(p.category_id)}" %></td>
 						<% place = p.place %>
-						<% if place.present? %>
-							<td class="ch-street"><%= "#{place.street} #{place.street_no}, #{place.city}" %></td>
-						<% end %>
-						<td class="ch-more"><%= link_to "Zobacz więcej", single_post_url(p) %></td>
+						<td class="ch-street">
+							<% if place.present? %>
+								<%= "#{place.street} #{place.street_no}, #{place.city}" %>
+							<% end %>
+						</td>
+						
+						<td class="ch-more"><%= link_to "Zobacz więcej »", single_post_url(p), :class => "chlink-#{cat_col(p.category_id)}" %></td>
 					</tr>
 				<% end %>
 			</table>
