@@ -15,8 +15,6 @@
     <%= f.submit 'Zapisz', :class => "main-btn" %>
     <%= link_to 'Anuluj', posts_path, :class => "cancel-btn" %>
   </div>
-  <br>
-  <br>
   <div class="field">
     <%= f.label :category_id, "Kategoria" %>
     <%= f.select :category_id, options_for_select( MAIN_CATEGORIES.collect{ |c| [c[:name], c[:id]] }, @post.category_id ) %>
@@ -26,29 +24,36 @@
     <%= f.text_field :title %>
   </div>
 
-  <div class="tag_module">
-    <br>
-    Tagi przypisane do tego artykułu:<br>
-    <div class="list_of_tags">
-      <% last = 0 %>
-      <% @post.tag_list.each_with_index do |t, index| %>
-        <input type='text' rel='<%= index %>' name='p_tags[<%= index %>]' value='<%= t %>' readonly='readonly' class='tag_field' onclick='add_or_remove("<%= index %>");'>
-        <% last = index %>
-      <% end %>
-    </div>
-    <br>
-    Tagi do wyboru:<br>
-    <div class="available_tags">
-      <% @available_tags.each_with_index do |t, index| %>
-        <% a_index = last + index + 1 %>
-        <input type='text' rel='<%= a_index %>' name='avail_p_tags[<%= a_index %>]' value='<%= t.name %>' readonly='readonly' class='available_tag' onclick='add_or_remove("<%= a_index %>");'>
-      <% end %>
-    </div>
+  <div class=" field tag_module">
     <div class="field">
-      <%= label_tag :tags_to_add, "Nowe tagi:" %>
-      <%= text_area_tag :tags_to_add, '', :class => "new_tags" %><br>
-      <%= link_to "Add new tags", "#", :onclick => "addNewTags(); return false;" %>
+      <%= label_tag :tags_to_add, "Nowe tagi" %>
+      <%= text_field :tags_to_add, '', :class => "new_tags" %>
+      <%= link_to "Add new tags", "#", :onclick => "addNewTags(); return false;", :class => "aux-btn" %>
+      <p>Tagi można oddzielać przecinkiem</p>
     </div>
+    <table width="100%" cellspacing="0" cellpadding="0" class="no-styling-please">
+      <tr>
+        <td width="50%"> 
+          <label>Tagi przypisane do tego artykułu</label><br>
+          <div class="list_of_tags">
+            <% last = 0 %>
+            <% @post.tag_list.each_with_index do |t, index| %>
+            <input type='text' rel='<%= index %>' name='p_tags[<%= index %>]' value='<%= t %>' readonly='readonly' class='tag_field' onclick='add_or_remove("<%= index %>");'>
+            <% last = index %>
+            <% end %>
+          </div>
+        </td>
+        <td width="50%">
+          <label>Najpopularniejsze tagi</label><br>
+          <div class="available_tags">
+            <% @available_tags.each_with_index do |t, index| %>
+              <% a_index = last + index + 1 %>
+              <input type='text' rel='<%= a_index %>' name='avail_p_tags[<%= a_index %>]' value='<%= t.name %>' readonly='readonly' class='available_tag' onclick='add_or_remove("<%= a_index %>");'>
+            <% end %>
+          </div>
+        </td>
+      </tr>
+    </table>
   </div>
 
   <script type="text/javascript">
@@ -100,31 +105,46 @@
     options_for_select( Place.all.collect{|p| ["#{p.id} - #{truncate(p.name, :length => 20)}", p.id]}, @post.place_id ), 
     :include_blank => "------ brak ------" %>
   </div>
-  <div class="field">
+  <!-- <div class="field">
     <%= f.label :size, "Wielkość" %>
     <%= f.select :size, options_for_select( [["losowy", 0],["mały", 1],["średni", 2],["duży", 3]], @post.size ) %>
-  </div>
+  </div> -->
   <div class="field">
-    <%= f.label :promoted, "Promowany?" %>
-    <label><%= f.radio_button :promoted, 0 %> Brak</label><br>
-    <label><%= f.radio_button :promoted, 1 %> Pozycja 1</label><br>
-    <label><%= f.radio_button :promoted, 2 %> Pozycja 2</label><br>
-    <label><%= f.radio_button :promoted, 3 %> Pozycja 3</label><br>
-    <label><%= f.radio_button :promoted, 4 %> Pozycja 4</label><br>
-    <label><%= f.radio_button :promoted, 5 %> Pozycja 5</label><br>
-    <label><%= f.radio_button :promoted, 6 %> Pozycja 6</label><br>
-    <label><%= f.radio_button :promoted, 7 %> Pozycja 7</label><br>
-    <label><%= f.radio_button :promoted, 8 %> Pozycja 8</label><br>
-    <label><%= f.radio_button :promoted, 9 %> Pozycja 9</label><br>
-    <label><%= f.radio_button :promoted, 10 %> Pozycja 10</label><br>
+    <%= f.label :promoted, "Promowany na miejscu nr?" %>
   </div>
+  <div class="promo-radio">
+    <%= f.radio_button :promoted, 0 , :id =>"prd1" %>
+    <label for="prd1"><span></span>Brak</label>
+    <%= f.radio_button :promoted, 1 , :id =>"prd2" %>
+    <label for="prd2"><span></span>1</label>    
+    <%= f.radio_button :promoted, 2 , :id =>"prd3" %>
+    <label for="prd3"><span></span>2</label>
+    <%= f.radio_button :promoted, 3 , :id =>"prd4" %>
+    <label for="prd4"><span></span>3</label>
+    <%= f.radio_button :promoted, 4 , :id =>"prd5" %>
+    <label for="prd5"><span></span>4</label>
+    <%= f.radio_button :promoted, 5 , :id =>"prd6" %>
+    <label for="prd6"><span></span>5</label>
+    <%= f.radio_button :promoted, 6 , :id =>"prd7" %>
+    <label for="prd7"><span></span>6</label>
+    <%= f.radio_button :promoted, 7 , :id =>"prd8" %>
+    <label for="prd8"><span></span>7</label>
+    <%= f.radio_button :promoted, 8 , :id =>"prd9" %>
+    <label for="prd9"><span></span>8</label>
+    <%= f.radio_button :promoted, 9 , :id =>"prd10" %>
+    <label for="prd10"><span></span>9</label>
+    <%= f.radio_button :promoted, 10 , :id =>"prd11" %>
+    <label for="prd11"><span></span>10</label>
+  </div>
+  <br>
   <div class="field">
-    <%= f.label :is_event, "Czy to event?" %><br />
-    <%= f.check_box :is_event, {:onclick => "$('.ev_start').toggle();"} %>
+    <%= f.label :is_event, "Czy to event?" %>
+    <%= f.check_box :is_event, {:onclick => "$('.ev_start').toggle();"}, :id => "event-check" %>
+
   </div>
   <div class="ev_start" style="<%= 'display:none;' unless @post.is_event == true %>">
     <div class="field">
-      <%= f.label :event_start, "Start eventu:" %><br />
+      <p>Start eventu:</p>
       <%= f.datetime_select :event_start %>
     </div>
   </div>
@@ -141,7 +161,7 @@
     <%= f.text_field :author %>
   </div>
   <div class="field">
-    <%= f.label :start_date %>
+    <%= f.label :start_date, "Data publikacji" %>
     <%= f.datetime_select :start_date %>
   </div>
   <div class="field" style="display:none;">

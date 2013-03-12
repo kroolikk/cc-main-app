@@ -226,7 +226,13 @@ aside {	height: 100%;
 	display: block;
 	margin-bottom: 3px;
 }
-
+.page-content select {
+	border: 1px solid #ccc;
+	padding: 6px 6px;
+	border-radius: 3px;
+	outline: none !important;
+	margin-bottom: 15px;
+}
 .page-content input[type="text"] {
 	border: 1px solid #ccc;
 	padding: 6px 6px;
@@ -341,6 +347,12 @@ font-size: 14px;
 }
 .field {
 	margin-bottom: 15px;
+}
+.field label {
+	margin-top: 27px;
+	color: #444;
+	font-size: 18px;
+	font-weight: bold;
 }
 .going-up {
 	display: inline-block;
@@ -632,4 +644,42 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3ca9d8', end
 }
 .tag-x:hover {
   background-position: bottom left; 
+}
+.promo-radio label{
+	display: inline-block;
+	margin-right: 10px;
+}
+.promo-radio label:hover {
+	color: #3CA9D8;
+}
+
+input[type="radio"] {
+    display:none;
+}
+
+input[type="radio"] + label {
+	cursor: pointer;
+}
+
+input[type="radio"] + label span {
+    display:inline-block;
+    width:19px;
+    height:19px;
+    margin:-1px 4px 0 0;
+    vertical-align:middle;
+    background:url(/assets/check_radio_sheet.png) -38px top no-repeat;
+    cursor:pointer;
+}
+
+input[type="radio"]:checked + label span {
+    background-position: -57px top;
+}
+.tag_module td {
+	vertical-align: top;
+}
+.no-styling-please {
+	border: 0;
+}
+.no-styling-please tr {
+	background: none !important;
 }

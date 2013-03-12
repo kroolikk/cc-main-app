@@ -7,7 +7,7 @@
           <a href="<%= single_post_url(pp) %>">
             <span class="slide-cut"></span>
             <%= image_tag pp.main_photo_link("main"), :alt => 'photo' %>
-            <p class="slide-article">
+            <p class="slide-article <%= cat_col(pp.category_id) %>">
               <span class="slide-caption <%= cat_col(pp.category_id) %>"><%= pp.title %></span>
               <span class="clear slide-lead"><%= pp.lead %></span>
             </p>
@@ -24,7 +24,8 @@
   $(function(){
       $("#slides").slides({
         effect: 'fade',
-        paginationClass: 'slide-page'
+        paginationClass: 'slide-page',
+        play: 5000
       });
   });
 </script>

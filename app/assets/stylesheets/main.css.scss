@@ -308,7 +308,7 @@ nav a {
   margin: 0 auto;
 }
 .home-index .glass-wrapper {
-	margin: -170px auto 0 auto;
+	margin: -280px auto 0 auto;
 }
 .glass-wrapper {
 	background: rgba(255, 255, 255, 0.04);
@@ -318,7 +318,7 @@ nav a {
 	box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
 }
 .home-index .main-content {
-  padding-top: 110px;
+  padding-top: 250px;
 }
 .main-content {
   background: #fff;
@@ -1259,10 +1259,9 @@ h4 {
   padding-top: 1px;
 }
 #slides {
-  box-shadow: 0px -10px 24px rgba(0, 0, 0, 0.2);
   position: relative;
   float: left;
-  margin: -215px 15px 0 18px;
+  margin: -234px 15px 0 18px;
   background: #222;
 }
 .slides_container {
@@ -1280,18 +1279,17 @@ h4 {
     }
 }
 .slide-article {
-  width: 400px;
-  height: 150px;
+	width: 435px;
+	height: 200px;
   position: absolute;
   right: 0;
   top: 0;
 }
 .slide-page {
   float: right;
-  background: #222;
   text-align: right;
   position: absolute;
-  bottom: 4px;
+  bottom: -24px;
   right: 5px;
     li {
         a {
@@ -1300,10 +1298,14 @@ h4 {
           height: 0;
           padding-top: 10px;
           background: #333;
+          border-radius: 10px;
+          	&:hover {
+          		background: #444;	
+          	}
         }
       list-style: none;
       display: block;
-      margin: 4px;
+      margin: 4px 3px;
       overflow: hidden;
       float: left;
         
@@ -1322,6 +1324,7 @@ h4 {
   margin-left: -15px;
   margin-top: 20px;
   margin-bottom: 15px;
+  background: #222;
 }
 .slide-lead {
   color: white;
