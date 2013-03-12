@@ -52,6 +52,9 @@
            $('#logo').addClass("logo-cc");
            }
        });
+      $(".close-me").click(function() {
+        $('.top-notificator').hide();
+      });
   });
   </script>
 
@@ -60,7 +63,7 @@
 <body class="<%= params[:controller] %>-<%= params[:action] %>">
   <% if notice.present? %>
     <div class="top-notificator tm-notice">
-      <p class="notice" style="display:none;"><%= notice %></p>
+      <p class="notice" style="display:none;"><%= notice %><span class="close-me">X</span></p>
     </div>  
     <script>
     $('.notice').delay(1000).slideDown("slow").delay(5000).slideUp("slow");
@@ -68,7 +71,7 @@
   <% end %>
   <% if alert.present? %>
     <div class="top-notificator tm-error">
-      <p class="alert"><%= alert %></p>
+      <p class="alert"><%= alert %><span class="close-me">X</span></p>
     </div>
     <script>
     $('.alert').delay(1000).slideDown("slow").delay(5000).slideUp("slow");

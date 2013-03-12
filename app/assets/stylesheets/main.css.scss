@@ -1422,3 +1422,18 @@ h4 {
 .end-post-promo {
 	padding-left: 20px;
 }
+.close-me {
+	cursor: pointer;
+	border-radius: 20px;
+	background: rgba(0,0,0,0.6);
+	margin-top: -7px;
+	font-size: 19px;
+	float: right;
+	font-weight: bold;
+	display: block;
+	padding: 3px 9px;
+		&:hover {
+			background: rgba(255, 255, 255, 0.6);
+			color: #000;
+		}
+}
