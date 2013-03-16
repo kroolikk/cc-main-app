@@ -4,20 +4,23 @@ $(document).ready(function(){
     radius: 50
   }); //end blur.js
  
-	var $container = $('.mason-holder');
-	$container.imagesLoaded(function(){
-	  $container.masonry({
-		itemSelector: '.mason',
-		// isFitWidth: true,
-		// isResizable: true,
-		// columnWidth: 220
-	  });
-	}); // end masonry
+  run_masonry();
 }); 
 
 
 
 
+function run_masonry() {
+  var $container = $('.mason-holder');
+  $container.imagesLoaded(function(){
+    $container.masonry({
+    itemSelector: '.mason',
+    // isFitWidth: true,
+    // isResizable: true,
+    // columnWidth: 220
+    });
+  }); // end masonry
+};
 
 
 function addInfoBubble(index, name, city, street, nostreet, place_url, postcode) {

@@ -1,1 +1,3 @@
-$('.post_box').append("<%= escape_javascript( render( :partial => 'shared/post_box') ) %>");
+var $content = "<%= escape_javascript( render( :partial => 'shared/post_box') ) %>";
+$('.post_box').append($content);
+$('.mason-holder').masonry( 'reload' );

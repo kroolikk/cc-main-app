@@ -1,16 +1,16 @@
 <% @posts.each do |p| %>
-    <% b_size = box_size(p) %>
-    <div class="mason w<%= b_size %>00">
-        <div class="w<%= b_size %>">
-            <a href="<%= single_post_url(p) %>">
-                <span class="fade-hover"></span>
-                <span class="<%= cat_col(p.category_id) %>-ico ico"></span>
-                <%= image_tag p.main_photo_link("list") %>
-                <p class="<%= cat_col(p.category_id) %> m-title"><%= p.title %></p>
-            </a>
-        </div>
-        <p class="snippet">
-            <%= p.lead.truncate(120) %>
-        </p>
+  <% b_size = box_size(p) %>
+  <div class="mason w<%= b_size %>00">
+    <div class="w<%= b_size %>">
+      <a href="<%= single_post_url(p) %>">
+        <span class="fade-hover"></span>
+        <span class="<%= cat_col(p.category_id) %>-ico ico"></span>
+        <%= image_tag p.main_photo_link("list") %>
+        <p class="<%= cat_col(p.category_id) %> m-title"><%= p.title %></p>
+      </a>
     </div>
+    <p class="snippet">
+      <%= p.lead.truncate(120) %>
+    </p>
+  </div>
 <% end %>

@@ -3,10 +3,12 @@ class HomeController < ApplicationController
 
 
   def load_more_posts
+    @page = params[:page]
+    @per_page = 30
     if params[:category].present?
-      @posts = Post.normal.active.where("category_id = #{cat_id_from_param(params[:category])}").order("id DESC").paginate(:page => params[:page], :per_page => 21)
+      @posts = Post.normal.active.where("category_id = #{cat_id_from_param(params[:category])}").order("id DESC").paginate(:page => @page, :per_page => @per_page)
     else
-      @posts = Post.active.normal.order("id DESC").paginate(:page => params[:page], :per_page => 21)
+      @posts = Post.active.normal.order("id DESC").paginate(:page => @page, :per_page => @per_page)
     end
 
     respond_to do |format|
@@ -16,12 +18,14 @@ class HomeController < ApplicationController
 
 
   def index
+    @page = 1
+    @per_page = 30
     if params[:category].present?
       @promoted_posts = Post.active.promoted.where("category_id = #{cat_id_from_param(params[:category])}").limit(10)
-      @posts = Post.normal.active.where("category_id = #{cat_id_from_param(params[:category])}").order("id DESC").paginate(:page => 1, :per_page => 21)
+      @posts = Post.normal.active.where("category_id = #{cat_id_from_param(params[:category])}").order("id DESC").paginate(:page => @page, :per_page => @per_page)
     else
       @promoted_posts = Post.active.promoted.limit(10)
-      @posts = Post.active.normal.order("id DESC").paginate(:page => 1, :per_page => 21)
+      @posts = Post.active.normal.order("id DESC").paginate(:page => @page, :per_page => @per_page)
     end
   end
 
