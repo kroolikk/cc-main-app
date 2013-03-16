@@ -43,14 +43,12 @@
 
   $(document).ready(function() {
     initialize();
-
     var cat_param = '<%= params[:category] %>';    
     if (cat_param.length > 0) {
       add_places(cat_param);
     } else {
       add_places();
     };
-
-    $('.<%= @cat %>').addClass('selected');
+    $('.<%= @curr_cat %>').addClass('selected');
   });  
 </script>

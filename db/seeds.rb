@@ -28,7 +28,8 @@ if true # places seeds
       :website => 'http://www.website.com',
       :opening_hours => '15:00 - 24:00',
       :info => 'info info info',
-      :image => File.open(File.join(Rails.root, "/public/test_photos/photo_#{rand(9)}.jpg")) 
+      :image => File.open(File.join(Rails.root, "/public/test_photos/photo_#{rand(9)}.jpg")),
+      :category_id => rand(4)+1,
       })
     place.save
     puts "#{i} - place_id: #{place.id} -- lat: #{place.latitude} -- lon: #{place.longitude}"

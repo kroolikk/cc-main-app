@@ -1,7 +1,7 @@
 clearOverlays();
 $('.map_nav').removeClass('selected');
-$('.<%= @cat %>').addClass('selected');
-history.pushState("<%= @cat %>", "College City", "<%= front_places_url %><%= '/'+params[:category] if params[:category].present? %>");
+$('.<%= @curr_cat %>').addClass('selected');
+history.pushState("<%= @curr_cat %>", "College City", "<%= front_places_url %><%= '/'+params[:category] if params[:category].present? %>");
 
 <% @places.each_with_index do |p, index| %>
   <% ind = index + 1 %>

@@ -4,8 +4,8 @@ class FrontPlacesController < ApplicationController
   require 'will_paginate/array'
 
   def index
+    @curr_cat = (params[:category].present? ? params[:category] : 'all')
     render :layout => "map"
-    params[:category].present? ? @cat = params[:category] : @cat = 'all'
   end
 
 
@@ -40,7 +40,7 @@ class FrontPlacesController < ApplicationController
     end
     @places = @all_places.to_a.paginate(:page => params[:page], :per_page => 99)
 
-    params[:category].present? ? @cat = params[:category] : @cat = 'all'
+    @curr_cat = (params[:category].present? ? params[:category] : 'all')
 
     respond_to do |format|
       format.js
