@@ -39,24 +39,27 @@
 <script type="text/javascript" src="http://www.beyondcoding.com/demos/endless-scroll/js/jquery.endless-scroll-1.3.js"></script>
 <script type="text/javascript" charset="utf-8">
   function loadMore(pageNr) {
-    $.ajax({
-      format: 'JS',
-      type: "POST",
-      url: '<%= load_more_posts_url %>',
-      data: { page: pageNr,
-              category: "<%= params[:category] %>" }
-    }).done(function() {
-      $('.places_loading').hide();      
-    });
+    if (enable_loading == true) {
+      enable_loading = false;
+      $.ajax({
+        format: 'JS',
+        type: "POST",
+        url: '<%= load_more_posts_url %>',
+        data: { page: pageNr,
+                category: "<%= params[:category] %>" }
+      }).done(function() {
+        $('.places_loading').hide();      
+      });
+    }
   }
 
-  var currentPage = 1;
+  var enable_loading = true;
+  var currentPage = 2;
   $(document).ready(function(){
     $(document).endlessScroll({
-      bottomPixels: 450,
+      bottomPixels: 1000,
       fireDelay: 10,
       callback: function(p){
-        currentPage += 1;
         loadMore(currentPage);
       }
     });
