@@ -14,8 +14,8 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require blur
-//= require init
 //= require masonry
 //= require slides.jquery
 //= require_tree .
 //= require ckeditor/init
+//= require init
