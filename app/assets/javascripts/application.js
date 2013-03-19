@@ -16,6 +16,5 @@
 //= require blur
 //= require masonry
 //= require slides.jquery
-//= require_tree .
 //= require ckeditor/init
 //= require init
