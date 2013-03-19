@@ -38,7 +38,12 @@
           <div class="list_of_tags">
             <% last = 0 %>
             <% @post.tag_list.each_with_index do |t, index| %>
-            <input type='text' rel='<%= index %>' name='p_tags[<%= index %>]' value='<%= t %>' readonly='readonly' class='tag_field' onclick='add_or_remove("<%= index %>");'>
+              <span rel='<%= index %>' class='all_tags tagger tag_field' onclick='add_or_remove("<%= index %>");'>
+                <span class="tag-tip"></span>
+                <%= t %>
+                <a href="" class="tag-x"></a>
+                <input type='text' name='p_tags[<%= index %>]' value='<%= t %>' readonly='readonly' class='hide_tag'>
+              </span>
             <% last = index %>
             <% end %>
           </div>
@@ -48,7 +53,12 @@
           <div class="available_tags">
             <% @available_tags.each_with_index do |t, index| %>
               <% a_index = last + index + 1 %>
-              <input type='text' rel='<%= a_index %>' name='avail_p_tags[<%= a_index %>]' value='<%= t.name %>' readonly='readonly' class='available_tag' onclick='add_or_remove("<%= a_index %>");'>
+                <span rel='<%= a_index %>' class='all_tags tagger available_tag' onclick='add_or_remove("<%= a_index %>");'>
+                  <span class="tag-tip"></span>
+                  <%= t.name %>
+                  <a href="" class="tag-x"></a>
+                  <input type='text' name='avail_p_tags[<%= a_index %>]' value='<%= t.name %>' readonly='readonly' class='hide_tag'>
+                </span>
             <% end %>
           </div>
         </td>
@@ -56,48 +66,60 @@
     </table>
   </div>
 
+
   <script type="text/javascript">
     function addNewTags() {
       var last_index = 0;
       var tags_array = [];
-      var old_tag_fields = $('.tag_field');    
+      var old_tag_fields = $('.all_tags');    
       if (old_tag_fields.length > 0) {
-        var last_index = old_tag_fields.last().attr('rel')
+        var indexes_array = [];
+        old_tag_fields.each(function(){
+            val = Number( $(this).attr('rel') );
+            indexes_array.push(val);
+        });
+        var last_index = (Math.max.apply(Math, indexes_array))+1000;
       };
-      console.log('last_ind: '+last_index);
-
       var tags_string = $('.new_tags').val();
-      console.log(tags_string);
-
       if (tags_string.length > 0) {
         var tags_array = tags_string.split(", ");
         $.each(tags_array, function(index,value){
-          curr_index = parseInt(last_index) + index +1
-          console.log(curr_index+' - '+value);
-          var tid = curr_index;
-          var new_tag_input = "<input type='text' rel='"+curr_index+"' name='p_tags["+curr_index+"]' value='"+value+"' readonly='readonly' class='tag_field' onclick='add_or_remove(&#39;"+tid+"&#39;);'>"
-          $('.list_of_tags').append(new_tag_input);
+          var curr_index = parseInt(last_index) + index + 1;
+          // console.log(curr_index+' - '+value);
+          var already_present = $('input[value="'+value+'"]');
+          if (already_present.length == 0) {
+            var tid = curr_index;
+            var new_tag_input = "<span rel='"+curr_index+"' class='all_tags tagger tag_field' onclick='add_or_remove(&#39;"+tid+"&#39;);'><span class='tag-tip'></span>"+value+"<a href='' class='tag-x'></a><input type='text' name='p_tags["+curr_index+"]' value='"+value+"' readonly='readonly' class='hide_tag'></span>"
+            $('.list_of_tags').append(new_tag_input);
+          } else {
+            var first_present = $(already_present[0]).parent('span');
+            if ( first_present.hasClass('tag_field') ) {
+              alert('Tag "'+value+'" jest już przypisany do tego artykułu.');
+            } else {
+              add_or_remove( first_present.attr('rel') );
+            };
+          };
         });
+        $('.new_tags').val('');
       };
     }
   </script>
 
-
   <script>
     function add_or_remove(tid) {  
-      var this_obj = $('[rel='+tid+']');   
-      console.log( this_obj.attr('class') );
-      if ( this_obj.attr('class') == 'tag_field' ) {
+      var this_obj = $('[rel="'+tid+'"]');
+      if ( this_obj.hasClass('tag_field') ) {
         this_obj.removeClass('tag_field').addClass('available_tag');
-        this_obj.attr('name', 'avail_p_tags['+tid+']');
+        this_obj.children('input').attr('name', 'avail_p_tags['+tid+']');
         this_obj.appendTo('.available_tags');
       } else {
         this_obj.removeClass('available_tag').addClass('tag_field');
-        this_obj.attr('name', 'p_tags['+tid+']');
+        this_obj.children('input').attr('name', 'p_tags['+tid+']');
         this_obj.appendTo('.list_of_tags');
       };
     };
   </script>
+  
   
   <div class="field">
     <%= f.label :place_id, "Miejsce" %>

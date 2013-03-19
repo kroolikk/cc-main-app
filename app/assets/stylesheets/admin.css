@@ -683,3 +683,6 @@ input[type="radio"]:checked + label span {
 .no-styling-please tr {
 	background: none !important;
 }
+.hide_tag {
+	display: none;
+}
