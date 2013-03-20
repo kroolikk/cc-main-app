@@ -1,120 +1,144 @@
 <h1 class="general">Edytuj Profil</h1>
 <div class="box900th">
-      <%= devise_error_messages! %>
+  <%= devise_error_messages! %>
 
-	<div class="profile-box adjecent">
+  <div class="profile-box adjecent">
     <h5>Dostosuj CollegeCity do twoich wymagań</h5>
-		<p class="why-join">Zaznacz to co Cię najbardziej interesuje lub wpisz tagi a my przefiltrujemy stronę tak aby zawsze pokazywała Tobie najświeższe informacje z tego co cię interesuje - czy coś w ten deseń ja tekstów nie będę pisać bo ja nie żem stąd.</p>
+    <p class="why-join">Zaznacz to co Cię najbardziej interesuje lub wpisz tagi a my przefiltrujemy stronę tak aby zawsze pokazywała Tobie najświeższe informacje z tego co cię interesuje - czy coś w ten deseń ja tekstów nie będę pisać bo ja nie żem stąd.</p>
     
     <label>Dopisz tagi:</label><br>
     <input type="text" class="user-tags" />
     
     <div class="added-user-tags">
-    <% 3.times do %>
+      <% 3.times do %>
       <span class="tagger">
         <span class="tag-tip"></span>
-          tag
+        tag
         <a href="" class="tag-x"></a>
       </span>
       
       <span class="tagger">
         <span class="tag-tip"></span>
-          tag numer2
+        tag numer2
         <a href="" class="tag-x"></a>
       </span>
       
       <span class="tagger">
         <span class="tag-tip"></span>
-          Awesomeness
+        Awesomeness
         <a href="" class="tag-x"></a>
       </span>
       
       <span class="tagger">
         <span class="tag-tip"></span>
-          College
+        College
         <a href="" class="tag-x"></a>
       </span>
       
       <span class="tagger">
         <span class="tag-tip"></span>
-          BlackJack & Hookers
+        BlackJack & Hookers
         <a href="" class="tag-x"></a>
       </span>
       
       <span class="tagger">
         <span class="tag-tip"></span>
-          Family Guy
+        Family Guy
         <a href="" class="tag-x"></a>
       </span>
+      <% end %>
+    </div>
+    <br>
+
+    <h5>Ogóle działy serwisu</h5>  
+    <table width="100%" border="1" cellspacing="0" cellpadding="0" class="tag-selector">
+      <tr>
+        <td width="25%"><a href=""><%= image_tag('pacman.png') %></a></td>
+        <td width="25%"><a href="">s</a></td>
+        <td width="25%"><a href="">d</a></td>
+        <td width="25%"><a href="">f</a></td>
+      </tr>
+      <tr>
+        <td><a href="">q</a></td>
+        <td><a href="">w</a></td>
+        <td><a href="">e</a></td>
+        <td><a href="">r</a></td>
+      </tr>
+      <tr>
+        <td><a href="">t</a></td>
+        <td><a href="">y</a></td>
+        <td><a href="">u</a></td>
+        <td><a href="">i</a></td>
+      </tr>
+      <tr>
+        <td><a href="">g</a></td>
+        <td><a href="">h</a></td>
+        <td><a href="">j</a></td>
+        <td><a href="">k</a></td>
+      </tr>
+    </table>
+  </div>
+
+
+  <div class="sign-box adjecent">
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+      <div class="user-avatar">
+        <%= image_tag resource.image.medium_fit.url, :alt => resource.email %>
+      </div>
+      <br>
+      <div>
+        <label for='image'>Nowy avatar</label><br />
+        <%= f.file_field :image %>
+        <%= f.hidden_field :image_cache %>
+      </div>
+      <br>
+
+      <div>
+        E-mail<br>
+        <%= resource.email %><br>
+      </div>
+      <br>
+      
+      <div>
+        <%= f.label :nick, "Nazwa użytkownika" %><br />
+        <%= f.text_field :nick %>
+      </div>
+
+      <div>
+        <%= f.label :name, "Imię" %><br />
+        <%= f.text_field :name %>
+      </div>
+
+      <div>
+        <%= f.label :surname, "Imię" %><br />
+        <%= f.text_field :surname %>
+      </div>
+
+      <div><%= f.submit "Zaktualizuj" %></div>
     <% end %>
-    </div>
-		<br>
-  <h5>Ogóle działy serwisu</h5>  
-  <table width="100%" border="1" cellspacing="0" cellpadding="0" class="tag-selector">
-    <tr>
-      <td width="25%"><a href=""><%= image_tag('pacman.png') %></a></td>
-      <td width="25%"><a href="">s</a></td>
-      <td width="25%"><a href="">d</a></td>
-      <td width="25%"><a href="">f</a></td>
-    </tr>
-    <tr>
-      <td><a href="">q</a></td>
-      <td><a href="">w</a></td>
-      <td><a href="">e</a></td>
-      <td><a href="">r</a></td>
-    </tr>
-    <tr>
-      <td><a href="">t</a></td>
-      <td><a href="">y</a></td>
-      <td><a href="">u</a></td>
-      <td><a href="">i</a></td>
-    </tr>
-    <tr>
-      <td><a href="">g</a></td>
-      <td><a href="">h</a></td>
-      <td><a href="">j</a></td>
-      <td><a href="">k</a></td>
-    </tr>
-  </table>
 
-	</div>
+    <br /><br /><br />
 
-	<div class="sign-box adjecent">
-		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-    <div class="user-avatar">
-      <a href="#" class="edit-avatar" style="display: none; ">Edytuj zdjęcie</a>
-      <img src="http://25.media.tumblr.com/tumblr_m8fufgWFxN1rp2ebfo1_400.jpg">
-    </div>
-    <br>
-    <div><label>Avatar</label><br />
-    <input type="file"/></div>
-    <br>
-    <div><label>Username</label><br />
-    <input type="text"/></div>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+      <div>
+        <%= f.label :password, "Nowe hasło" %><br />
+        <%= f.password_field :password, :autocomplete => "off" %>
+      </div>
 
-    <div><%= f.label :name, "Imię" %><br />
-    <%= f.text_field :name %></div>
+      <div>
+        <%= f.label :password_confirmation, "Potwórz nowe hasło" %><br />
+        <%= f.password_field :password_confirmation, :autocomplete => "off" %>
+      </div>
 
-    <div><label>Nazwisko</label><br />
-    <input type="text"/></div>
+      <div>
+        <%= f.label :current_password, "Aktualne hasło" %><br />
+        <%= f.password_field :current_password, :autocomplete => "off" %>
+      </div>
 
-    <div><%= f.label :email, "Email" %><br />
-    <%= f.email_field :email %></div>
+      <div><%= f.submit "Zmień hasło" %></div>
+    <% end %>
+  </div>
 
-    <div><%= f.label :password, "Nowe hasło" %><br />
-    <%= f.password_field :password, :autocomplete => "off" %></div>
-
-    <div><%= f.label :password_confirmation, "Potwórz hasło" %><br />
-    <%= f.password_field :password_confirmation %></div>
-
-    <div><%= f.label :current_password, "Aktualne hasło" %><br />
-    <%= f.password_field :current_password %></div>
-
-    <div><%= f.submit "Zaktualizuj" %></div>
-<% end %>
-	</div>
-
-	<div class="clear"></div>
-
+  <div class="clear"></div>
 </div>
 

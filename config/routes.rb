@@ -13,8 +13,6 @@ CcDev1::Application.routes.draw do
 
 
 
-
-
   mount Ckeditor::Engine => '/ckeditor'
 
   match "/admin" => "admin#index", :as => :admin
@@ -25,7 +23,7 @@ CcDev1::Application.routes.draw do
   resources :places
   resources :posts
 
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "registrations" }
   resources :users, :path => 'uzytkownicy'
 
   match "nastepne-posty" => "home#load_more_posts", :as => :load_more_posts
@@ -41,6 +39,7 @@ CcDev1::Application.routes.draw do
   match "/kalendarz/:year/:month/:week" => "home#calendar", :as => :calendar_date
   match "/kontakt" => "home#contact", :as => :contact
   match "/:category" => "home#index", :as => :category
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
