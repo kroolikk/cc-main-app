@@ -8,75 +8,118 @@
     
     <label>Dopisz tagi:</label><br>
     <input type="text" class="user-tags" />
-    
+    <script type="text/javascript">
+      $('.user-tags').keyup(function() {
+        var field_value = $(this).val();
+        console.log(field_value);
+      });
+    </script>
+
+
+
     <div class="added-user-tags">
-      <% 3.times do %>
-      <span class="tagger">
-        <span class="tag-tip"></span>
-        tag
-        <a href="" class="tag-x"></a>
-      </span>
-      
-      <span class="tagger">
-        <span class="tag-tip"></span>
-        tag numer2
-        <a href="" class="tag-x"></a>
-      </span>
-      
-      <span class="tagger">
-        <span class="tag-tip"></span>
-        Awesomeness
-        <a href="" class="tag-x"></a>
-      </span>
-      
-      <span class="tagger">
-        <span class="tag-tip"></span>
-        College
-        <a href="" class="tag-x"></a>
-      </span>
-      
-      <span class="tagger">
-        <span class="tag-tip"></span>
-        BlackJack & Hookers
-        <a href="" class="tag-x"></a>
-      </span>
-      
-      <span class="tagger">
-        <span class="tag-tip"></span>
-        Family Guy
-        <a href="" class="tag-x"></a>
-      </span>
-      <% end %>
+              <% if false %>
+              <span class="tagger">
+                <span class="tag-tip"></span>
+                tag
+                <a href="" class="tag-x"></a>
+              </span>
+              
+              <span class="tagger">
+                <span class="tag-tip"></span>
+                tag numer2
+                <a href="" class="tag-x"></a>
+              </span>
+              
+              <span class="tagger">
+                <span class="tag-tip"></span>
+                Awesomeness
+                <a href="" class="tag-x"></a>
+              </span>
+              
+              <span class="tagger">
+                <span class="tag-tip"></span>
+                College
+                <a href="" class="tag-x"></a>
+              </span>
+              
+              <span class="tagger">
+                <span class="tag-tip"></span>
+                BlackJack & Hookers
+                <a href="" class="tag-x"></a>
+              </span>
+              
+              <span class="tagger">
+                <span class="tag-tip"></span>
+                Family Guy
+                <a href="" class="tag-x"></a>
+              </span>
+              <% end %>
     </div>
     <br>
 
     <h5>Ogóle działy serwisu</h5>  
     <table width="100%" border="1" cellspacing="0" cellpadding="0" class="tag-selector">
-      <tr>
-        <td width="25%"><a href=""><%= image_tag('pacman.png') %></a></td>
-        <td width="25%"><a href="">s</a></td>
-        <td width="25%"><a href="">d</a></td>
-        <td width="25%"><a href="">f</a></td>
-      </tr>
-      <tr>
-        <td><a href="">q</a></td>
-        <td><a href="">w</a></td>
-        <td><a href="">e</a></td>
-        <td><a href="">r</a></td>
-      </tr>
-      <tr>
-        <td><a href="">t</a></td>
-        <td><a href="">y</a></td>
-        <td><a href="">u</a></td>
-        <td><a href="">i</a></td>
-      </tr>
-      <tr>
-        <td><a href="">g</a></td>
-        <td><a href="">h</a></td>
-        <td><a href="">j</a></td>
-        <td><a href="">k</a></td>
-      </tr>
+      <% @general_prefs.each_with_index do |gp, i1| %>
+        <tr>
+          <% gp.each_with_index do |p, i2| %>
+            <td width="25%"><a href="#" class="<%= 'selected_p' if resource.preferences.include?(p) %>" onclick="mark_as_selected(this, <%= p.id %>); return false;"><%= image_tag p.image.thumb.url, :alt => p.name %></a></td>  
+          <% end %>
+        </tr>
+      <% end %>
     </table>
+
+    
+    Tutaj jest zdefiniowany czerwony background<br>
+    <style type="text/css">
+      .selected_p { background-color: red; }
+    </style>
+
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+      <%= f.hidden_field :email %>
+      <div class="selected_tags">
+        <% resource.tags.each do |t| %>
+          <input type='text' name='user_tags["<%= t %>""]' value='<%= t %>' readonly='readonly' class='us-tag' style='display:none;'>
+        <% end %>
+      </div>
+      <div class="selected_prefs">
+        <% resource.preferences.each do |p| %>
+          <input type='text' name='pref_tags[<%= p.id %>]' value='<%= p.id %>' readonly='readonly' class='inp<%= p.id %>' style='display:none;'>
+        <% end %>
+      </div>
+      <%= f.submit "Zapisz preferencje" %>
+    <% end %>
+    
+    <script type="text/javascript">
+      function mark_as_selected(this_el, this_id) {
+        var this_par = $(this_el).parent('td')
+        if ( this_par.hasClass('selected_p') ) {
+          this_par.removeClass('selected_p');
+          remove_input(this_id);          
+        } else {
+          this_par.addClass('selected_p');
+          add_input(this_id);
+        };
+      };
+
+
+      function add_input(pref_id) {
+        var inp_content = prepare_input(pref_id);
+        console.log(inp_content);
+        console.log( $('.selected_prefs') );
+        $('.selected_prefs').append( inp_content );
+      };
+
+      function remove_input(pref_id) {
+        $('.inp'+pref_id).remove();
+      };
+
+      function prepare_input(pref_id) {
+        var inp = "<input type='text' name='pref_tags["+pref_id+"]' value='"+pref_id+"' readonly='readonly' class='inp"+pref_id+"' style='display:none;'>";
+        return inp;
+      };
+    </script>
+
   </div>
 
 

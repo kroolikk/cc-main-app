@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130320193103) do
+ActiveRecord::Schema.define(:version => 20130320220348) do
 
   create_table "ckeditor_assets", :force => true do |t|
     t.string   "data_file_name",                  :null => false
@@ -89,6 +89,14 @@ ActiveRecord::Schema.define(:version => 20130320193103) do
   add_index "posts", ["promoted"], :name => "index_posts_on_promoted"
   add_index "posts", ["slug"], :name => "index_posts_on_slug", :unique => true
 
+  create_table "preferences", :force => true do |t|
+    t.string   "name"
+    t.string   "image"
+    t.string   "slug"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
@@ -132,5 +140,12 @@ ActiveRecord::Schema.define(:version => 20130320193103) do
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["role"], :name => "index_users_on_role"
   add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true
+
+  create_table "users_preferences", :force => true do |t|
+    t.string   "user_id"
+    t.string   "preference_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
 end

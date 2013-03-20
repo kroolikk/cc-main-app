@@ -20,11 +20,11 @@ CcDev1::Application.routes.draw do
   match "admin/enter" => "admin#enter", :as => :admin_enter
   match "admin/logout" => "admin#logout", :as => :admin_logout
 
-  resources :places
-  resources :posts
-
   devise_for :users, :controllers => { :registrations => "registrations" }
   resources :users, :path => 'uzytkownicy'
+  resources :places
+  resources :posts
+  resources :preferences
 
   match "nastepne-posty" => "home#load_more_posts", :as => :load_more_posts
   match "post/:id" => "front_posts#show", :as => :single_post

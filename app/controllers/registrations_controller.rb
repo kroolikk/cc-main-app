@@ -1,6 +1,15 @@
 class RegistrationsController < Devise::RegistrationsController
+
+  def edit
+    @general_prefs = Preference.all.in_groups_of(4, false)
+
+    super
+  end
+
+
   def update
     @user = User.find(current_user.id)
+    @user.update_preferences(params[:pref_tags])
 
     successfully_updated = if needs_password?(@user, params)
       @user.update_with_password(params[:user])
@@ -27,7 +36,11 @@ class RegistrationsController < Devise::RegistrationsController
   # ie if password or email was changed
   # extend this as needed
   def needs_password?(user, params)
-    (params[:user][:email].present? && (user.email != params[:user][:email])) || params[:user][:password].present?
+    if params[:user].present?
+      (params[:user][:email].present? && (user.email != params[:user][:email])) || params[:user][:password].present?
+    else
+      false
+    end
   end
 
   def after_update_path_for(resource)
