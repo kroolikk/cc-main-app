@@ -1,0 +1,33 @@
+<h3>
+  Preferencje <%= link_to 'Nowy wpis', new_preference_path,:class => "mini main-btn" %>
+</h3>
+
+<%= will_paginate @preferences %>
+<br>
+
+<table>
+  <tr>
+    <th width='2%'>Id</th>
+    <th>Zdjęcie</th>
+    <th>Tytuł</th>
+    <th>Utworzony</th>
+    <th width='8%'>Opcje</th>
+  </tr>
+  <% @preferences.each do |preference| %>
+    <tr>
+      <td><%= preference.id %></td>
+      <td><%= (image_tag preference.image.thumb.url) if preference.image.present? %></td>
+      <td><%= preference.name %></td>
+      <td><%= preference.created_at.strftime("%d.%m.%Y") %> - <%= preference.created_at.strftime("%H:%M") %></td>
+      <td>
+        <%= link_to '', edit_preference_path(preference), :class => "ico edit" %>
+        <%= link_to '', preference, method: :delete, data: { confirm: 'Are you sure?' }, :class => "ico remove" %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<br>
+<%= will_paginate @preferences %>
+<br>
+<%= link_to 'Nowy wpis', new_preference_path,:class => "mini main-btn" %>

@@ -1,0 +1,134 @@
+<%= form_for(@preference) do |f| %>
+  <% if @preference.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@preference.errors.count, "error") %> prohibited this preference from being saved:</h2>
+
+      <ul>
+        <% @preference.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit 'Zapisz', :class => "main-btn" %>
+    <%= link_to 'Anuluj', preferences_path, :class => "cancel-btn" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name, "Tytuł" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= image_tag @preference.image.medium_fill.url if @preference.image.present? %><br/>
+    <%= f.label :image, "Obraz" %>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
+  </div>
+
+
+  <div class=" field tag_module">
+    <div class="field">
+      <%= label_tag :tags_to_add, "Nowe tagi" %>
+      <%= text_field :tags_to_add, '', :class => "new_tags" %>
+      <%= link_to "Add new tags", "#", :onclick => "addNewTags(); return false;", :class => "aux-btn" %>
+      <p>Tagi można oddzielać przecinkiem</p>
+    </div>
+    <table width="100%" cellspacing="0" cellpadding="0" class="no-styling-please">
+      <tr>
+        <td width="50%"> 
+          <label>Tagi przypisane do tego wpisu</label><br>
+          <div class="list_of_tags">
+            <% last = 0 %>
+            <% @preference.tag_list.each_with_index do |t, index| %>
+              <span rel='<%= index %>' class='all_tags tagger tag_field' onclick='add_or_remove("<%= index %>");'>
+                <span class="tag-tip"></span>
+                <%= t %>
+                <a href="" class="tag-x"></a>
+                <input type='text' name='p_tags[<%= index %>]' value='<%= t %>' readonly='readonly' class='hide_tag'>
+              </span>
+            <% last = index %>
+            <% end %>
+          </div>
+        </td>
+        <td width="50%">
+          <label>Najpopularniejsze tagi</label><br>
+          <div class="available_tags">
+            <% @available_tags.each_with_index do |t, index| %>
+              <% a_index = last + index + 1 %>
+                <span rel='<%= a_index %>' class='all_tags tagger available_tag' onclick='add_or_remove("<%= a_index %>");'>
+                  <span class="tag-tip"></span>
+                  <%= t.name %>
+                  <a href="" class="tag-x"></a>
+                  <input type='text' name='avail_p_tags[<%= a_index %>]' value='<%= t.name %>' readonly='readonly' class='hide_tag'>
+                </span>
+            <% end %>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+
+  <script type="text/javascript">
+    function addNewTags() {
+      var last_index = 0;
+      var tags_array = [];
+      var old_tag_fields = $('.all_tags');    
+      if (old_tag_fields.length > 0) {
+        var indexes_array = [];
+        old_tag_fields.each(function(){
+            val = Number( $(this).attr('rel') );
+            indexes_array.push(val);
+        });
+        var last_index = (Math.max.apply(Math, indexes_array))+1000;
+      };
+      var tags_string = $('.new_tags').val();
+      if (tags_string.length > 0) {
+        var tags_array = tags_string.split(", ");
+        $.each(tags_array, function(index,value){
+          var curr_index = parseInt(last_index) + index + 1;
+          // console.log(curr_index+' - '+value);
+          var already_present = $('input[value="'+value+'"]');
+          if (already_present.length == 0) {
+            var tid = curr_index;
+            var new_tag_input = "<span rel='"+curr_index+"' class='all_tags tagger tag_field' onclick='add_or_remove(&#39;"+tid+"&#39;);'><span class='tag-tip'></span>"+value+"<a href='' class='tag-x'></a><input type='text' name='p_tags["+curr_index+"]' value='"+value+"' readonly='readonly' class='hide_tag'></span>"
+            $('.list_of_tags').append(new_tag_input);
+          } else {
+            var first_present = $(already_present[0]).parent('span');
+            if ( first_present.hasClass('tag_field') ) {
+              alert('Tag "'+value+'" jest już przypisany do tego artykułu.');
+            } else {
+              add_or_remove( first_present.attr('rel') );
+            };
+          };
+        });
+        $('.new_tags').val('');
+      };
+    }
+  </script>
+
+  <script>
+    function add_or_remove(tid) {  
+      var this_obj = $('[rel="'+tid+'"]');
+      if ( this_obj.hasClass('tag_field') ) {
+        this_obj.removeClass('tag_field').addClass('available_tag');
+        this_obj.children('input').attr('name', 'avail_p_tags['+tid+']');
+        this_obj.appendTo('.available_tags');
+      } else {
+        this_obj.removeClass('available_tag').addClass('tag_field');
+        this_obj.children('input').attr('name', 'p_tags['+tid+']');
+        this_obj.appendTo('.list_of_tags');
+      };
+    };
+  </script>
+
+ 
+  <br><br>
+  <div class="actions">
+    <%= f.submit 'Zapisz', :class => "main-btn" %>
+    <%= link_to 'Anuluj', preferences_path, :class => "cancel-btn" %>
+  </div>
+<% end %>
