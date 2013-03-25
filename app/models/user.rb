@@ -26,13 +26,18 @@ class User < ActiveRecord::Base
   acts_as_taggable
 
 
+  def update_tags(tags=nil)
+    self.tag_list = tags.join(', ') if tags.present?
+  end
+
+
   def update_preferences(prefs=nil)
     if prefs.present?
       self.users_preferences.each do |up|
         up.destroy
       end
       prefs.each do |pt|
-        self.users_preferences.create(:preference_id => pt[1])
+        self.users_preferences.create(:preference_id => pt)
       end
     end
   end

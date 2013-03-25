@@ -11,13 +11,51 @@
     <script type="text/javascript">
       $('.user-tags').keyup(function() {
         var field_value = $(this).val();
-        console.log(field_value);
+        var lastChar = field_value.substr(field_value.length - 1); 
+        if (lastChar == ',') {
+          add_tag( field_value.slice(0,-1) );
+          $(this).val('');
+        };
       });
+
+      function add_tag(tag_val) {
+        var currInd = findLastIndex(".user_tag_inp") + 1;
+        $('.added-user-tags').append("<span class='tagger'><span class='tag-tip'></span>"+tag_val+"<a href='' class='tag-x' onclick='remove_tag(this, "+currInd+"); return false;'></a></span>");
+        $('.user_tags').append("<input type='text' name='user_tags[]' value='"+tag_val+"' readonly='readonly' class='user_tag_inp' rel='"+currInd+"' style='display:none;'>");
+      };
+
+      function remove_tag(this_obj, this_index) {
+        $(this_obj).parent('span').remove();
+        $('[rel="'+this_index+'"]').remove();
+      };
+
+      function findLastIndex( els_indicator ) {        
+        indexes_array = [];
+        var els = $( els_indicator );
+        if (els.length > 0) {
+          els.each(function(){
+            val = Number( $(this).attr('rel') );
+            indexes_array.push(val);
+          });
+          var last_index = ( Math.max.apply(Math, indexes_array) );
+        } else {
+          var last_index = 0; 
+        }; 
+        return last_index
+      };
     </script>
 
 
 
     <div class="added-user-tags">
+      <% resource.tags.each_with_index do |t, i| %>
+        <span class='tagger'>
+          <span class='tag-tip'></span>
+          <%= t %>
+          <a href='' class='tag-x' onclick='remove_tag(this, <%= i %>); return false;'></a>
+        </span>        
+      <% end %>
+            
               <% if false %>
               <span class="tagger">
                 <span class="tag-tip"></span>
@@ -63,7 +101,11 @@
       <% @general_prefs.each_with_index do |gp, i1| %>
         <tr>
           <% gp.each_with_index do |p, i2| %>
-            <td width="25%"><a href="#" class="<%= 'selected_p' if resource.preferences.include?(p) %>" onclick="mark_as_selected(this, <%= p.id %>); return false;"><%= image_tag p.image.thumb.url, :alt => p.name %></a></td>  
+            <td width="25%" class="<%= 'selected_p' if resource.preferences.include?(p) %>">
+              <a href="#" onclick="mark_as_selected(this, <%= p.id %>); return false;">
+                <%= image_tag p.image.thumb.url, :alt => p.name %>
+              </a>
+            </td>  
           <% end %>
         </tr>
       <% end %>
@@ -77,14 +119,14 @@
 
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
       <%= f.hidden_field :email %>
-      <div class="selected_tags">
-        <% resource.tags.each do |t| %>
-          <input type='text' name='user_tags["<%= t %>""]' value='<%= t %>' readonly='readonly' class='us-tag' style='display:none;'>
+      <div class="user_tags">
+        <% resource.tags.each_with_index do |t, i| %>
+          <input type='text' name='user_tags[]' value='<%= t %>' readonly='readonly' class='user_tag_inp' rel='<%= i %>' style='display:none;'>
         <% end %>
       </div>
       <div class="selected_prefs">
         <% resource.preferences.each do |p| %>
-          <input type='text' name='pref_tags[<%= p.id %>]' value='<%= p.id %>' readonly='readonly' class='inp<%= p.id %>' style='display:none;'>
+          <input type='text' name='pref_tags[]' value='<%= p.id %>' readonly='readonly' class='inp<%= p.id %>' style='display:none;'>
         <% end %>
       </div>
       <%= f.submit "Zapisz preferencje" %>
@@ -105,8 +147,6 @@
 
       function add_input(pref_id) {
         var inp_content = prepare_input(pref_id);
-        console.log(inp_content);
-        console.log( $('.selected_prefs') );
         $('.selected_prefs').append( inp_content );
       };
 
@@ -115,7 +155,7 @@
       };
 
       function prepare_input(pref_id) {
-        var inp = "<input type='text' name='pref_tags["+pref_id+"]' value='"+pref_id+"' readonly='readonly' class='inp"+pref_id+"' style='display:none;'>";
+        var inp = "<input type='text' name='pref_tags[]' value='"+pref_id+"' readonly='readonly' class='inp"+pref_id+"' style='display:none;'>";
         return inp;
       };
     </script>

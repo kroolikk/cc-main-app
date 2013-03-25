@@ -9,7 +9,8 @@ class RegistrationsController < Devise::RegistrationsController
 
   def update
     @user = User.find(current_user.id)
-    @user.update_preferences(params[:pref_tags])
+    @user.update_tags( params[:user_tags] )
+    @user.update_preferences( params[:pref_tags] )
 
     successfully_updated = if needs_password?(@user, params)
       @user.update_with_password(params[:user])
