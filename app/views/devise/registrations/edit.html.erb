@@ -4,19 +4,27 @@
 
   <div class="profile-box adjecent">
     <h5>Dostosuj CollegeCity do twoich wymagań</h5>
-    <p class="why-join">Zaznacz to co Cię najbardziej interesuje lub wpisz tagi a my przefiltrujemy stronę tak aby zawsze pokazywała Tobie najświeższe informacje z tego co cię interesuje - czy coś w ten deseń ja tekstów nie będę pisać bo ja nie żem stąd.</p>
+    <p class="why-join">Zaznacz to co Cię najbardziej interesuje lub wpisz tagi a my przefiltrujemy stronę tak aby zawsze pokazywała Tobie najświeższe informacje z tego co Cię interesuje - czy coś w ten deseń ja tekstów nie będę pisać bo ja nie żem stąd.</p>
     
     <label>Dopisz tagi:</label><br>
-    <input type="text" class="user-tags" />
+    <input type="text" class="user-tags" /> <a href="#" onclick="create_tags(); return false;"> Dodaj >> </a>
     <script type="text/javascript">
-      $('.user-tags').keyup(function() {
-        var field_value = $(this).val();
-        var lastChar = field_value.substr(field_value.length - 1); 
-        if (lastChar == ',') {
-          add_tag( field_value.slice(0,-1) );
-          $(this).val('');
+
+      $('.user-tags').bind('keypress', function(e) {
+        var code = (e.keyCode ? e.keyCode : e.which);
+        if (code == 13) { //Enter keycode
+          create_tags(this);
         };
       });
+
+      function create_tags() {
+        var tags_string = $('.user-tags').val();
+        var tags_array = tags_string.split(", ");
+        $.each(tags_array, function(index,value){
+          add_tag( value );
+        });
+        $('.user-tags').val('');
+      };
 
       function add_tag(tag_val) {
         var currInd = findLastIndex(".user_tag_inp") + 1;
