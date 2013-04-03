@@ -1,0 +1,4 @@
+# stałe dla deva
+DEV=true
+ROOT_URL='http://lvh:3000/'
+ENV_RAILS = 'development'

@@ -1,6 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 require File.expand_path('../boot', __FILE__)
+require File.dirname(__FILE__) + '/dev_constants' # init dev constants before environment is loaded
 
 require 'rails/all'
 
@@ -15,7 +16,7 @@ end
 module CcDev1
   class Application < Rails::Application
 
-    Rails.env = ActiveSupport::StringInquirer.new('development')
+    Rails.env = ActiveSupport::StringInquirer.new(ENV_RAILS)
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
