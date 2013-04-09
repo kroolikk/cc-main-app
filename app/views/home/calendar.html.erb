@@ -3,7 +3,7 @@
 		<%= select_tag :year, options_for_select(@years, params[:year]), :class => "cat_year" %>
 		<%= select_tag :month, options_for_select(MONTHS_TO_SELECT, params[:month]), :class => "cat_month" %>
 		<%= select_tag :week, options_for_select(WEEK_TO_SELECT, params[:week]), :class => "cat_week" %>
-		<%= link_to "Ustaw", "#", :class => "change_cal_date_link" %>
+		<%= link_to "Ustaw", "#", :class => "cal-btn change_cal_date_link" %>
 
 		<script type="text/javascript">
 			$('.change_cal_date_link').click(function() {

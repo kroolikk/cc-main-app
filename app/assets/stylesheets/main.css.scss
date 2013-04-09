@@ -1437,3 +1437,14 @@ h4 {
 			color: #000;
 		}
 }
+.cal-btn {
+	border-radius: 3px;
+	border: 1px solid #1E99CE;
+	padding: 3px 15px;
+	color: #fff;
+	cursor: pointer;
+	@include blue-btn-grad;
+		&:hover {
+			@include d-blue-btn-grad;
+		}
+}
