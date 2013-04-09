@@ -21,7 +21,7 @@ pickle-email-*.html
 *#
 
 /config/database.yml
-/config/initializers/dev_constants.rb
+/config/dev_constants.rb
 /config/environments/development.rb
 /config/environments/production.rb
 /config/setup_load_paths.rb

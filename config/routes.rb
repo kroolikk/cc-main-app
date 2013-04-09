@@ -3,25 +3,32 @@ CcDev1::Application.routes.draw do
 
   # chwilowe routingi wrzucajmy na początku
   # moje dziadowskie routy 
-  match "/single_art" => "home#single_article", :as => :single_art
-  match "/user_reg" => "home#user_reg", :as => :user_reg
-  match "/user_prof" => "home#user_prof", :as => :user_prof
+  match "single_art" => "home#single_article", :as => :single_art
+  match "user_reg" => "home#user_reg", :as => :user_reg
+  match "user_prof" => "home#user_prof", :as => :user_prof
   match "admin/example_form" => "mtest#example_form", :as => :example_form
 
-  match "/o_nas" => "home#about", :as => :about
-  match "/regulamin" => "home#terms", :as => :terms
+  match "o_nas" => "home#about", :as => :about
+  match "regulamin" => "home#terms", :as => :terms
 
 
 
   mount Ckeditor::Engine => '/ckeditor'
 
-  match "/admin" => "admin#index", :as => :admin
+  match "admin" => "admin#index", :as => :admin
   match "admin/login" => "admin#login", :as => :admin_login
   match "admin/enter" => "admin#enter", :as => :admin_enter
   match "admin/logout" => "admin#logout", :as => :admin_logout
 
-  devise_for :users, :controllers => { :registrations => "registrations" }
-  resources :users, :path => 'uzytkownicy'
+  # get 'uzytkownicy/profil' => 'registrations#edit', :as => :edit_user_registration
+  devise_for  :users, 
+              :path => 'uzytkownicy', 
+              :path_names => { :sign_in => "logowanie", :sign_out => "wyloguj" }, 
+              :controllers => { :registrations => "registrations" } do
+    get "chujciwokodziwkojebana" => "devise/registrations#edit"
+  end
+
+  resources :users, :path => 'users'
   resources :places
   resources :posts
   resources :preferences
@@ -35,10 +42,10 @@ CcDev1::Application.routes.draw do
   match "pokaz-miejsca" => "front_places#add_places_to_map", :as => :add_places_to_map
   match "miejsce/:id" => "front_places#show", :as => :single_place  
 
-  match "/kalendarz" => "home#calendar", :as => :calendar
-  match "/kalendarz/:year/:month/:week" => "home#calendar", :as => :calendar_date
-  match "/kontakt" => "home#contact", :as => :contact
-  match "/:category" => "home#index", :as => :category
+  match "kalendarz" => "home#calendar", :as => :calendar
+  match "kalendarz/:year/:month/:week" => "home#calendar", :as => :calendar_date
+  match "kontakt" => "home#contact", :as => :contact
+  match ":category" => "home#index", :as => :category
 
 
   # The priority is based upon order of creation:
