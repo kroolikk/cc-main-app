@@ -3,7 +3,26 @@ class HomeController < ApplicationController
 
 
   def search
-    @posts = Post.last(5)
+    sort_order = case params[:sort]
+    when 'name_asc' then 'name asc'
+    when 'name_desc' then 'name desc'
+    when 'created_asc' then 'created_at asc'
+    when 'created_desc' then 'created_at desc'
+    else 'created_at desc'
+    end
+
+    @posts = Post.order(sort_order)
+    if params[:keyword].present?
+      params[:keyword] = params[:keyword].truncate(50)
+      keywords = params[:keyword].gsub(/[=,;\"\'%\\#\{\\(\)}\$`]/, '').split(' ')
+      short_keywords = keywords.select{|k| k.size <= 2}
+      long_keywords = keywords.select{|k| k.size > 2}
+      @short_posts = ( short_keywords.present? ? @posts.tagged_with(short_keywords, :any => true) : [] )
+      @long_posts = ( long_keywords.present? ? @posts.tagged_with(long_keywords, :wild => true, :any => true) : [] )
+      @posts = @short_posts + @long_posts
+    end
+
+    @posts = Kaminari.paginate_array( @posts.uniq ).page(params[:page]).per(24)
   end
 
 

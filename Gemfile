@@ -49,6 +49,7 @@ gem "geocoder"
 gem 'will_paginate', '~> 3.0'
 
 gem 'acts-as-taggable-on', '~> 2.3.1'
+gem 'kaminari'
 
 group :development do
   gem "better_errors"

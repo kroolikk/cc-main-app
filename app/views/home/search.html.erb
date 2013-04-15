@@ -1,1 +1,5 @@
-wyniki wyszukiwania
+<% @posts.each do |p| %>
+  <%= link_to single_post_url(p) do %>
+    <%= p.id %> - <%= p.title %> - <%= p.tags.collect{|t| t.name} %><br/>
+  <% end %>
+<% end %>

@@ -93,9 +93,10 @@
             <%= link_to 'Zaloguj się', new_user_session_url %> |
             <%= link_to 'Zarejestruj się', new_user_registration_url %>
           <% end %>
-            <input type="text" class="main-search-area" />
-            <input type="submit" value="" class="search-btn" />
-
+          <%= form_tag search_url do %>
+            <%= text_field_tag :keyword, "", :class => "main-search-area" %>
+            <%= submit_tag "", :class => "search-btn" %>
+          <% end %>          
       </div>
       <div class="snoop-right"></div>
     </div>

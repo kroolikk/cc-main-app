@@ -15,7 +15,8 @@ CcDev1::Application.routes.draw do
 
 
 
-  match "szukaj/:keyword" => "home#search", :as => :search 
+  match "szukaj/:keyword" => "home#search", :as => :search_word
+  match "szukaj" => "home#search", :as => :search
 
   # get 'uzytkownicy/profil' => 'registrations#edit', :as => :edit_user_registration
   devise_for  :users, 
