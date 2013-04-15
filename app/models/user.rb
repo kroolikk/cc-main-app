@@ -42,4 +42,8 @@ class User < ActiveRecord::Base
     end
   end
 
+  def name_or_email
+    name.present? ? name : email
+  end
+
 end

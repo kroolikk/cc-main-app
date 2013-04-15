@@ -87,8 +87,7 @@
       <div class="snoop-left"></div>
       <div class="snoop-mid">
           <% if user_signed_in? %>
-            <%= current_user.email %> |
-            <%= link_to "Profil", edit_user_registration_path %> |
+            <%= link_to "Witaj, #{current_user.name_or_email}", edit_user_registration_path %> |
             <%= link_to "Wyloguj", destroy_user_session_path, :method => :delete %>
           <% else %>
             <%= link_to 'Zaloguj się', new_user_session_url %> |

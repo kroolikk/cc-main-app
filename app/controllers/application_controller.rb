@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :prepare_variables
 
+
+  def prepare_variables
+    @popular_tags = most_popular_tags    
+  end
 
   def recommended_posts(limit=0)
     if limit == 0

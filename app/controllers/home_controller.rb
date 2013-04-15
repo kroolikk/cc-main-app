@@ -2,6 +2,11 @@ class HomeController < ApplicationController
   include ApplicationHelper
 
 
+  def search
+    @posts = Post.last(5)
+  end
+
+
   def load_more_posts
     @page = params[:page]
     @per_page = 30

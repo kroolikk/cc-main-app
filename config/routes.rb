@@ -8,17 +8,14 @@ CcDev1::Application.routes.draw do
   match "user_prof" => "home#user_prof", :as => :user_prof
   match "admin/example_form" => "mtest#example_form", :as => :example_form
 
-  match "o_nas" => "home#about", :as => :about
-  match "regulamin" => "home#terms", :as => :terms
-
-
-
-  mount Ckeditor::Engine => '/ckeditor'
-
   match "admin" => "admin#index", :as => :admin
   match "admin/login" => "admin#login", :as => :admin_login
   match "admin/enter" => "admin#enter", :as => :admin_enter
   match "admin/logout" => "admin#logout", :as => :admin_logout
+
+
+
+  match "szukaj/:keyword" => "home#search", :as => :search 
 
   # get 'uzytkownicy/profil' => 'registrations#edit', :as => :edit_user_registration
   devise_for  :users, 
@@ -46,6 +43,12 @@ CcDev1::Application.routes.draw do
   match "kalendarz/:year/:month/:week" => "home#calendar", :as => :calendar_date
   match "kontakt" => "home#contact", :as => :contact
   match ":category" => "home#index", :as => :category
+
+  match "o_nas" => "home#about", :as => :about
+  match "regulamin" => "home#terms", :as => :terms
+
+  mount Ckeditor::Engine => '/ckeditor'
+
 
 
   # The priority is based upon order of creation:
