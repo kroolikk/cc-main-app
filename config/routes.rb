@@ -23,7 +23,6 @@ CcDev1::Application.routes.draw do
               :path => 'uzytkownicy', 
               :path_names => { :sign_in => "logowanie", :sign_out => "wyloguj" }, 
               :controllers => { :registrations => "registrations" } do
-    get "chujciwokodziwkojebana" => "devise/registrations#edit"
   end
 
   resources :users, :path => 'users'
@@ -43,14 +42,12 @@ CcDev1::Application.routes.draw do
   match "kalendarz" => "home#calendar", :as => :calendar
   match "kalendarz/:year/:month/:week" => "home#calendar", :as => :calendar_date
   match "kontakt" => "home#contact", :as => :contact
-  match ":category" => "home#index", :as => :category
-
   match "o_nas" => "home#about", :as => :about
   match "regulamin" => "home#terms", :as => :terms
 
   mount Ckeditor::Engine => '/ckeditor'
 
-
+  match ":category" => "home#index", :as => :category
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

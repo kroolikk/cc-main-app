@@ -105,4 +105,8 @@ class HomeController < ApplicationController
     [day_cond, week]
   end
 
+  def terms
+    
+  end
+
 end
