@@ -1448,3 +1448,21 @@ h4 {
 			@include d-blue-btn-grad;
 		}
 }
+.ft-socials {
+	background: url(/assets/ft-socials.png) no-repeat;
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+}
+.fb-btn {
+	background-position: 0px 0px;
+		&:hover {
+			background-position: 0px -43px; 
+		} 
+}
+.tw-btn {
+	background-position: -41px 0px;
+		&:hover {
+			background-position: -41px -43px; 
+		} 
+}

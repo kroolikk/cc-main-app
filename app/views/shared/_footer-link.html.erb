@@ -13,7 +13,7 @@
     <p class="foot-title">Top tagi</p>
     <% @tags = Post.tag_counts_on(:tags).order("count DESC").limit(6) %>  
     <% @tags.each do |t| %>
-      <li class="blue-foot"><%= link_to t.name, search_word_url(:keyword => t.name) %></li>  
+      <li class="white-foot"><%= link_to t.name, search_word_url(:keyword => t.name) %></li>  
     <% end %>
   </ul>
 
@@ -31,5 +31,6 @@
     <li><%= link_to "Zasady i regulamin", terms_path %></li>
     <li><%= link_to "Kontakt", contact_url %></li>
     <p class="foot-title">Lets socialize</p>
+    <a href="https://www.facebook.com/CollegeCity" target="_blank" class="ft-socials fb-btn"></a>
   </ul>
 </footer>
