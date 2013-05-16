@@ -2,7 +2,12 @@ class Place < ActiveRecord::Base
   attr_protected :id
   # attr_accessor :category_id
 
-  after_validation :geocode, :if => :auto_detect?
+  validates :latitude, :presence => true
+  validates :longitude, :presence => true
+  validates :name, :presence => true
+  validates :city, :presence => true
+
+  before_validation :geocode, :if => :auto_detect?
   geocoded_by :full_street_address
 
   extend FriendlyId

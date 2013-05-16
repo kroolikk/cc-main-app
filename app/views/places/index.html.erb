@@ -11,6 +11,7 @@
     <th>Ulica</th>
     <th>Nr.</th>
     <th>Kod</th>
+    <th>Współrz.</th>
     <th></th>
     <th></th>
   </tr>
@@ -30,6 +31,10 @@
     <td><%= place.street %></td>
     <td><%= place.street_no %></td>
     <td><%= place.zip_code %></td>
+    <td>
+      <%= place.latitude %><br>
+      <%= place.longitude %>
+    </td>
     <td><%= link_to 'Edit', edit_place_path(place) %></td>
     <td><%= link_to 'Destroy', place, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
