@@ -3,22 +3,23 @@ CcDev1::Application.routes.draw do
 
   # chwilowe routingi wrzucajmy na początku
   # moje dziadowskie routy 
-  match "single_art" => "home#single_article", :as => :single_art
-  match "user_reg" => "home#user_reg", :as => :user_reg
-  match "user_prof" => "home#user_prof", :as => :user_prof
-  match "admin/example_form" => "mtest#example_form", :as => :example_form
+  match "/single_art" => "home#single_article", :as => :single_art
+  match "/user_reg" => "home#user_reg", :as => :user_reg
+  match "/user_prof" => "home#user_prof", :as => :user_prof
+  match "/admin/example_form" => "mtest#example_form", :as => :example_form
 
-  match "admin" => "admin#index", :as => :admin
-  match "admin/login" => "admin#login", :as => :admin_login
-  match "admin/enter" => "admin#enter", :as => :admin_enter
-  match "admin/logout" => "admin#logout", :as => :admin_logout
+  match "/admin" => "admin#index", :as => :admin
+  match "/admin/login" => "admin#login", :as => :admin_login
+  match "/admin/enter" => "admin#enter", :as => :admin_enter
+  match "/admin/logout" => "admin#logout", :as => :admin_logout
 
 
 
-  match "szukaj/:keyword" => "home#search", :as => :search_word
-  match "szukaj" => "home#search", :as => :search
 
-  # get 'uzytkownicy/profil' => 'registrations#edit', :as => :edit_user_registration
+
+  match "/szukaj/:keyword" => "home#search", :as => :search_word
+  match "/szukaj" => "home#search", :as => :search
+
   devise_for  :users, 
               :path => 'uzytkownicy', 
               :path_names => { :sign_in => "logowanie", :sign_out => "wyloguj" }, 
@@ -30,24 +31,22 @@ CcDev1::Application.routes.draw do
   resources :posts
   resources :preferences
 
-  match "nastepne-posty" => "home#load_more_posts", :as => :load_more_posts
-  match "post/:id" => "front_posts#show", :as => :single_post
+  match "/nastepne-posty" => "home#load_more_posts", :as => :load_more_posts
+  match "/post/:id" => "front_posts#show", :as => :single_post
 
-  match "miejsca" => "front_places#index", :as => :front_places
-  match "miejsca/:category" => "front_places#index"
-  match "miejsca/:category/strona_:page" => "front_places#index"
-  match "pokaz-miejsca" => "front_places#add_places_to_map", :as => :add_places_to_map
-  match "miejsce/:id" => "front_places#show", :as => :single_place  
+  match "/miejsca" => "front_places#index", :as => :front_places
+  match "/miejsca/:category" => "front_places#index"
+  match "/miejsca/:category/strona_:page" => "front_places#index"
+  match "/pokaz-miejsca" => "front_places#add_places_to_map", :as => :add_places_to_map
+  match "/miejsce/:id" => "front_places#show", :as => :single_place  
 
-  match "kalendarz" => "home#calendar", :as => :calendar
-  match "kalendarz/:year/:month/:week" => "home#calendar", :as => :calendar_date
-  match "kontakt" => "home#contact", :as => :contact
-  match "o_nas" => "home#about", :as => :about
-  match "regulamin" => "home#terms", :as => :terms
+  match "/kalendarz" => "home#calendar", :as => :calendar
+  match "/kalendarz/:year/:month/:week" => "home#calendar", :as => :calendar_date
+  match "/kontakt" => "home#contact", :as => :contact
+  match "/o_nas" => "home#about", :as => :about
+  match "/regulamin" => "home#terms", :as => :terms
 
-  mount Ckeditor::Engine => '/ckeditor'
-
-  match ":category" => "home#index", :as => :category
+  match "/:category" => "home#index", :as => :category
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -98,7 +97,7 @@ CcDev1::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root                    :to => 'home#index'
+  root :to => 'home#index'
 
 
   # See how all your routes lay out with "rake routes"
