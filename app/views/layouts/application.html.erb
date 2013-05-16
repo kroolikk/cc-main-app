@@ -53,6 +53,8 @@
       });
   });
   </script>
+
+  <%= csrf_meta_tags %>
 </head>
 <body class="<%= params[:controller] %>-<%= params[:action] %>">
   <% if notice.present? %>
