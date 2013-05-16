@@ -41,10 +41,6 @@ class FrontPlacesController < ApplicationController
     @places = @all_places.to_a.paginate(:page => params[:page], :per_page => 99)
 
     @curr_cat = (params[:category].present? ? params[:category] : 'all')
-
-    respond_to do |format|
-      format.js
-    end
   end
 
 

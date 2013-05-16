@@ -35,8 +35,6 @@
       type: "POST",
       url: '<%= add_places_to_map_url %>',
       data: { category: category, page: page }
-    }).done(function() {
-      $('.places_loading').hide();      
     });
   };
 
